@@ -27,6 +27,8 @@ pacman --noconfirm -S stardict # dictionary
 pacman --noconfirm -S gnome-keyring # see below
 # If applet is not prompting for a password when connecting to new wifi networks, and is just disconnecting immediately, you may need to install gnome-keyring.
 
+pacman --noconfirm -S xfce4-clipman-plugin # clipman
+
 tput setaf 2; echo 'Installing dictionary...'; tput sgr0; 
 rm -rf /usr/share/stardict/dic
 mkdir -p /usr/share/stardict/dic
@@ -58,6 +60,10 @@ export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 exec cinnamon-session
 EOF
+
+tput setaf 2; echo 'Setup auto-start programs...'; tput sgr0;
+mkdir -p /home/tk/.config/autostart/
+cp /usr/share/applications/xfce4-clipman.desktop ~/.config/autostart/
 
 # run as user tk:
 sudo -u tk bash << EOF
