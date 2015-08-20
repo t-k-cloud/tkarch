@@ -20,9 +20,11 @@ tput setaf 2; echo 'install necessary commands...'; tput sgr0;
 pacman --noconfirm -S grub
 pacman --noconfirm -S git 
 pacman --noconfirm -S iw wpa_supplicant
+
 tput setaf 2; echo 'grub install...'; tput sgr0; 
 grub-install --recheck /dev/sda
 grub-mkconfig -o /boot/grub/grub.cfg
+
 tput setaf 2; echo 'locale gen...'; tput sgr0; 
 cat << EOF > /etc/locale.gen
 en_US.UTF-8 UTF-8
@@ -30,6 +32,11 @@ zh_CN.UTF-8 UTF-8
 EOF
 locale-gen
 echo 'LC_CTYPE="zh_CN.UTF-8"' > /etc/locale.conf # only applied to terminal.
+
+tput setaf 2; echo 'fetching post-install script...'; tput sgr0; 
+cd /root
+git clone https://github.com/t-k-/arch-setup.git
+
 tput setaf 2; echo 'please enter root passwd...'; tput sgr0; 
 passwd
 exit

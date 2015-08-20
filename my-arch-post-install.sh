@@ -1,9 +1,5 @@
 #!/bin/sh
-tput setaf 2; echo 'Fetching post-install script...'; tput sgr0; 
-git clone https://github.com/t-k-/arch-setup.git
-
 # get connected to Internet first
-cd arch-setup
 ./my-arch-wifi-wpa.sh
 
 tput setaf 2; echo 'Installing command line utilities...'; tput sgr0; 
