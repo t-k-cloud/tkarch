@@ -5,6 +5,15 @@
 tput setaf 2; echo 'Installing command line utilities...'; tput sgr0; 
 pacman --noconfirm -S tmux curl vim ctags cscope flex bison
 
+tput setaf 2; echo 'Replace vi with vim...'; tput sgr0;
+ln -sf `which vim` `which vi`
+
+tput setaf 2; echo 'Make Caps Lock an additional Esc'; tput sgr0;
+setxkbmap -option caps:escape
+# (more options refer to :
+# cat /usr/share/X11/xkb/rules/evdev.lst | grep swap_alt_win
+# )
+
 tput setaf 2; echo 'Installing GUI utilities...'; tput sgr0; 
 pacman --noconfirm -S xorg-server xorg-xinit # X server
 pacman --noconfirm -S xf86-input-synaptics # touchpad/touchscreen
@@ -55,3 +64,7 @@ cd /home/tk
 git clone https://github.com/t-k-/homcf.git
 ./homcf/overwrite.sh
 EOF
+
+tput setaf 2; echo 'Hand over network connection to NetworkManager...'; tput sgr0;
+systemctl enable NetworkManager.service
+systemctl start NetworkManager.service
