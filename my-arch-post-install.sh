@@ -20,6 +20,9 @@ pacman --noconfirm -S xournal # pdf annotation/note
 pacman --noconfirm -S gedit # text editor
 pacman --noconfirm -S stardict # dictionary
 
+pacman --noconfirm -S gnome-keyring # see below
+# If applet is not prompting for a password when connecting to new wifi networks, and is just disconnecting immediately, you may need to install gnome-keyring.
+
 tput setaf 2; echo 'Installing dictionary...'; tput sgr0; 
 rm -rf /usr/share/stardict/dic
 mkdir -p /usr/share/stardict/dic
