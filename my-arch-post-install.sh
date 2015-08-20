@@ -36,7 +36,8 @@ tput setaf 2; echo 'Configure his profile...'; tput sgr0;
 pacman --noconfirm -S sudo
 echo 'tk ALL=(ALL:ALL) ALL' | (EDITOR="tee -a" visudo)
 
-echo 'startx' >> /home/tk/.bash_profile
+echo '[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx' >> /home/tk/.bash_profile
+# (if only has startx here, tmux would run into some problem)
 
 cat << EOF > /home/tk/.xinitrc
 export GTK_IM_MODULE=fcitx
@@ -45,6 +46,7 @@ export XMODIFIERS=@im=fcitx
 exec cinnamon-session
 EOF
 
+# run as user tk:
 sudo -u tk bash << EOF
 cd /home/tk
 git clone https://github.com/t-k-/homcf.git
