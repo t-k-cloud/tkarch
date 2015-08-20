@@ -75,6 +75,15 @@ tput setaf 2; echo 'Loading key bindings...'; tput sgr0;
 # dconf dump /org/cinnamon/desktop/keybindings/ > keybindings.dump
 dconf load /org/cinnamon/desktop/keybindings/ < keybindings.dump
 
+tput setaf 2; echo 'Setting gnome-terminal default color scheme...'; tput sgr0;
+uuid=`dconf list /org/gnome/terminal/legacy/profiles:/`
+dconf write /org/gnome/terminal/legacy/profiles:/${uuid}background-color \
+            "'rgb(0,0,0)'"
+dconf write /org/gnome/terminal/legacy/profiles:/${uuid}foreground-color \
+            "'rgb(170,170,170)'"
+dconf write /org/gnome/terminal/legacy/profiles:/${uuid}use-theme-colors \
+            "false"
+
 # run as user tk:
 sudo -u tk bash << EOF
 cd /home/tk
