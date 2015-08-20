@@ -71,6 +71,10 @@ mkdir -p /home/tk/.config/autostart/
 tmp=/usr/share/applications/xfce4-clipman.desktop
 [ -e "$tmp" ] && cp "$tmp" ~/.config/autostart/
 
+tput setaf 2; echo 'Loading key bindings...'; tput sgr0;
+# dconf dump /org/cinnamon/desktop/keybindings/ > keybindings.dump
+dconf load /org/cinnamon/desktop/keybindings/ < keybindings.dump
+
 # run as user tk:
 sudo -u tk bash << EOF
 cd /home/tk

@@ -1,0 +1,15 @@
+[custom-keybindings/custom0]
+binding=['<Primary><Alt>t']
+command="gnome-terminal -e \"bash -c 'cd ~/Desktop;tmux;exec bash'\""
+name='open-terminal-with-tmux'
+
+[/]
+custom-list=['custom0']
+
+[media-keys]
+terminal=['']
+home=['XF86Explorer']
+
+[wm]
+show-desktop=['<Primary><Alt>d']
+switch-to-workspace-down=['<Primary><Alt>Down', '<Super>e']
