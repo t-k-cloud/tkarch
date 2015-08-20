@@ -64,7 +64,9 @@ EOF
 
 tput setaf 2; echo 'Setup auto-start programs...'; tput sgr0;
 mkdir -p /home/tk/.config/autostart/
-cp /usr/share/applications/xfce4-clipman.desktop ~/.config/autostart/
+# clipman
+tmp=/usr/share/applications/xfce4-clipman.desktop
+[ -e "$tmp" ] && cp "$tmp" ~/.config/autostart/
 
 # run as user tk:
 sudo -u tk bash << EOF
