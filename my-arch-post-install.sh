@@ -1,6 +1,13 @@
 #!/bin/sh
+tput setaf 2; echo 'Fetching post-install script...'; tput sgr0; 
+git clone https://github.com/t-k-/arch-setup.git
+
+# get connected to Internet first
+cd arch-setup
+./my-arch-wifi-wpa.sh
+
 tput setaf 2; echo 'Installing command line utilities...'; tput sgr0; 
-pacman --noconfirm -S git tmux curl vim ctags cscope flex bison
+pacman --noconfirm -S tmux curl vim ctags cscope flex bison
 
 tput setaf 2; echo 'Installing GUI utilities...'; tput sgr0; 
 pacman --noconfirm -S xorg-server xorg-xinit # X server
@@ -15,15 +22,21 @@ pacman --noconfirm -S fcitx fcitx-configtool # input method
 pacman --noconfirm -S gnome-screenshot # screenshot
 pacman --noconfirm -S xournal # pdf annotation/note
 pacman --noconfirm -S gedit # text editor
-
 pacman --noconfirm -S stardict # dictionary
+
+tput setaf 2; echo 'Installing dictionary...'; tput sgr0; 
 rm -rf /usr/share/stardict/dic
 mkdir -p /usr/share/stardict/dic
+cp ./stardict-langdao-* /usr/share/stardict/dic/
+pushd /usr/share/stardict/dic/
+find . -maxdepth 1 -name 'stardict-langdao-*.bz2' -exec tar -xjf {} \;
+popd 
 
 tput setaf 2; echo 'Creating user tk...'; tput sgr0; 
 useradd -m -G wheel -s /bin/bash tk
 passwd tk
 
+tput setaf 2; echo 'Configure his profile...'; tput sgr0; 
 pacman --noconfirm -S sudo
 echo 'tk ALL=(ALL:ALL) ALL' | (EDITOR="tee -a" visudo)
 
@@ -34,4 +47,10 @@ export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 exec cinnamon-session
+EOF
+
+sudo -u tk bash << EOF
+cd /home/tk
+git clone https://github.com/t-k-/homcf.git
+./homcf/overwrite.sh
 EOF

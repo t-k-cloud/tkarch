@@ -18,6 +18,7 @@ jail_script_mnt=/mnt${jail_script}
 cat << CHROOT > $jail_script_mnt
 tput setaf 2; echo 'install necessary commands...'; tput sgr0; 
 pacman --noconfirm -S grub
+pacman --noconfirm -S git 
 pacman --noconfirm -S iw wpa_supplicant
 tput setaf 2; echo 'grub install...'; tput sgr0; 
 grub-install --recheck /dev/sda
