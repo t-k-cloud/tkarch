@@ -9,12 +9,6 @@ pacman --noconfirm -S pstree pgrep
 tput setaf 2; echo 'Replace vi with vim...'; tput sgr0;
 ln -sf `which vim` `which vi`
 
-tput setaf 2; echo 'Make Caps Lock an additional Esc'; tput sgr0;
-setxkbmap -option caps:escape
-# (more options refer to :
-# cat /usr/share/X11/xkb/rules/evdev.lst | grep swap_alt_win
-# )
-
 tput setaf 2; echo 'Installing GUI utilities...'; tput sgr0; 
 pacman --noconfirm -S xorg-server xorg-xinit # X server
 pacman --noconfirm -S xf86-input-synaptics # touchpad/touchscreen
@@ -53,6 +47,12 @@ echo '[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx' >> /home/tk/.bash_pro
 # (if only has startx here, tmux would run into some problem)
 
 cat << EOF > /home/tk/.xinitrc
+# Make Caps Lock an additional Esc
+setxkbmap -option caps:escape
+# (more options refer to :
+# cat /usr/share/X11/xkb/rules/evdev.lst | grep swap_alt_win
+# )
+
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
