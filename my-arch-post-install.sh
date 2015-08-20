@@ -9,11 +9,13 @@ pacman --noconfirm -S pstree pgrep
 tput setaf 2; echo 'Replace vi with vim...'; tput sgr0;
 ln -sf `which vim` `which vi`
 
-tput setaf 2; echo 'Installing GUI utilities...'; tput sgr0; 
+tput setaf 2; echo 'Installing desktop environment...'; tput sgr0;
 pacman --noconfirm -S xorg-server xorg-xinit # X server
 pacman --noconfirm -S xf86-input-synaptics # touchpad/touchscreen
 pacman --noconfirm -S adobe-source-han-sans-cn-fonts # chinese font
 pacman --noconfirm -S cinnamon # desktop environment
+
+tput setaf 2; echo 'Installing GUI utilities...'; tput sgr0;
 pacman --noconfirm -S atril # pdf reader 
 pacman --noconfirm -S gnome-calculator # calculator
 pacman --noconfirm -S xfce4-terminal # terminal
@@ -24,6 +26,7 @@ pacman --noconfirm -S xournal # pdf annotation/note
 pacman --noconfirm -S gedit # text editor
 pacman --noconfirm -S eog eog-plugins # image viewer - eye of gnome
 pacman --noconfirm -S stardict # dictionary
+pacman --noconfirm -S dconf-editor # gnome-setting GUI tool
 
 pacman --noconfirm -S gnome-keyring # see below
 # If applet is not prompting for a password when connecting to new wifi networks, and is just disconnecting immediately, you may need to install gnome-keyring.
