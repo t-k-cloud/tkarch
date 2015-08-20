@@ -4,6 +4,7 @@
 
 tput setaf 2; echo 'Installing command line utilities...'; tput sgr0; 
 pacman --noconfirm -S tmux curl vim ctags cscope flex bison
+pacman --noconfirm -S pstree pgrep
 
 tput setaf 2; echo 'Replace vi with vim...'; tput sgr0;
 ln -sf `which vim` `which vi`
@@ -66,5 +67,9 @@ git clone https://github.com/t-k-/homcf.git
 EOF
 
 tput setaf 2; echo 'Hand over network connection to NetworkManager...'; tput sgr0;
+for i in `seq 9`
+do
+	killall -9 wpa_supplicant
+done
 systemctl enable NetworkManager.service
 systemctl start NetworkManager.service
