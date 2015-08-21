@@ -23,6 +23,7 @@ tput setaf 2; echo 'install necessary commands...'; tput sgr0;
 pacman --noconfirm -S grub
 pacman --noconfirm -S git 
 pacman --noconfirm -S iw wpa_supplicant
+pacman --noconfirm -S wget 
 
 tput setaf 2; echo 'grub install...'; tput sgr0; 
 grub-install --recheck /dev/sda
