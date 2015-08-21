@@ -49,6 +49,10 @@ tput setaf 2; echo 'Configure him as sudoer...'; tput sgr0;
 pacman --noconfirm -S sudo
 echo 'tk ALL=(ALL:ALL) ALL' | (EDITOR="tee -a" visudo)
 
+tput setaf 2; echo 'Copy keybindings.dump...'; tput sgr0;
+mkdir -p /var/tmp/
+cp /root/arch-setup/keybindings.dump /var/tmp/
+
 cat << EOF > /home/tk/.xinitrc
 # Make Caps Lock an additional Esc
 setxkbmap -option caps:escape
@@ -63,12 +67,11 @@ then
 	# You can get keybindings.dump by:
 	# dconf dump /org/cinnamon/desktop/keybindings/ > keybindings.dump
 	dconf reset -f /org/cinnamon/desktop/keybindings/
-	dconf load /org/cinnamon/desktop/keybindings/ < keybindings.dump
+	dconf load /org/cinnamon/desktop/keybindings/ < /var/tmp/keybindings.dump
 
 	# Set gnome-terminal default color scheme
 	dconf reset -f /org/gnome/terminal/legacy/profiles:/
 	uuid=\`gsettings get org.gnome.Terminal.ProfilesList default | grep -Po "(?<=').*(?=')"\`
-	mkdir -p /var/tmp/
 	echo "uuid=[\${uuid}]" > /var/tmp/my-arch-post-install.lock
 	dconf write /org/gnome/terminal/legacy/profiles:/:\${uuid}/background-color "'rgb(0,0,0)'"
 	dconf write /org/gnome/terminal/legacy/profiles:/:\${uuid}/foreground-color "'rgb(170,170,170)'"
