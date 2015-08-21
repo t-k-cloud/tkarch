@@ -62,22 +62,31 @@ export XMODIFIERS=@im=fcitx
 exec cinnamon-session
 EOF
 
-# run as user tk:
-sudo -u tk bash << EOF
-tput setaf 2; echo "This is \`whoami\`"; tput sgr0;
-tput setaf 2; echo 'Loading key bindings...'; tput sgr0;
+# You can get keybindings.dump by:
 # dconf dump /org/cinnamon/desktop/keybindings/ > keybindings.dump
+sudo -u tk bash << EOF
+# cat << EOF > dconf.sh
+tput setaf 2; echo 'Reset key bindings:'; tput sgr0;
+dconf reset -f /org/cinnamon/desktop/keybindings/
+dconf dump /org/cinnamon/desktop/keybindings/
+tput setaf 2; echo 'Loading key bindings...'; tput sgr0;
 dconf load /org/cinnamon/desktop/keybindings/ < keybindings.dump
+dconf dump /org/cinnamon/desktop/keybindings/
+sleep 8
 
 tput setaf 2; echo 'Setting gnome-terminal default color scheme...'; tput sgr0;
-uuid=\`dconf list /org/gnome/terminal/legacy/profiles:/\`
-dconf write /org/gnome/terminal/legacy/profiles:/\${uuid}background-color \
-            "'rgb(0,0,0)'"
-dconf write /org/gnome/terminal/legacy/profiles:/\${uuid}foreground-color \
-            "'rgb(170,170,170)'"
-dconf write /org/gnome/terminal/legacy/profiles:/\${uuid}use-theme-colors \
-            "false"
+dconf reset -f /org/gnome/terminal/legacy/profiles:/ # reset it first
+uuid=\`gsettings get org.gnome.Terminal.ProfilesList default | grep -Po "(?<=').*(?=')"\`
+echo "uuid=[\${uuid}]"
+sleep 8
 
+dconf write /org/gnome/terminal/legacy/profiles:/:\${uuid}/background-color "'rgb(0,0,0)'"
+dconf write /org/gnome/terminal/legacy/profiles:/:\${uuid}/foreground-color "'rgb(170,170,170)'"
+dconf write /org/gnome/terminal/legacy/profiles:/:\${uuid}/use-theme-colors "false"
+EOF
+
+# run as user tk:
+sudo -u tk bash << EOF
 tput setaf 2; echo 'Setup auto-start programs...'; tput sgr0;
 mkdir -p /home/tk/.config/autostart/
 # clipman
