@@ -10,7 +10,7 @@ tput setaf 2; echo 'Replace vi with vim...'; tput sgr0;
 ln -sf `which vim` `which vi`
 
 tput setaf 2; echo 'Installing desktop environment...'; tput sgr0;
-pacman --noconfirm -S xorg-server xorg-xinit # X server
+pacman --noconfirm -S xorg-server xorg-xinit xterm # X server
 pacman --noconfirm -S xf86-input-synaptics # touchpad/touchscreen
 pacman --noconfirm -S adobe-source-han-sans-cn-fonts # chinese font
 pacman --noconfirm -S cinnamon # desktop environment
@@ -45,12 +45,9 @@ tput setaf 2; echo 'Creating user tk...'; tput sgr0;
 useradd -m -G wheel -s /bin/bash tk
 passwd tk
 
-tput setaf 2; echo 'Configure his profile...'; tput sgr0; 
+tput setaf 2; echo 'Configure him as sudoer...'; tput sgr0; 
 pacman --noconfirm -S sudo
 echo 'tk ALL=(ALL:ALL) ALL' | (EDITOR="tee -a" visudo)
-
-echo '[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx' >> /home/tk/.bash_profile
-# (if only has startx here, tmux would run into some problem)
 
 cat << EOF > /home/tk/.xinitrc
 # Make Caps Lock an additional Esc
@@ -65,27 +62,32 @@ export XMODIFIERS=@im=fcitx
 exec cinnamon-session
 EOF
 
-tput setaf 2; echo 'Setup auto-start programs...'; tput sgr0;
-mkdir -p /home/tk/.config/autostart/
-# clipman
-tmp=/usr/share/applications/xfce4-clipman.desktop
-[ -e "$tmp" ] && cp "$tmp" ~/.config/autostart/
-
+# run as user tk:
+sudo -u tk bash << EOF
+tput setaf 2; echo "This is \`whoami\`"; tput sgr0;
 tput setaf 2; echo 'Loading key bindings...'; tput sgr0;
 # dconf dump /org/cinnamon/desktop/keybindings/ > keybindings.dump
 dconf load /org/cinnamon/desktop/keybindings/ < keybindings.dump
 
 tput setaf 2; echo 'Setting gnome-terminal default color scheme...'; tput sgr0;
-uuid=`dconf list /org/gnome/terminal/legacy/profiles:/`
-dconf write /org/gnome/terminal/legacy/profiles:/${uuid}background-color \
+uuid=\`dconf list /org/gnome/terminal/legacy/profiles:/\`
+dconf write /org/gnome/terminal/legacy/profiles:/\${uuid}background-color \
             "'rgb(0,0,0)'"
-dconf write /org/gnome/terminal/legacy/profiles:/${uuid}foreground-color \
+dconf write /org/gnome/terminal/legacy/profiles:/\${uuid}foreground-color \
             "'rgb(170,170,170)'"
-dconf write /org/gnome/terminal/legacy/profiles:/${uuid}use-theme-colors \
+dconf write /org/gnome/terminal/legacy/profiles:/\${uuid}use-theme-colors \
             "false"
 
-# run as user tk:
-sudo -u tk bash << EOF
+tput setaf 2; echo 'Setup auto-start programs...'; tput sgr0;
+mkdir -p /home/tk/.config/autostart/
+# clipman
+tmp=/usr/share/applications/xfce4-clipman.desktop
+[ -e "\$tmp" ] && cp "\$tmp" /home/tk/.config/autostart/
+
+tput setaf 2; echo 'Configure his profile...'; tput sgr0; 
+echo '[[ -z \$DISPLAY && \$XDG_VTNR -eq 1 ]] && exec startx' >> /home/tk/.bash_profile
+# (if only has startx here, tmux would run into some problem)
+
 cd /home/tk
 git clone https://github.com/t-k-/homcf.git
 ./homcf/overwrite.sh
