@@ -63,6 +63,9 @@ setxkbmap -option caps:escape
 # dconf needs to run only once
 if [ ! -e /var/tmp/my-arch-post-install.lock ]
 then
+	# Enable zoom / magnifier
+	dconf write /org/cinnamon/desktop/a11y/applications/screen-magnifier-enabled "true"
+
 	# Load key bindings
 	# You can get keybindings.dump by:
 	# dconf dump /org/cinnamon/desktop/keybindings/ > keybindings.dump
