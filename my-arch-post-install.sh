@@ -18,7 +18,7 @@ pacman --noconfirm -S cinnamon # desktop environment
 tput setaf 2; echo 'Installing GUI utilities...'; tput sgr0;
 pacman --noconfirm -S atril # pdf reader 
 pacman --noconfirm -S gnome-calculator # calculator
-pacman --noconfirm -S xfce4-terminal # terminal
+pacman --noconfirm -S gnome-terminal # terminal
 pacman --noconfirm -S chromium # browser
 pacman --noconfirm -S fcitx fcitx-configtool # input method
 pacman --noconfirm -S gnome-screenshot # screenshot
