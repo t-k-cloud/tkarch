@@ -61,7 +61,7 @@ setxkbmap -option caps:escape
 # )
 
 # dconf needs to run only once
-if [ -e /var/tmp/my-arch-post-install.lock ]
+if [ ! -e /var/tmp/my-arch-post-install.lock ]
 then
 	# Load key bindings
 	# You can get keybindings.dump by:
