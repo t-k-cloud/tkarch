@@ -1,5 +1,6 @@
 #!/bin/sh
-. ./my-arch-ping.sh || exit
+. ./my-arch-ping.sh
+is_connected || exit 
 
 tput setaf 2; echo 'mounting disk...'; tput sgr0; 
 mount /dev/sda4 /mnt

@@ -1,5 +1,6 @@
 #!/bin/sh
-. ./my-arch-ping.sh || exit
+. ./my-arch-ping.sh
+is_connected || exit 
 
 tput setaf 2; echo 'Installing command line utilities...'; tput sgr0; 
 pacman --noconfirm -S tmux curl vim ctags cscope flex bison 
