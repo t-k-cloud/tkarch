@@ -56,33 +56,30 @@ setxkbmap -option caps:escape
 # cat /usr/share/X11/xkb/rules/evdev.lst | grep swap_alt_win
 # )
 
+# dconf needs to run only once
+if [ -e /var/tmp/my-arch-post-install.lock ]
+then
+	# Load key bindings
+	# You can get keybindings.dump by:
+	# dconf dump /org/cinnamon/desktop/keybindings/ > keybindings.dump
+	dconf reset -f /org/cinnamon/desktop/keybindings/
+	dconf load /org/cinnamon/desktop/keybindings/ < keybindings.dump
+
+	# Set gnome-terminal default color scheme
+	dconf reset -f /org/gnome/terminal/legacy/profiles:/
+	uuid=\`gsettings get org.gnome.Terminal.ProfilesList default | grep -Po "(?<=').*(?=')"\`
+	mkdir -p /var/tmp/
+	echo "uuid=[\${uuid}]" > /var/tmp/my-arch-post-install.lock
+	dconf write /org/gnome/terminal/legacy/profiles:/:\${uuid}/background-color "'rgb(0,0,0)'"
+	dconf write /org/gnome/terminal/legacy/profiles:/:\${uuid}/foreground-color "'rgb(170,170,170)'"
+	dconf write /org/gnome/terminal/legacy/profiles:/:\${uuid}/use-theme-colors "false"
+fi
+
+# Config input method
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 exec cinnamon-session
-EOF
-
-# You can get keybindings.dump by:
-# dconf dump /org/cinnamon/desktop/keybindings/ > keybindings.dump
-sudo -u tk bash << EOF
-# cat << EOF > dconf.sh
-tput setaf 2; echo 'Reset key bindings:'; tput sgr0;
-dconf reset -f /org/cinnamon/desktop/keybindings/
-dconf dump /org/cinnamon/desktop/keybindings/
-tput setaf 2; echo 'Loading key bindings...'; tput sgr0;
-dconf load /org/cinnamon/desktop/keybindings/ < keybindings.dump
-dconf dump /org/cinnamon/desktop/keybindings/
-sleep 8
-
-tput setaf 2; echo 'Setting gnome-terminal default color scheme...'; tput sgr0;
-dconf reset -f /org/gnome/terminal/legacy/profiles:/ # reset it first
-uuid=\`gsettings get org.gnome.Terminal.ProfilesList default | grep -Po "(?<=').*(?=')"\`
-echo "uuid=[\${uuid}]"
-sleep 8
-
-dconf write /org/gnome/terminal/legacy/profiles:/:\${uuid}/background-color "'rgb(0,0,0)'"
-dconf write /org/gnome/terminal/legacy/profiles:/:\${uuid}/foreground-color "'rgb(170,170,170)'"
-dconf write /org/gnome/terminal/legacy/profiles:/:\${uuid}/use-theme-colors "false"
 EOF
 
 # run as user tk:
