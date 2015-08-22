@@ -4,7 +4,7 @@ is_connected || exit
 
 tput setaf 2; echo 'Installing command line utilities...'; tput sgr0; 
 pacman --noconfirm -S tmux curl vim ctags cscope flex bison 
-pacman --noconfirm -S pstree pgrep strace
+pacman --noconfirm -S strace
 
 tput setaf 2; echo 'Replace vi with vim...'; tput sgr0;
 ln -sf `which vim` `which vi`
