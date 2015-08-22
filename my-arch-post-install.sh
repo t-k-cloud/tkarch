@@ -109,10 +109,15 @@ then
 	dconf write /org/gnome/terminal/legacy/profiles:/:\${uuid}/foreground-color "'rgb(170,170,170)'"
 	dconf write /org/gnome/terminal/legacy/profiles:/:\${uuid}/use-theme-colors "false"
 
+	# Overwriting panel-launchers
+	sed_script=/var/tmp/launcher-list.sed
+	find /home/tk/.cinnamon/configs/panel-launchers@cinnamon.org/ -name '*.json' -exec sed -i -f \$sed_script {} \\;
+
 	# Remove show-desktop pannel applet
 	echo "arr=\`dconf read /org/cinnamon/enabled-applets\`;" > /var/tmp/rm-show-desktop-applet.py
 	echo "print(list(filter(lambda e: 'show-desktop' not in e , arr)))" >> /var/tmp/rm-show-desktop-applet.py
 	dconf write /org/cinnamon/enabled-applets "\`python /var/tmp/rm-show-desktop-applet.py\`"
+
 fi
 
 # Config input method
@@ -133,13 +138,6 @@ tmp=/usr/share/applications/xfce4-clipman.desktop
 tput setaf 2; echo 'Configuring bash_profile... '; tput sgr0; 
 echo '[[ -z \$DISPLAY && \$XDG_VTNR -eq 1 ]] && exec startx' >> /home/tk/.bash_profile
 # (if only has startx here, tmux would run into some problem)
-
-tput setaf 2; echo 'Overwriting panel-launchers...'; tput sgr0; 
-# show original file first
-find /home/tk/.cinnamon/configs/panel-launchers@cinnamon.org/ -name '*.json' -exec cat {} \\;
-# replace it
-sed_script=/var/tmp/launcher-list.sed
-find /home/tk/.cinnamon/configs/panel-launchers@cinnamon.org/ -name '*.json' -exec sed -i -f \$sed_script {} \\;
 
 cd /home/tk
 git clone https://github.com/t-k-/homcf.git
