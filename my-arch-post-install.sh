@@ -66,6 +66,14 @@ then
 	# Enable zoom / magnifier
 	dconf write /org/cinnamon/desktop/a11y/applications/screen-magnifier-enabled "true"
 
+	# Disable auto suspending / locking screen
+	dconf write /org/cinnamon/desktop/screensaver/lock-enabled "false"
+	dconf write /org/cinnamon/settings-daemon/plugins/power/button-power "'nothing'"
+	dconf write /org/cinnamon/settings-daemon/plugins/power/sleep-display-battery 0
+	dconf write /org/cinnamon/settings-daemon/plugins/power/sleep-display-ac 0
+	dconf write /org/cinnamon/settings-daemon/plugins/power/lid-close-ac-action "'nothing'"
+	dconf write /org/cinnamon/settings-daemon/plugins/power/lid-close-battery-action "'nothing'"
+
 	# Load key bindings
 	# You can get keybindings.dump by:
 	# dconf dump /org/cinnamon/desktop/keybindings/ > keybindings.dump
