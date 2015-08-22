@@ -61,9 +61,11 @@ tput setaf 2; echo 'Configuring sudoer...'; tput sgr0;
 pacman --noconfirm -S sudo
 echo 'tk ALL=(ALL:ALL) ALL' | (EDITOR="tee -a" visudo)
 
-tput setaf 2; echo 'Copy keybindings.dump...'; tput sgr0;
 mkdir -p /var/tmp/
+tput setaf 2; echo 'Copy keybindings.dump...'; tput sgr0;
 cp /root/arch-setup/keybindings.dump /var/tmp/
+tput setaf 2; echo 'Copy launcher-list.sed...'; tput sgr0;
+cp /root/arch-setup/launcher-list.sed /var/tmp/
 
 tput setaf 2; echo 'Replacing pannel icon...'; tput sgr0;
 cp /root/arch-setup/arch-linux.svg /usr/share/cinnamon/theme/menu-symbolic.svg
@@ -128,7 +130,11 @@ echo '[[ -z \$DISPLAY && \$XDG_VTNR -eq 1 ]] && exec startx' >> /home/tk/.bash_p
 # (if only has startx here, tmux would run into some problem)
 
 tput setaf 2; echo 'Overwriting panel-launchers...'; tput sgr0; 
-find /home/tk/.cinnamon/configs/panel-launchers@cinnamon.org/ -name '*.json' -exec cat {} \;
+# show original file first
+find /home/tk/.cinnamon/configs/panel-launchers@cinnamon.org/ -name '*.json' -exec cat {} \\;
+# replace it
+sed_script=/var/tmp/launcher-list.sed
+find /home/tk/.cinnamon/configs/panel-launchers@cinnamon.org/ -name '*.json' -exec sed -i -f \$sed_script {} \\;
 
 cd /home/tk
 git clone https://github.com/t-k-/homcf.git
