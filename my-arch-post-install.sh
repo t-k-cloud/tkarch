@@ -41,17 +41,32 @@ pushd /usr/share/stardict/dic/
 find . -maxdepth 1 -name 'stardict-langdao-*.bz2' -exec tar -xjf {} \;
 popd 
 
+tput setaf 2; echo 'Adding my-terminal.desktop...'; tput sgr0;
+cat << EOF > /usr/share/applications/my-terminal.desktop
+[Desktop Entry]
+Name=My Terminal
+Comment=Use the command line
+Keywords=shell;prompt;command;commandline;
+Exec=gnome-terminal -e "bash -c 'cd ~/Desktop;tmux;exec bash'"
+Icon=utilities-terminal
+Type=Application
+Categories=GNOME;GTK;System;TerminalEmulator;
+EOF
+
 tput setaf 2; echo 'Creating user tk...'; tput sgr0; 
 useradd -m -G wheel -s /bin/bash tk
 passwd tk
 
-tput setaf 2; echo 'Configure him as sudoer...'; tput sgr0; 
+tput setaf 2; echo 'Configuring sudoer...'; tput sgr0; 
 pacman --noconfirm -S sudo
 echo 'tk ALL=(ALL:ALL) ALL' | (EDITOR="tee -a" visudo)
 
 tput setaf 2; echo 'Copy keybindings.dump...'; tput sgr0;
 mkdir -p /var/tmp/
 cp /root/arch-setup/keybindings.dump /var/tmp/
+
+tput setaf 2; echo 'Replacing pannel icon...'; tput sgr0;
+cp /root/arch-setup/arch-linux.svg /usr/share/cinnamon/theme/menu-symbolic.svg
 
 cat << EOF > /home/tk/.xinitrc
 # Make Caps Lock an additional Esc
@@ -80,6 +95,10 @@ then
 	dconf reset -f /org/cinnamon/desktop/keybindings/
 	dconf load /org/cinnamon/desktop/keybindings/ < /var/tmp/keybindings.dump
 
+	# Customize pannel
+	dconf write /org/cinnamon/panels-resizable "['1:true']"
+	dconf write /org/cinnamon/panels-height "['1:39']"
+
 	# Set gnome-terminal default color scheme
 	dconf reset -f /org/gnome/terminal/legacy/profiles:/
 	uuid=\`gsettings get org.gnome.Terminal.ProfilesList default | grep -Po "(?<=').*(?=')"\`
@@ -104,9 +123,12 @@ mkdir -p /home/tk/.config/autostart/
 tmp=/usr/share/applications/xfce4-clipman.desktop
 [ -e "\$tmp" ] && cp "\$tmp" /home/tk/.config/autostart/
 
-tput setaf 2; echo 'Configure his profile...'; tput sgr0; 
+tput setaf 2; echo 'Configuring bash_profile... '; tput sgr0; 
 echo '[[ -z \$DISPLAY && \$XDG_VTNR -eq 1 ]] && exec startx' >> /home/tk/.bash_profile
 # (if only has startx here, tmux would run into some problem)
+
+tput setaf 2; echo 'Overwriting panel-launchers...'; tput sgr0; 
+find /home/tk/.cinnamon/configs/panel-launchers@cinnamon.org/ -name '*.json' -exec cat {} \;
 
 cd /home/tk
 git clone https://github.com/t-k-/homcf.git
