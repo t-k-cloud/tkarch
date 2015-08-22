@@ -108,6 +108,11 @@ then
 	dconf write /org/gnome/terminal/legacy/profiles:/:\${uuid}/background-color "'rgb(0,0,0)'"
 	dconf write /org/gnome/terminal/legacy/profiles:/:\${uuid}/foreground-color "'rgb(170,170,170)'"
 	dconf write /org/gnome/terminal/legacy/profiles:/:\${uuid}/use-theme-colors "false"
+
+	# Remove show-desktop pannel applet
+	echo "arr=\`dconf read /org/cinnamon/enabled-applets\`;" > /var/tmp/rm-show-desktop-applet.py
+	echo "print(list(filter(lambda e: 'show-desktop' not in e , arr)))" >> /var/tmp/rm-show-desktop-applet.py
+	dconf write /org/cinnamon/enabled-applets "\`python /var/tmp/rm-show-desktop-applet.py\`"
 fi
 
 # Config input method
