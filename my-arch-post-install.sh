@@ -39,7 +39,7 @@ pacman --noconfirm -S xfce4-clipman-plugin # clipman
 tput setaf 2; echo 'Configuring stardict...'; tput sgr0;
 rm -rf /usr/share/stardict/dic
 mkdir -p /usr/share/stardict/dic
-cp ./stardict-langdao-* /usr/share/stardict/dic/
+cp "$cur_dir"/stardict-langdao-* /usr/share/stardict/dic/
 pushd /usr/share/stardict/dic/
 find . -maxdepth 1 -name 'stardict-langdao-*.bz2' -exec tar -xjf {} \;
 popd 
@@ -68,6 +68,7 @@ tput setaf 2; echo 'Copy custom-keybindings.dump...'; tput sgr0;
 mkdir -p /var/tmp/
 custom_keybindings=/var/tmp/custom-keybindings.dump
 cp /root/arch-setup/custom-keybindings.dump ${custom_keybindings}
+chown tk ${custom_keybindings} # enable tk to mv it
 
 tput setaf 2; echo 'Replacing pannel icon...'; tput sgr0;
 cp /root/arch-setup/arch-linux.svg /usr/share/cinnamon/theme/menu-symbolic.svg
@@ -78,8 +79,11 @@ glib-compile-schemas /usr/share/glib-2.0/schemas/
 rm -f /home/tk/.config/dconf/user
 rm -rf /home/tk/.cinnamon/
 
-tput setaf 2; echo 'Override Cinnamon panel-launchers...'; tput sgr0;
+tput setaf 2; echo 'Overwrite Cinnamon panel-launchers...'; tput sgr0;
 cp /root/arch-setup/launchers/settings-schema.json /usr/share/cinnamon/applets/panel-launchers\@cinnamon.org/settings-schema.json
+
+tput setaf 2; echo 'Overwrite Cinnamon menu shortcut...'; tput sgr0;
+sed -i -e 's/Super_L::Super_R//g' /usr/share/cinnamon/applets/menu@cinnamon.org/settings-schema.json
 
 tput setaf 2; echo 'Writing .xinitrc...'; tput sgr0;
 cat << EOF > /home/tk/.xinitrc
@@ -123,6 +127,11 @@ git clone https://github.com/t-k-/homcf.git
 ./homcf/overwrite.sh
 EOF
 
+tput setaf 2; echo 'Setup root homcf.git...'; tput sgr0;
+cd /root
+git clone https://github.com/t-k-/homcf.git
+./homcf/overwrite.sh
+
 tput setaf 2; echo 'Hand over network connection to NetworkManager...'; tput sgr0;
 for i in `seq 9`
 do
@@ -130,10 +139,5 @@ do
 done
 systemctl enable NetworkManager.service
 systemctl start NetworkManager.service
-
-tput setaf 2; echo 'Setup root homcf.git...'; tput sgr0;
-cd /root
-git clone https://github.com/t-k-/homcf.git
-./homcf/overwrite.sh
 
 tput setaf 2; echo 'You are good to login as tk!'; tput sgr0;
