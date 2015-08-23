@@ -7,6 +7,10 @@ mount /dev/sda4 /mnt
 mkdir -p /mnt/boot
 mount /dev/sda2 /mnt/boot
 
+tput setaf 2; echo 'copy arch-setup scripts...'; tput sgr0;
+cur_dir=$(cd `dirname $0`; pwd)
+cp -r "$cur_dir" /root/arch-setup
+
 tput setaf 2; echo 'install the base system...'; tput sgr0; 
 pacstrap /mnt base base-devel
 
@@ -36,10 +40,6 @@ zh_CN.UTF-8 UTF-8
 EOF
 locale-gen
 echo 'LC_CTYPE="zh_CN.UTF-8"' > /etc/locale.conf # only applied to terminal.
-
-tput setaf 2; echo 'fetching post-install script...'; tput sgr0; 
-cd /root
-git clone https://github.com/t-k-/arch-setup.git
 
 tput setaf 2; echo 'please enter root passwd...'; tput sgr0; 
 while ! passwd; do :; done
