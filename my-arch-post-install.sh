@@ -34,7 +34,7 @@ pacman --noconfirm -S gnome-keyring # see below
 
 pacman --noconfirm -S xfce4-clipman-plugin # clipman
 
-tput setaf 2; echo 'Installing dictionary...'; tput sgr0; 
+tput setaf 2; echo 'Configuring stardict...'; tput sgr0;
 rm -rf /usr/share/stardict/dic
 mkdir -p /usr/share/stardict/dic
 cp ./stardict-langdao-* /usr/share/stardict/dic/
@@ -62,15 +62,24 @@ tput setaf 2; echo 'Configuring sudoer...'; tput sgr0;
 pacman --noconfirm -S sudo
 echo 'tk ALL=(ALL:ALL) ALL' | (EDITOR="tee -a" visudo)
 
+tput setaf 2; echo 'Copy custom-keybindings.dump...'; tput sgr0;
 mkdir -p /var/tmp/
-tput setaf 2; echo 'Copy keybindings.dump...'; tput sgr0;
-cp /root/arch-setup/keybindings.dump /var/tmp/
-tput setaf 2; echo 'Copy launcher-list.sed...'; tput sgr0;
-cp /root/arch-setup/launcher-list.sed /var/tmp/
+custom_keybindings=/var/tmp/custom-keybindings.dump
+cp /root/arch-setup/custom-keybindings.dump ${custom_keybindings}
 
 tput setaf 2; echo 'Replacing pannel icon...'; tput sgr0;
 cp /root/arch-setup/arch-linux.svg /usr/share/cinnamon/theme/menu-symbolic.svg
 
+tput setaf 2; echo 'Override gschema...'; tput sgr0;
+cp /root/arch-setup/10_my-arch-setup.gschema.override /usr/share/glib-2.0/schemas/
+glib-compile-schemas /usr/share/glib-2.0/schemas/
+rm -f /home/tk/.config/dconf/user
+rm -rf /home/tk/.cinnamon/
+
+tput setaf 2; echo 'Override Cinnamon panel-launchers...'; tput sgr0;
+cp /root/arch-setup/launchers/settings-schema.json /usr/share/cinnamon/applets/panel-launchers\@cinnamon.org/settings-schema.json
+
+tput setaf 2; echo 'Writing .xinitrc...'; tput sgr0;
 cat << EOF > /home/tk/.xinitrc
 # Make Caps Lock an additional Esc
 setxkbmap -option caps:escape
@@ -79,46 +88,13 @@ setxkbmap -option caps:escape
 # )
 
 # dconf needs to run only once
-if [ ! -e /var/tmp/my-arch-post-install.lock ]
+if [ -e ${custom_keybindings} ]
 then
-	# Enable zoom / magnifier
-	dconf write /org/cinnamon/desktop/a11y/applications/screen-magnifier-enabled "true"
-
-	# Disable auto suspending / locking screen
-	dconf write /org/cinnamon/desktop/screensaver/lock-enabled "false"
-	dconf write /org/cinnamon/settings-daemon/plugins/power/button-power "'nothing'"
-	dconf write /org/cinnamon/settings-daemon/plugins/power/sleep-display-battery 0
-	dconf write /org/cinnamon/settings-daemon/plugins/power/sleep-display-ac 0
-	dconf write /org/cinnamon/settings-daemon/plugins/power/lid-close-ac-action "'nothing'"
-	dconf write /org/cinnamon/settings-daemon/plugins/power/lid-close-battery-action "'nothing'"
-
-	# Load key bindings
-	# You can get keybindings.dump by:
-	# dconf dump /org/cinnamon/desktop/keybindings/ > keybindings.dump
+	# You can dump keybindings by:
+	# dconf dump /org/cinnamon/desktop/keybindings/
 	dconf reset -f /org/cinnamon/desktop/keybindings/
-	dconf load /org/cinnamon/desktop/keybindings/ < /var/tmp/keybindings.dump
-
-	# Customize pannel
-	dconf write /org/cinnamon/panels-resizable "['1:true']"
-	dconf write /org/cinnamon/panels-height "['1:39']"
-
-	# Set gnome-terminal default color scheme
-	dconf reset -f /org/gnome/terminal/legacy/profiles:/
-	uuid=\`gsettings get org.gnome.Terminal.ProfilesList default | grep -Po "(?<=').*(?=')"\`
-	echo "uuid=[\${uuid}]" > /var/tmp/my-arch-post-install.lock
-	dconf write /org/gnome/terminal/legacy/profiles:/:\${uuid}/background-color "'rgb(0,0,0)'"
-	dconf write /org/gnome/terminal/legacy/profiles:/:\${uuid}/foreground-color "'rgb(170,170,170)'"
-	dconf write /org/gnome/terminal/legacy/profiles:/:\${uuid}/use-theme-colors "false"
-
-	# Overwriting panel-launchers
-	sed_script=/var/tmp/launcher-list.sed
-	find /home/tk/.cinnamon/configs/panel-launchers@cinnamon.org/ -name '*.json' -exec sed -i -f \$sed_script {} \\;
-
-	# Remove show-desktop pannel applet
-	echo "arr=\`dconf read /org/cinnamon/enabled-applets\`;" > /var/tmp/rm-show-desktop-applet.py
-	echo "print(list(filter(lambda e: 'show-desktop' not in e , arr)))" >> /var/tmp/rm-show-desktop-applet.py
-	dconf write /org/cinnamon/enabled-applets "\`python /var/tmp/rm-show-desktop-applet.py\`"
-
+	dconf load /org/cinnamon/desktop/keybindings/ < ${custom_keybindings}
+	mv ${custom_keybindings} ${custom_keybindings}.finish
 fi
 
 # Config input method
@@ -152,3 +128,10 @@ do
 done
 systemctl enable NetworkManager.service
 systemctl start NetworkManager.service
+
+tput setaf 2; echo 'Setup root homcf.git...'; tput sgr0;
+cd /root
+git clone https://github.com/t-k-/homcf.git
+./homcf/overwrite.sh
+
+tput setaf 2; echo 'You are good to login as tk!'; tput sgr0;
