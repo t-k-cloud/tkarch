@@ -42,7 +42,7 @@ cd /root
 git clone https://github.com/t-k-/arch-setup.git
 
 tput setaf 2; echo 'please enter root passwd...'; tput sgr0; 
-passwd
+while ! passwd; do :; done
 exit
 CHROOT
 

@@ -56,7 +56,7 @@ EOF
 
 tput setaf 2; echo 'Creating user tk...'; tput sgr0; 
 useradd -m -G wheel -s /bin/bash tk
-passwd tk
+while ! passwd tk; do :; done
 
 tput setaf 2; echo 'Configuring sudoer...'; tput sgr0; 
 pacman --noconfirm -S sudo
