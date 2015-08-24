@@ -30,6 +30,7 @@ pacman --noconfirm -S leafpad # text editor
 pacman --noconfirm -S eog eog-plugins # image viewer - eye of gnome
 pacman --noconfirm -S stardict # dictionary
 pacman --noconfirm -S dconf-editor # gnome-setting GUI tool
+pacman --noconfirm -S file-roller # archive manager
 
 pacman --noconfirm -S gnome-keyring # see below
 # If applet is not prompting for a password when connecting to new wifi networks, and is just disconnecting immediately, you may need to install gnome-keyring.
