@@ -1,5 +1,7 @@
 #!/bin/sh
-. ./my-arch-ping.sh
+cur_dir=$(cd `dirname $0`; pwd)
+
+. "$cur_dir"/my-arch-ping.sh
 is_connected || exit 
 
 tput setaf 2; echo 'Installing command line utilities...'; tput sgr0; 

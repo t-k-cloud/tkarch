@@ -1,15 +1,13 @@
 #!/bin/sh
-. ./my-arch-ping.sh
+cur_dir=$(cd `dirname $0`; pwd)
+
+. "$cur_dir"/my-arch-ping.sh
 is_connected || exit 
 
 tput setaf 2; echo 'mounting disk...'; tput sgr0; 
 mount /dev/sda4 /mnt
 mkdir -p /mnt/boot
 mount /dev/sda2 /mnt/boot
-
-tput setaf 2; echo 'copy arch-setup scripts...'; tput sgr0;
-cur_dir=$(cd `dirname $0`; pwd)
-cp -r "$cur_dir" /root/arch-setup
 
 tput setaf 2; echo 'install the base system...'; tput sgr0; 
 pacstrap /mnt base base-devel
@@ -50,6 +48,9 @@ chmod +x $jail_script_mnt
 
 tput setaf 2; echo 'chroot...'; tput sgr0; 
 arch-chroot /mnt ${jail_script} 
+
+tput setaf 2; echo 'copy arch-setup scripts...'; tput sgr0;
+cp -r "$cur_dir" /mnt/root/arch-setup
 
 umount -R /mnt
 tput setaf 2; echo 'you are good to reboot.'; tput sgr0; 
