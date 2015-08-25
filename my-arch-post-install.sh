@@ -7,7 +7,10 @@ is_connected || exit
 tput setaf 2; echo 'Installing command line utilities...'; tput sgr0; 
 pacman --noconfirm -S tmux curl vim ctags cscope flex bison 
 pacman --noconfirm -S strace
+pacman --noconfirm -S enca 
 pacman --noconfirm -S mlocate # updatedb/locate
+pacman --noconfirm -S python-pip # to install feedparser
+pip install feedparser # install feedparser
 
 tput setaf 2; echo 'Replace vi with vim...'; tput sgr0;
 ln -sf `which vim` `which vi`
@@ -36,6 +39,60 @@ pacman --noconfirm -S gnome-keyring # see below
 # If applet is not prompting for a password when connecting to new wifi networks, and is just disconnecting immediately, you may need to install gnome-keyring.
 
 pacman --noconfirm -S xfce4-clipman-plugin # clipman
+pacman --noconfirm -S atril # pdf reader 
+
+# install virtual box
+pacman --noconfirm -S virtualbox qt4 virtualbox-host-dkms
+modprobe vboxdrv
+pacman --noconfirm -S wireshark-cli wireshark-qt # wireshark
+
+tput setaf 2; echo 'Installing LEMP...'; tput sgr0;
+# install mariadb
+pacman --noconfirm -S mariadb
+mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+systemctl start mysqld
+tmp_passwd=tmp
+echo -e "\ny\n${tmp_passwd}\n${tmp_passwd}\ny\ny\ny\ny" | mysql_secure_installation
+# create a mysql user for my blog
+mysql -u root --password=tmp << EOF
+CREATE USER 'thoughts_ga6840'@'localhost' IDENTIFIED BY 'xxxxxxxxxxxxx';
+create database thoughts_ga6840;
+GRANT ALL PRIVILEGES ON thoughts_ga6840.* TO 'thoughts_ga6840'@'%';
+EOF
+# install nginx
+pacman --noconfirm -S nginx
+systemctl start nginx
+# install php-fpm
+pacman --noconfirm -S php-fpm php-gd 
+systemctl start php-fpm
+# patch /etc/nginx/nginx.conf to enble php handler
+change_to=/root/arch-setup/nginx-php-config.txt
+sed -i "/index\.php/r ${change_to}" /etc/nginx/nginx.conf
+# make sure worker-thread user is correct
+sed -i "/user .*/d" /etc/nginx/nginx.conf
+sed -i '1s/^/user http;\n/' /etc/nginx/nginx.conf
+# create user/group http
+groupadd -f http
+useradd -g http http
+# patch /etc/php/php.ini to change open_basedir and display_errors 
+sed -i '/open_basedir.*=/c ;open_basedir =' /etc/php/php.ini
+sed -i 's/display_errors = Off/display_errors = On/' /etc/php/php.ini
+# patch /etc/php/php.ini to enable mysql module 
+sed -i 's/;extension=mysql\.so/extension=mysql\.so/' /etc/php/php.ini
+sed -i 's/;extension=pdo_mysql\.so/extension=pdo_mysql\.so/' /etc/php/php.ini
+# ensure that all of the LEMP programs start automatically
+systemctl restart php-fpm nginx
+systemctl enable mysqld nginx php-fpm
+ps -aux | grep nginx | grep worker # test
+# write some test pages for php error and sql
+cp /root/arch-setup/test-php/* /usr/share/nginx/html
+# set permission
+httpd_root=/usr/share/nginx/html
+chmod 777 $httpd_root 
+find $httpd_root -type d -exec chmod 755 {} \;
+find $httpd_root -type f -exec chmod 644 {} \;
+find $httpd_root -type d -exec chown http:http {} \;
+find $httpd_root -type f -exec chown http:http {} \;
 
 tput setaf 2; echo 'Configuring stardict...'; tput sgr0;
 rm -rf /usr/share/stardict/dic
@@ -60,6 +117,9 @@ EOF
 tput setaf 2; echo 'Creating user tk...'; tput sgr0; 
 useradd -m -G wheel -s /bin/bash tk
 while ! passwd tk; do :; done
+usermod tk -a -G http
+usermod tk -a -G vboxusers 
+usermod tk -a -G wireshark
 
 tput setaf 2; echo 'Configuring sudoer...'; tput sgr0; 
 pacman --noconfirm -S sudo
@@ -123,10 +183,22 @@ tput setaf 2; echo 'Configuring bash_profile... '; tput sgr0;
 echo '[[ -z \$DISPLAY && \$XDG_VTNR -eq 1 ]] && exec startx' >> /home/tk/.bash_profile
 # (if only has startx here, tmux would run into some problem)
 
+tput setaf 2; echo 'Make package chromium-pepper-flash...'; tput sgr0;
+cd /home/tk
+git clone https://aur.archlinux.org/chromium-pepper-flash-dev.git
+cd chromium-pepper-flash-dev/
+makepkg -s 
+
+tput setaf 2; echo 'Setup tk homcf.git...'; tput sgr0;
 cd /home/tk
 git clone https://github.com/t-k-/homcf.git
 ./homcf/overwrite.sh
 EOF
+
+tput setaf 2; echo 'Install package chromium-pepper-flash...'; tput sgr0;
+cd /home/tk/chromium-pepper-flash-dev/
+pacman --noconfirm -U *.pkg.tar.xz
+# Don't forget to enable the Adobe Flash Player plugin on chrome://plugins/
 
 tput setaf 2; echo 'Setup root homcf.git...'; tput sgr0;
 cd /root
