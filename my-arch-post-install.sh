@@ -88,11 +88,11 @@ ps -aux | grep nginx | grep worker # test
 cp /root/arch-setup/test-php/* /usr/share/nginx/html
 # set permission
 httpd_root=/usr/share/nginx/html
-chmod 777 $httpd_root 
 find $httpd_root -type d -exec chmod 755 {} \;
 find $httpd_root -type f -exec chmod 644 {} \;
 find $httpd_root -type d -exec chown http:http {} \;
 find $httpd_root -type f -exec chown http:http {} \;
+chmod 777 $httpd_root # this should be after "find chmod of dir"
 
 tput setaf 2; echo 'Configuring stardict...'; tput sgr0;
 rm -rf /usr/share/stardict/dic
