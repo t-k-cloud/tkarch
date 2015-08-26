@@ -71,14 +71,18 @@ sed -i "/index\.php/r ${change_to}" /etc/nginx/nginx.conf
 # make sure worker-thread user is correct
 sed -i "/user .*/d" /etc/nginx/nginx.conf
 sed -i '1s/^/user http;\n/' /etc/nginx/nginx.conf
+# add index.php as additional index page
+sed -i "s/index\.html/index\.html index\.php/g" /etc/nginx/nginx.conf
 # create user/group http
 groupadd -f http
 useradd -g http http
 # patch /etc/php/php.ini to change open_basedir and display_errors 
 sed -i '/open_basedir.*=/c ;open_basedir =' /etc/php/php.ini
 sed -i 's/display_errors = Off/display_errors = On/' /etc/php/php.ini
-# patch /etc/php/php.ini to enable mysql module 
+# patch /etc/php/php.ini to enable necessary modules
 sed -i 's/;extension=mysql\.so/extension=mysql\.so/' /etc/php/php.ini
+sed -i 's/;extension=mysqli\.so/extension=mysqli\.so/' /etc/php/php.ini
+sed -i 's/;extension=gd\.so/extension=gd\.so/' /etc/php/php.ini
 sed -i 's/;extension=pdo_mysql\.so/extension=pdo_mysql\.so/' /etc/php/php.ini
 # ensure that all of the LEMP programs start automatically
 systemctl restart php-fpm nginx
