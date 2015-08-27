@@ -56,7 +56,7 @@ fi
 
 echo "changing ownership/permission in $blog_root ..."
 sudo find "$blog_root" -type d -exec chmod 755 {} \;
-sudo find "$blog_root" -type f -exec chmod 644 {} \;
+sudo find "$blog_root" -type f -exec chmod 664 {} \;
 sudo find "$blog_root" -type d -exec chown ${http_user}:${http_user} {} \;
 sudo find "$blog_root" -type f -exec chown ${http_user}:${http_user} {} \;
 sudo chmod 777 "$blog_root"
