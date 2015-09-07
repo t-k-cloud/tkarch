@@ -10,6 +10,7 @@ pacman --noconfirm -S strace
 pacman --noconfirm -S enca 
 pacman --noconfirm -S mlocate # updatedb/locate
 pacman --noconfirm -S dosfstools parted
+pacman --noconfirm -S fuse-exfat exfat-utils # exFAT filesys
 pacman --noconfirm -S python-pip # to install feedparser
 pip install feedparser # install feedparser
 
