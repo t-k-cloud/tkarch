@@ -193,11 +193,6 @@ cd /home/tk
 git clone https://aur.archlinux.org/chromium-pepper-flash-dev.git
 cd chromium-pepper-flash-dev/
 makepkg -s 
-
-tput setaf 2; echo 'Setup tk homcf.git...'; tput sgr0;
-cd /home/tk
-git clone https://github.com/t-k-/homcf.git
-./homcf/overwrite.sh
 EOF
 
 tput setaf 2; echo 'Install package chromium-pepper-flash...'; tput sgr0;
@@ -205,10 +200,8 @@ cd /home/tk/chromium-pepper-flash-dev/
 pacman --noconfirm -U *.pkg.tar.xz
 # Don't forget to enable the Adobe Flash Player plugin on chrome://plugins/
 
-tput setaf 2; echo 'Setup root homcf.git...'; tput sgr0;
-cd /root
-git clone https://github.com/t-k-/homcf.git
-./homcf/overwrite.sh
+tput setaf 2; echo 'Run my-arch-setup.sh'; tput sgr0;
+"$cur_dir"/my-arch-setup.sh /usr/share/nginx/html http
 
 tput setaf 2; echo 'Hand over network connection to NetworkManager...'; tput sgr0;
 for i in `seq 9`
@@ -218,4 +211,4 @@ done
 systemctl enable NetworkManager.service
 systemctl start NetworkManager.service
 
-tput setaf 2; echo 'You are good to login as tk!'; tput sgr0;
+tput setaf 2; echo 'Reboot and login as tk!'; tput sgr0;
