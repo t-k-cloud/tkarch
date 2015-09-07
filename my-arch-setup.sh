@@ -6,25 +6,25 @@ http_user="$2"
 proj_dir=/home/tk/tksync/proj
 
 touch /root/test || exit
+mkdir -p /usr/local/bin
 
 echo "http_root: $http_root"
 echo "http_user: $http_user"
 
-#sudo -u tk bash << EOF
+sudo -u tk bash << EOF
 tput setaf 2; echo "cd to ${proj_dir}"; tput sgr0;
-#mkdir -p ${proj_dir}
-#cd ${proj_dir}
-#
-#tput setaf 2; echo 'Clone git projects...'; tput sgr0;
-#git clone https://github.com/t-k-/homcf.git
-#git clone https://github.com/t-k-/one-script-feed-reader.git
-#git clone https://github.com/t-k-/tkblog.git
-#git clone https://github.com/t-k-/tkscripts.git
-#
-#tput setaf 2; echo 'tk: home config...'; tput sgr0;
-#./homcf/overwrite.sh
-#EOF
-#
+mkdir -p ${proj_dir}
+cd ${proj_dir}
+
+tput setaf 2; echo 'Clone git projects...'; tput sgr0;
+git clone https://github.com/t-k-/homcf.git
+git clone https://github.com/t-k-/one-script-feed-reader.git
+git clone https://github.com/t-k-/tkblog.git
+git clone https://github.com/t-k-/tkscripts.git
+
+tput setaf 2; echo 'tk: home config...'; tput sgr0;
+./homcf/overwrite.sh
+EOF
 
 tput setaf 2; echo "cd to ${proj_dir}"; tput sgr0;
 cd ${proj_dir}
