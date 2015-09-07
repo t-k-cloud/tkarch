@@ -3,7 +3,6 @@
 [ ! $# -eq 2 ] && echo 'bad arg #.' && exit
 http_root="$1"
 http_user="$2"
-cur_dir=$(cd `dirname $0`; pwd)
 proj_dir=/home/tk/tksync/proj
 
 touch /root/test || exit
@@ -41,8 +40,9 @@ tput setaf 2; echo 'root: tkscripts init...'; tput sgr0;
 ./tkscripts/init.sh
 
 tput setaf 2; echo 'root: tkblog init...'; tput sgr0;
-ln -sf ${cur_dir}/tkblog ${http_root}/tkblog
+ln -sf ${proj_dir}/tkblog ${http_root}/tkblog
 sed -i -e "s/www-data/${http_user}/g" './tkscripts/tk-echo-httpd-user.sh'
 tk-blog-rst-perm.sh
-#curl http://127.0.0.1/tkblog/panel_.php?init=db
-#tk-blog-sync.sh local 2015/8
+chmod 755 /home/tk/
+curl http://127.0.0.1/tkblog/panel_.php?init=db
+tk-blog-sync.sh local .

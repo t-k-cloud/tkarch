@@ -72,6 +72,8 @@ sed -i "/index\.php/r ${change_to}" /etc/nginx/nginx.conf
 # make sure worker-thread user is correct
 sed -i "/user .*/d" /etc/nginx/nginx.conf
 sed -i '1s/^/user http;\n/' /etc/nginx/nginx.conf
+# specify error log file
+sed -i '1s/^/error_log \/tmp\/nginx-error.log;\n/' /etc/nginx/nginx.conf
 # add index.php as additional index page
 sed -i "s/index\.html/index\.html index\.php/g" /etc/nginx/nginx.conf
 # create user/group http
