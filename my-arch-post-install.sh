@@ -13,6 +13,7 @@ pacman --noconfirm -S dosfstools parted
 pacman --noconfirm -S fuse-exfat exfat-utils # exFAT filesys
 pacman --noconfirm -S python-pip # to install feedparser
 pip install feedparser # install feedparser
+pip install pycurl # used by cowpie and tk-sched-show
 
 tput setaf 2; echo 'Replace vi with vim...'; tput sgr0;
 ln -sf `which vim` `which vi`
