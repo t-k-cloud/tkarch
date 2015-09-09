@@ -57,4 +57,4 @@ tput setaf 2; echo 'copy arch-setup scripts...'; tput sgr0;
 cp -r "$cur_dir" /mnt/root/arch-setup
 
 umount -R /mnt
-tput setaf 2; echo 'you are good to reboot.'; tput sgr0; 
+tput setaf 2; echo 'remove USB drive and u are good to reboot.'; tput sgr0; 
