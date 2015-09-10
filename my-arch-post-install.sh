@@ -8,6 +8,10 @@ tput setaf 2; echo 'Installing command line utilities...'; tput sgr0;
 pacman --noconfirm -S tmux curl vim ctags cscope flex bison 
 pacman --noconfirm -S strace
 pacman --noconfirm -S enca 
+pacman --noconfirm -S ntp # NTP protocol time sync tool 
+systemctl enable ntpd.service # start ntpd on boot
+systemctl start ntpd.service # run ntp (sync time) now 
+hwclock --systohc --utc # adjust hardware clock too
 pacman --noconfirm -S mlocate # updatedb/locate
 pacman --noconfirm -S dosfstools parted
 pacman --noconfirm -S fuse-exfat exfat-utils # exFAT filesys
