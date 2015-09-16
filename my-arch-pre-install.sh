@@ -1,13 +1,41 @@
 #!/bin/sh
+if [ -z $2 ]; then
+cat << USAGE
+Usage:
+$0 <root-device> <boot-device>
+Default:
+$0 sda4 sda2
+USAGE
+exit
+fi
+
+if [ ! -e /dev/$1 ]; then
+	echo "/dev/$1 not presents"
+	exit
+fi
+
+if [ ! -e /dev/$2 ]; then
+	echo "/dev/$2 not presents"
+	exit
+fi
+
+root=/dev/$1
+boot=/dev/$2
+
+tput setaf 2; echo 'pre-install starts in 10s...'; tput sgr0;
+echo "root: $root, boot: $boot"
+sleep 10
+
+# start pre-install from here
 cur_dir=$(cd `dirname $0`; pwd)
 
 . "$cur_dir"/my-arch-ping.sh
 is_connected || exit 
 
 tput setaf 2; echo 'mounting disk...'; tput sgr0; 
-mount /dev/sda4 /mnt
+mount /dev/$root /mnt
 mkdir -p /mnt/boot
-mount /dev/sda2 /mnt/boot
+mount /dev/$boot /mnt/boot
 
 tput setaf 2; echo 'install the base system...'; tput sgr0; 
 pacstrap /mnt base base-devel
