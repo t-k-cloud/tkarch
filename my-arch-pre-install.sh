@@ -19,11 +19,11 @@ if [ ! -e /dev/$2 ]; then
 	exit
 fi
 
-root=/dev/$1
-boot=/dev/$2
+root=$1
+boot=$2
 
 tput setaf 2; echo 'pre-install starts in 10s...'; tput sgr0;
-echo "root: $root, boot: $boot"
+echo "root: /dev/$root, boot: /dev/$boot"
 sleep 10
 
 # start pre-install from here
