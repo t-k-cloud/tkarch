@@ -21,6 +21,7 @@ pacman --noconfirm -S python-pip # to install feedparser
 pip install feedparser # install feedparser
 pip install pycurl # used by cowpie and tk-sched-show
 pip install jieba whoosh # my blog search engine
+# pacman --noconfirm -S sagemath # python2 math/ploting
 
 tput setaf 2; echo 'Replace vi with vim...'; tput sgr0;
 ln -sf `which vim` `which vi`
