@@ -33,7 +33,7 @@ pacman --noconfirm -S adobe-source-han-sans-cn-fonts # chinese font
 pacman --noconfirm -S cinnamon # desktop environment
 
 tput setaf 2; echo 'Installing GUI utilities...'; tput sgr0;
-pacman --noconfirm -S atril # pdf reader 
+pacman --noconfirm -S evince # pdf reader that supports .djvu format
 pacman --noconfirm -S gnome-calculator # calculator
 pacman --noconfirm -S gnome-terminal # terminal
 pacman --noconfirm -S chromium # browser
