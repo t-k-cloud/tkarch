@@ -74,7 +74,7 @@ EOF
 pacman --noconfirm -S nginx
 systemctl start nginx
 # install php-fpm
-pacman --noconfirm -S php-fpm php-gd 
+pacman --noconfirm -S php-fpm php-gd
 systemctl start php-fpm
 # patch /etc/nginx/nginx.conf to enble php handler
 change_to=/root/arch-setup/nginx-php-config.txt
@@ -110,6 +110,11 @@ find $httpd_root -type f -exec chmod 664 {} \;
 find $httpd_root -type d -exec chown http:http {} \;
 find $httpd_root -type f -exec chown http:http {} \;
 chmod 777 $httpd_root # this should be after "find chmod of dir"
+
+# install cgiwrap (used by cowpie maybe)
+pacman --noconfirm -S fcgiwrap
+systemctl enable fcgiwrap.socket
+systemctl start fcgiwrap.socket # config file: /usr/lib/systemd/system/fcgiwrap.socket
 
 tput setaf 2; echo 'Configuring stardict...'; tput sgr0;
 rm -rf /usr/share/stardict/dic
