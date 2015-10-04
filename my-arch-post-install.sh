@@ -30,6 +30,7 @@ tput setaf 2; echo 'Installing desktop environment...'; tput sgr0;
 pacman --noconfirm -S xorg-server xorg-xinit xterm # X server
 pacman --noconfirm -S xf86-input-synaptics # touchpad/touchscreen
 pacman --noconfirm -S adobe-source-han-sans-cn-fonts # chinese font
+pacman --noconfirm -S ttf-liberation # TTF font (otherwise MathJax is slow)
 pacman --noconfirm -S cinnamon # desktop environment
 
 tput setaf 2; echo 'Installing GUI utilities...'; tput sgr0;
