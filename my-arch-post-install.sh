@@ -39,7 +39,7 @@ pacman --noconfirm -S gnome-calculator # calculator
 pacman --noconfirm -S gnome-terminal # terminal
 pacman --noconfirm -S chromium # browser (another option: opera) 
 pacman --noconfirm -S fcitx fcitx-configtool # input method
-pacman --noconfirm -S gnome-screenshot # screenshot
+pacman --noconfirm -S gnome-screenshot shutter # screenshot
 pacman --noconfirm -S xournal # pdf annotation/note
 pacman --noconfirm -S leafpad # text editor
 pacman --noconfirm -S eog eog-plugins # image viewer - eye of gnome
