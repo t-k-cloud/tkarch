@@ -70,7 +70,7 @@ echo -e "\ny\n${tmp_passwd}\n${tmp_passwd}\ny\ny\ny\ny" | mysql_secure_installat
 mysql -u root --password=tmp << EOF
 CREATE USER 'thoughts_ga6840'@'localhost' IDENTIFIED BY 'xxxxxxxxxxxxx';
 create database thoughts_ga6840;
-GRANT ALL PRIVILEGES ON thoughts_ga6840.* TO 'thoughts_ga6840'@'%';
+GRANT ALL PRIVILEGES ON thoughts_ga6840.* TO 'thoughts_ga6840'@'%' IDENTIFIED BY 'xxxxxxxxxxxxx';
 EOF
 # install nginx
 pacman --noconfirm -S nginx
