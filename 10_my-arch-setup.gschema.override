@@ -30,3 +30,9 @@ terminal=['']
 [org.cinnamon.desktop.keybindings.wm]
 show-desktop=['<Primary><Alt>d']
 switch-to-workspace-down=['<Primary><Alt>Down', '<Super>e']
+
+[org.cinnamon.settings-daemon.peripherals.touchpad]
+scroll-method='two-finger-scrolling'
+horiz-scroll-enabled=true
+three-finger-click=2
+two-finger-click=3

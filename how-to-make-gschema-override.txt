@@ -1,0 +1,14 @@
+Given touchpad settings for example:
+1. use dconf-editor to find touchpad path
+2. dump and save:
+	$ dconf dump /org/cinnamon/settings-daemon/peripherals/touchpad/
+	scroll-method='two-finger-scrolling'
+	horiz-scroll-enabled=true
+	three-finger-click=2
+	two-finger-click=3
+3. go to /usr/share/glib-2.0/schemas to find according schema file:
+	org.cinnamon.settings-daemon.peripherals.gschema.xml
+4. grep this file to find id:
+	cat org.cinnamon.settings-daemon.peripherals.gschema.xml | grep ...
+	id="org.cinnamon.settings-daemon.peripherals.touchpad"
+5. use this id and the dump value in step 2 to write into arch-setup/10_my-arch-setup.gschema.override.
