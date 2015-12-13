@@ -179,6 +179,10 @@ setxkbmap -option caps:escape
 # )
 
 # dconf needs to run only once
+# but make sure below script are run after:
+#	glib-compile-schemas /usr/share/glib-2.0/schemas/
+# 	rm -f /home/tk/.config/dconf/user
+# 	rm -rf /home/tk/.cinnamon/
 if [ -e ${custom_keybindings} ]
 then
 	# You can dump keybindings by:
