@@ -3,10 +3,13 @@ panels-resizable=['1:true']
 panels-height=['1:39']
 enabled-applets=['panel1:left:0:menu@cinnamon.org', 'panel1:left:1:panel-launchers@cinnamon.org', 'panel1:left:2:window-list@cinnamon.org', 'panel1:right:0:notifications@cinnamon.org', 'panel1:right:1:user@cinnamon.org', 'panel1:right:2:removable-drives@cinnamon.org', 'panel1:right:3:keyboard@cinnamon.org', 'panel1:right:4:bluetooth@cinnamon.org', 'panel1:right:5:network@cinnamon.org', 'panel1:right:6:sound@cinnamon.org', 'panel1:right:7:power@cinnamon.org', 'panel1:right:8:trash@cinnamon.org', 'panel1:right:9:systray@cinnamon.org', 'panel1:right:10:calendar@cinnamon.org', 'panel1:right:11:windows-quick-list@cinnamon.org']
 
-[org.gnome.Terminal.Legacy.Profile]
-foreground-color='rgb(170,170,170)'
-background-color='rgb(0,0,0)'
+[org.mate.terminal.profile]
+background-color='#000000000000'
 use-theme-colors=false
+bold-color='#000000000000'
+foreground-color='#AAAAAAAAAAAA'
+visible-name='Default'
+use-system-font=false
 
 [org.cinnamon.desktop.a11y.applications]
 screen-magnifier-enabled=true

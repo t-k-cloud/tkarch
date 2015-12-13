@@ -37,7 +37,7 @@ pacman --noconfirm -S cinnamon # desktop environment
 tput setaf 2; echo 'Installing GUI utilities...'; tput sgr0;
 pacman --noconfirm -S evince # pdf reader that supports .djvu format
 pacman --noconfirm -S gnome-calculator # calculator
-pacman --noconfirm -S gnome-terminal # terminal
+pacman --noconfirm -S mate-terminal # terminal
 pacman --noconfirm -S chromium # browser (another option: opera) 
 pacman --noconfirm -S fcitx fcitx-configtool # input method
 pacman --noconfirm -S gnome-screenshot shutter # screenshot
@@ -132,7 +132,7 @@ cat << EOF > /usr/share/applications/my-terminal.desktop
 Name=My Terminal
 Comment=Use the command line
 Keywords=shell;prompt;command;commandline;
-Exec=gnome-terminal -e "bash -c 'cd ~/Desktop;tmux;exec bash'"
+Exec=mate-terminal -e "bash -c 'cd ~/Desktop;tmux;exec bash'"
 Icon=utilities-terminal
 Type=Application
 Categories=GNOME;GTK;System;TerminalEmulator;
