@@ -45,4 +45,5 @@ sed -i -e "s/www-data/${http_user}/g" './tkscripts/tk-echo-httpd-user.sh'
 tk-blog-rst-perm.sh
 chmod 755 /home/tk/
 curl http://127.0.0.1/tkblog/panel_.php?init=db
-tk-blog-sync.sh local .
+
+# Later, to import all blog into mysql, user can simply run: tk-blog-sync.sh local .
