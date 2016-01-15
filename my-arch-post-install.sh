@@ -52,12 +52,15 @@ pacman --noconfirm -S gnome-keyring # see below
 # If applet is not prompting for a password when connecting to new wifi networks, and is just disconnecting immediately, you may need to install gnome-keyring.
 
 pacman --noconfirm -S xfce4-clipman-plugin # clipman
-pacman --noconfirm -S atril # pdf reader 
+pacman --noconfirm -S atril # pdf reader
 
 # install virtual box
 pacman --noconfirm -S virtualbox qt4 virtualbox-host-dkms
-modprobe vboxdrv
-pacman --noconfirm -S wireshark-cli wireshark-qt # wireshark
+pacman --noconfirm -S linux-headers # for kernel module
+/usr/bin/rcvboxdrv # build kernel module and load vboxdrv
+
+# install wireshark
+pacman --noconfirm -S wireshark-cli wireshark-qt
 
 tput setaf 2; echo 'Installing LEMP...'; tput sgr0;
 # install mariadb
