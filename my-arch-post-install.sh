@@ -32,6 +32,7 @@ pacman --noconfirm -S xorg-server xorg-xinit xterm # X server
 pacman --noconfirm -S xf86-input-synaptics # touchpad/touchscreen
 pacman --noconfirm -S wqy-microhei # chinese font, Monospaced font included
 pacman --noconfirm -S ttf-liberation # TTF font (otherwise MathJax is slow)
+pacman --noconfirm -S ttf-droid # to be used as cinnamon default font to avoid Chromium address bar delay.
 pacman --noconfirm -S cinnamon # desktop environment
 
 tput setaf 2; echo 'Installing GUI utilities...'; tput sgr0;
@@ -194,6 +195,14 @@ then
 	dconf load /org/cinnamon/desktop/keybindings/ < ${custom_keybindings}
 	mv ${custom_keybindings} ${custom_keybindings}.finish
 fi
+
+#####################################
+# And some individual dconf changes:
+
+# droid sans for Chromium address bar delay fix:
+dconf reset -f /org/cinnamon/desktop/interface/
+dconf write /org/cinnamon/desktop/interface/font-name "'Droid Sans Bold 9'"
+#####################################
 
 # Config input method
 export GTK_IM_MODULE=fcitx
