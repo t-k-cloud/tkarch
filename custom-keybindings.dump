@@ -1,6 +1,6 @@
 [custom-keybindings/custom0]
 binding=['<Primary><Alt>t']
-command="mate-terminal -e \"bash -c 'cd ~/Desktop;tmux;exec bash'\""
+command="mate-terminal -e \"bash -c 'cd ~/Desktop;tmux -2;exec bash'\""
 name='open-terminal-with-tmux'
 
 [/]
