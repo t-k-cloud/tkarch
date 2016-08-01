@@ -2,9 +2,9 @@
 if [ -z $2 ]; then
 cat << USAGE
 Usage:
-$0 <root-device> <boot-device>
+$0 <root-device> <boot-device> <grub-install-device>
 Default:
-$0 sda4 sda2
+$0 sda4 sda2 sda
 USAGE
 exit
 fi
@@ -19,8 +19,14 @@ if [ ! -e /dev/$2 ]; then
 	exit
 fi
 
+if [ ! -e /dev/$3 ]; then
+	echo "/dev/$3 not presents"
+	exit
+fi
+
 root=$1
 boot=$2
+grubinstall=$3
 
 tput setaf 2; echo 'pre-install starts in 10s...'; tput sgr0;
 echo "root: /dev/$root, boot: /dev/$boot"
@@ -28,8 +34,12 @@ sleep 10
 
 # start pre-install from here
 cur_dir=$(cd `dirname $0`; pwd)
+echo "current dir: ${cur_dir}"
 
+echo "sourcing script..."
 . "$cur_dir"/my-arch-ping.sh
+
+echo "checking Internet connection..."
 is_connected || exit 
 
 tput setaf 2; echo 'mounting disk...'; tput sgr0; 
@@ -56,7 +66,7 @@ pacman --noconfirm -S iw wpa_supplicant
 pacman --noconfirm -S wget 
 
 tput setaf 2; echo 'grub install...'; tput sgr0; 
-grub-install --recheck /dev/sda
+grub-install --recheck $grubinstall
 grub-mkconfig -o /boot/grub/grub.cfg
 
 tput setaf 2; echo 'locale gen...'; tput sgr0; 
