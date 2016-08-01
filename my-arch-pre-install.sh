@@ -29,7 +29,9 @@ boot=$2
 grubinstall=$3
 
 tput setaf 2; echo 'pre-install starts in 10s...'; tput sgr0;
-echo "root: /dev/$root, boot: /dev/$boot"
+echo "root: /dev/$root, boot: /dev/$boot, grub-install: /dev/$grubinstall"
+
+echo "Modify mirror list for fast Internet speed: /etc/pacman.d/mirrorlist"
 sleep 10
 
 # start pre-install from here
@@ -66,7 +68,7 @@ pacman --noconfirm -S iw wpa_supplicant
 pacman --noconfirm -S wget 
 
 tput setaf 2; echo 'grub install...'; tput sgr0; 
-grub-install --recheck $grubinstall
+grub-install --recheck /dev/$grubinstall
 grub-mkconfig -o /boot/grub/grub.cfg
 
 tput setaf 2; echo 'locale gen...'; tput sgr0; 
