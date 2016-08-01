@@ -175,6 +175,10 @@ tput setaf 2; echo 'Writing .xinitrc...'; tput sgr0;
 cat << EOF > /home/tk/.xinitrc
 # Make Caps Lock an additional Esc
 setxkbmap -option caps:escape
+
+# Uncomment below for macbook air
+#setxkbmap -option altwin:swap_alt_win
+
 # (more options refer to :
 # cat /usr/share/X11/xkb/rules/evdev.lst | grep swap_alt_win
 # )
