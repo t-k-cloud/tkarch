@@ -101,7 +101,7 @@ systemctl start nginx
 pacman --noconfirm -S php-fpm php-gd
 systemctl start php-fpm
 # patch /etc/nginx/nginx.conf to enble php handler
-change_to=/root/arch-setup/nginx-php-config.txt
+change_to=/root/tkarch/nginx-php-config.txt
 sed -i "/index\.php/r ${change_to}" /etc/nginx/nginx.conf
 # make sure worker-thread user is correct
 sed -i "/user .*/d" /etc/nginx/nginx.conf
@@ -126,7 +126,7 @@ systemctl restart php-fpm nginx
 systemctl enable mysqld nginx php-fpm
 ps -aux | grep nginx | grep worker # test
 # write some test pages for php error and sql
-cp /root/arch-setup/test-php/* /usr/share/nginx/html
+cp /root/tkarch/test-php/* /usr/share/nginx/html
 # set permission
 httpd_root=/usr/share/nginx/html
 find $httpd_root -type d -exec chmod 755 {} \;
@@ -174,20 +174,20 @@ echo 'tk ALL=(ALL:ALL) ALL' | (EDITOR="tee -a" visudo)
 tput setaf 2; echo 'Copy custom-keybindings.dump...'; tput sgr0;
 mkdir -p /var/tmp/
 custom_keybindings=/var/tmp/custom-keybindings.dump
-cp /root/arch-setup/custom-keybindings.dump ${custom_keybindings}
+cp /root/tkarch/custom-keybindings.dump ${custom_keybindings}
 chown tk ${custom_keybindings} # enable tk to mv it
 
 tput setaf 2; echo 'Replacing pannel icon...'; tput sgr0;
-cp /root/arch-setup/arch-linux.svg /usr/share/cinnamon/theme/menu-symbolic.svg
+cp /root/tkarch/arch-linux.svg /usr/share/cinnamon/theme/menu-symbolic.svg
 
 tput setaf 2; echo 'Override gschema...'; tput sgr0;
-cp /root/arch-setup/10_my-arch-setup.gschema.override /usr/share/glib-2.0/schemas/
+cp /root/tkarch/10_tkarch.gschema.override /usr/share/glib-2.0/schemas/
 glib-compile-schemas /usr/share/glib-2.0/schemas/
 rm -f /home/tk/.config/dconf/user
 rm -rf /home/tk/.cinnamon/
 
 tput setaf 2; echo 'Overwrite Cinnamon panel-launchers...'; tput sgr0;
-cp /root/arch-setup/launchers/settings-schema.json /usr/share/cinnamon/applets/panel-launchers\@cinnamon.org/settings-schema.json
+cp /root/tkarch/launchers/settings-schema.json /usr/share/cinnamon/applets/panel-launchers\@cinnamon.org/settings-schema.json
 
 tput setaf 2; echo 'Overwrite Cinnamon menu shortcut...'; tput sgr0;
 sed -i -e 's/Super_L::Super_R//g' /usr/share/cinnamon/applets/menu@cinnamon.org/settings-schema.json

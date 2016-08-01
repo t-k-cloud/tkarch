@@ -11,4 +11,4 @@ Given touchpad settings for example:
 4. grep this file to find id:
 	cat org.cinnamon.settings-daemon.peripherals.gschema.xml | grep ...
 	id="org.cinnamon.settings-daemon.peripherals.touchpad"
-5. use this id and the dump value in step 2 to write into arch-setup/10_my-arch-setup.gschema.override.
+5. use this id and the dump value in step 2 to write into 10_tkarch.gschema.override.

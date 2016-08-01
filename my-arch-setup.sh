@@ -24,12 +24,12 @@ mkdir -p ${proj_dir}
 cd ${proj_dir}
 
 tput setaf 2; echo 'Clone git projects...'; tput sgr0;
-git clone https://github.com/t-k-/homcf.git
-git clone https://github.com/t-k-/one-script-feed-reader.git
+git clone https://github.com/t-k-/tkdotfiles.git
+git clone https://github.com/t-k-/tkfeedr.git
 git clone https://github.com/t-k-/tkscripts.git
 
 tput setaf 2; echo 'tk: home config...'; tput sgr0;
-./homcf/overwrite.sh
+./tkdotfiles/overwrite.sh
 
 tput setaf 2; echo 'Make package chromium-pepper-flash...'; tput sgr0;
 cd /home/tk
@@ -47,11 +47,11 @@ tput setaf 2; echo "cd to ${proj_dir}"; tput sgr0;
 cd ${proj_dir}
  
 tput setaf 2; echo 'root: home config...'; tput sgr0;
-cp -r ${proj_dir}/homcf /root/
-/root/homcf/overwrite.sh
+cp -r ${proj_dir}/tkdotfiles /root/
+/root/tkdotfiles/overwrite.sh
 
 tput setaf 2; echo 'root: feed init...'; tput sgr0;
-./one-script-feed-reader/init.sh
+./tkfeedr/init.sh
 
 tput setaf 2; echo 'root: tkscripts init...'; tput sgr0;
 ./tkscripts/init.sh
