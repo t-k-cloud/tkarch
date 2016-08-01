@@ -19,10 +19,6 @@ pacman --noconfirm -S mlocate # updatedb/locate
 pacman --noconfirm -S dosfstools parted
 pacman --noconfirm -S fuse-exfat exfat-utils # exFAT filesys
 pacman --noconfirm -S python-pip # to install feedparser
-pip install feedparser # install feedparser
-pip install pycurl # used by cowpie and tk-sched-show
-pip install jieba whoosh # my blog search engine
-# pacman --noconfirm -S sagemath # python2 math/ploting
 
 tput setaf 2; echo 'Replace vi with vim...'; tput sgr0;
 ln -sf `which vim` `which vi`
@@ -212,10 +208,6 @@ export XMODIFIERS=@im=fcitx
 exec cinnamon-session
 EOF
 
-tput setaf 2; echo 'Copying chromium-pepper-flash-dev and change ownerhip...'; tput sgr0;
-cp -r /root/arch-setup/chromium-pepper-flash-dev /home/tk
-chown -R tk /home/tk/chromium-pepper-flash-dev
-
 # run as user tk:
 sudo -u tk bash << EOF
 tput setaf 2; echo 'Setup auto-start programs...'; tput sgr0;
@@ -228,20 +220,7 @@ tput setaf 2; echo 'Configuring bash_profile... '; tput sgr0;
 echo '[[ -z \$DISPLAY && \$XDG_VTNR -eq 1 ]] && exec startx' >> /home/tk/.bash_profile
 # (if only has startx here, tmux would run into some problem)
 
-tput setaf 2; echo 'Make package chromium-pepper-flash...'; tput sgr0;
-cd /home/tk
-# already copied, NO NEED: git clone https://aur.archlinux.org/chromium-pepper-flash-dev.git
-cd chromium-pepper-flash-dev/
-makepkg -s 
 EOF
-
-tput setaf 2; echo 'Install package chromium-pepper-flash...'; tput sgr0;
-cd /home/tk/chromium-pepper-flash-dev/
-pacman --noconfirm -U *.pkg.tar.xz
-# Don't forget to enable the Adobe Flash Player plugin on chrome://plugins/
-
-tput setaf 2; echo 'Run my-arch-setup.sh'; tput sgr0;
-"$cur_dir"/my-arch-setup.sh /usr/share/nginx/html http
 
 tput setaf 2; echo 'Hand over network connection to NetworkManager...'; tput sgr0;
 for i in `seq 9`
