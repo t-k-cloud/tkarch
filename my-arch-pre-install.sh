@@ -1,5 +1,5 @@
 #!/bin/sh
-if [ -z $2 ]; then
+if [ -z $3 ]; then
 cat << USAGE
 Usage:
 $0 <root-device> <boot-device> <grub-install-device>
