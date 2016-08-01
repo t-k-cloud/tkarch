@@ -50,13 +50,13 @@ cat << CHROOT > $jail_script_mnt
 tput setaf 2; echo 'grub install (EFI) ...'; tput sgr0; 
 grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=arch_grub --recheck
 grub-mkconfig -o /boot/grub/grub.cfg
+
+tput setaf 2; echo 'change EFI entry icon...'; tput sgr0; 
+cp /root/arch-setup/os_linux.icns /boot/efi/EFI/arch_grub/arch_grub.icns
 CHROOT
 
 tput setaf 2; echo 'chroot...'; tput sgr0; 
 arch-chroot /mnt ${jail_script} 
-
-tput setaf 2; echo 'change EFI entry icon...'; tput sgr0; 
-cp /root/arch-setup/os_linux.icns /boot/efi/EFI/arch_grub/arch_grub.icns
 
 echo "done."
 echo "Now you should have a grub EFI entry when macbook-air reboots"
