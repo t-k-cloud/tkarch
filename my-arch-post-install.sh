@@ -212,6 +212,10 @@ export XMODIFIERS=@im=fcitx
 exec cinnamon-session
 EOF
 
+tput setaf 2; echo 'Copying chromium-pepper-flash-dev and change ownerhip...'; tput sgr0;
+cp -r /root/arch-setup/chromium-pepper-flash-dev /home/tk
+chown -R tk /home/tk/chromium-pepper-flash-dev
+
 # run as user tk:
 sudo -u tk bash << EOF
 tput setaf 2; echo 'Setup auto-start programs...'; tput sgr0;
@@ -226,7 +230,7 @@ echo '[[ -z \$DISPLAY && \$XDG_VTNR -eq 1 ]] && exec startx' >> /home/tk/.bash_p
 
 tput setaf 2; echo 'Make package chromium-pepper-flash...'; tput sgr0;
 cd /home/tk
-git clone https://aur.archlinux.org/chromium-pepper-flash-dev.git
+# already copied, NO NEED: git clone https://aur.archlinux.org/chromium-pepper-flash-dev.git
 cd chromium-pepper-flash-dev/
 makepkg -s 
 EOF
