@@ -31,7 +31,8 @@ grubinstall=$3
 tput setaf 2; echo 'pre-install starts in 10s...'; tput sgr0;
 echo "root: /dev/$root, boot: /dev/$boot, grub-install: /dev/$grubinstall"
 
-echo "Modify mirror list for fast Internet speed: /etc/pacman.d/mirrorlist"
+tput setaf 2; echo 'Please modify mirror list for fast Internet speed before continue:'; tput sgr0;
+tput setaf 2; echo '/etc/pacman.d/mirrorlist'; tput sgr0;
 sleep 10
 
 # start pre-install from here
