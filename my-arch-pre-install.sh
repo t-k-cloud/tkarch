@@ -57,7 +57,7 @@ tput setaf 2; echo 'generating fstab...'; tput sgr0;
 genfstab -U -p /mnt >> /mnt/etc/fstab
 cat /mnt/etc/fstab
 
-tput setaf 2; echo 'preparing post-script...'; tput sgr0; 
+tput setaf 2; echo 'preparing jail-script...'; tput sgr0; 
 jail_script=/usr/local/bin/jail.sh
 jail_script_mnt=/mnt${jail_script}
 

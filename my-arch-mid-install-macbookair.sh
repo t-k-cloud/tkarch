@@ -52,7 +52,9 @@ grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=arch_
 grub-mkconfig -o /boot/grub/grub.cfg
 
 tput setaf 2; echo 'change EFI entry icon...'; tput sgr0; 
-cp /root/arch-setup/os_linux.icns /boot/efi/EFI/arch_grub/grubx64.efi
+cp /root/arch-setup/os_linux.icns /boot/efi/EFI/arch_grub/grubx64.icns
+
+find /boot/efi/
 CHROOT
 
 tput setaf 2; echo 'chroot...'; tput sgr0; 
