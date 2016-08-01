@@ -60,6 +60,27 @@ pacman --noconfirm -S linux-headers # for kernel module
 # install wireshark
 pacman --noconfirm -S wireshark-cli wireshark-qt
 
+# install proxy tools 
+pacman --noconfirm -S shadowsocks-libev polipo
+
+mkdir -p /etc/polipo
+
+cat << EOF > /etc/polipo/ss.json
+{
+    "server":"<ip>",
+    "server_port":<port>,
+    "local_port":3080,
+    "password":"<passwd>",
+    "timeout":60,
+    "method":"aes-256-cfb"
+}
+EOF
+
+cat << EOF > /etc/polipo/config
+socksParentProxy = "localhost:3080"
+socksProxyType = socks5
+EOF
+
 tput setaf 2; echo 'Installing LEMP...'; tput sgr0;
 # install mariadb
 pacman --noconfirm -S mariadb
