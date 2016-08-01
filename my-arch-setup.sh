@@ -1,5 +1,5 @@
 #!/bin/sh
-[ ! $# -eq 2 ] && echo 'bad arg #.' && exit
+[ ! $# -eq 2 ] && echo "bad arg. Example: $0 /usr/share/nginx/html http" && exit
 http_root="$1"
 http_user="$2"
 proj_dir=/home/tk/tksync/proj
@@ -8,14 +8,13 @@ touch /root/test || exit
 mkdir -p /usr/local/bin
 
 echo "make sure Internet is connected and fast to use service: pip install, Github and Google/pepper-flash."
-echo "run this script as follows:"
-echo "./my-arch-setup.sh /usr/share/nginx/html http"
 sleep 10
 
 tput setaf 2; echo 'pip install packages...'; tput sgr0;
-pip install feedparser # install feedparser
-pip install pycurl # used by cowpie and tk-sched-show
-pip install jieba whoosh # my blog search engine
+pip_mirror="--index https://pypi.mirrors.ustc.edu.cn/simple/"
+pip install ${pip_mirror} feedparser # install feedparser
+pip install ${pip_mirror} pycurl # used by cowpie and tk-sched-show
+pip install ${pip_mirror} jieba whoosh # my blog search engine
 # pacman --noconfirm -S sagemath # python2 math/ploting
 
 # run as user tk:
@@ -27,7 +26,6 @@ cd ${proj_dir}
 tput setaf 2; echo 'Clone git projects...'; tput sgr0;
 git clone https://github.com/t-k-/homcf.git
 git clone https://github.com/t-k-/one-script-feed-reader.git
-git clone https://github.com/t-k-/tkblog.git
 git clone https://github.com/t-k-/tkscripts.git
 
 tput setaf 2; echo 'tk: home config...'; tput sgr0;
@@ -59,6 +57,8 @@ tput setaf 2; echo 'root: tkscripts init...'; tput sgr0;
 ./tkscripts/init.sh
 
 tput setaf 2; echo 'root: tkblog init...'; tput sgr0;
+git clone https://github.com/t-k-/tkblog.git
+
 echo "http_root: $http_root"
 echo "http_user: $http_user"
 
