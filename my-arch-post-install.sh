@@ -38,7 +38,7 @@ pacman --noconfirm -S mate-terminal # terminal
 pacman --noconfirm -S chromium # browser (another option: opera) 
 pacman --noconfirm -S fcitx fcitx-configtool # input method
 pacman --noconfirm -S fcitx-gtk2 # fix chromium aura "losing char" problem in typing. After this fix, an underline is shown when typing Pinyin.
-pacman --noconfirm -S gnome-screenshot # screenshot
+pacman --noconfirm -S xfce4-screenshooter # screenshot
 pacman --noconfirm -S xournal # pdf annotation/note
 pacman --noconfirm -S leafpad # text editor
 pacman --noconfirm -S eog eog-plugins # image viewer - eye of gnome
