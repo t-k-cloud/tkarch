@@ -9,6 +9,7 @@ pacman --noconfirm -S tmux curl vim ctags cscope flex bison
 pacman --noconfirm -S strace
 pacman --noconfirm -S expect 
 pacman --noconfirm -S enca 
+pacman --noconfirm -S graphviz
 pacman --noconfirm -S openssh # ssh command 
 pacman --noconfirm -S dnsutils # host and dig commands (DNS utilities)
 pacman --noconfirm -S imagemagick # 'convert' command
