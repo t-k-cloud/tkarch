@@ -17,7 +17,7 @@ function setup() {
 	popd
 }
 
-function pacman() {
+function pacmanS() {
 	# print notice
 	tput setaf 3;
 	echo "install list [$@]";

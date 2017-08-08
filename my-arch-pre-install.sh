@@ -1,18 +1,9 @@
 #!/bin/sh
 
-jail_script=/usr/local/bin/jail.sh
-jail_script_mnt=/mnt${jail_script}
-
-cat << CHROOT > $jail_script_mnt
 tput setaf 2; echo 'install necessary commands...'; tput sgr0; 
-pacman --noconfirm -S grub
 pacman --noconfirm -S git 
 pacman --noconfirm -S iw wpa_supplicant
 pacman --noconfirm -S wget 
-
-tput setaf 2; echo 'grub install...'; tput sgr0; 
-grub-install --recheck /dev/$grubinstall
-grub-mkconfig -o /boot/grub/grub.cfg
 
 tput setaf 2; echo 'locale gen...'; tput sgr0; 
 cat << EOF > /etc/locale.gen
@@ -31,14 +22,3 @@ echo "\$this_hostname" > /etc/hostname
 
 tput setaf 2; echo 'please enter root passwd...'; tput sgr0; 
 while ! passwd; do :; done
-exit
-CHROOT
-
-chmod +x $jail_script_mnt
-
-tput setaf 2; echo 'chroot...'; tput sgr0; 
-arch-chroot /mnt ${jail_script} 
-
-
-umount -R /mnt
-tput setaf 2; echo 'remove USB drive and u are good to reboot.'; tput sgr0; 

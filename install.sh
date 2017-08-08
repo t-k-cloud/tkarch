@@ -16,7 +16,13 @@ if $DO_PART; then
 fi;
 
 setup jail_mount
-setup pacstrap
-setup jail_genfstab
-setup jail_tkarch
+
+if $DO_JAIL_SETUP; then
+	setup pacstrap
+	setup jail_genfstab
+	pacmanS rsync
+	setup jail_tkarch
+fi;
+
 setup arch_chroot
+echo 'Now remove USB drive and reboot.'

@@ -2,4 +2,5 @@
 TKARCH_DIR=$(cd `dirname $0`; pwd)/..
 source ${TKARCH_DIR}/lib/common.sh
 
-setup mirrorlist
+pacmanS grub
+setup grub_install
