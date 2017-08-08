@@ -98,7 +98,7 @@ tput setaf 2; echo 'chroot...'; tput sgr0;
 arch-chroot /mnt ${jail_script} 
 
 tput setaf 2; echo 'copy tkarch scripts...'; tput sgr0;
-cp -r "$cur_dir" /mnt/root/tkarch
+cp -ruv "$cur_dir/" /mnt/root/tkarch
 
 umount -R /mnt
 tput setaf 2; echo 'remove USB drive and u are good to reboot.'; tput sgr0; 
