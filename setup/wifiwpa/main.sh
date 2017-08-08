@@ -32,3 +32,5 @@ wpa_supplicant -B -i $wl_dev_nm -c $wl_auth_cfg
 # obtain IP
 tput setaf 2; echo "obtain IP (DHCP)..."; tput sgr0; 
 dhcpcd $wl_dev_nm
+
+sleep 10

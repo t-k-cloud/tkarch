@@ -5,10 +5,13 @@ source ${TKARCH_DIR}/lib/common.sh
 ### install ###
 setup mirrorlist
 
-setup wifiwpa
+if $DO_CONN; then
+	setup wifiwpa
+fi;
+
 internet || exit 
 
-if $REPARTED; then
+if $DO_PART; then
 	setup diskpart
 fi;
 
