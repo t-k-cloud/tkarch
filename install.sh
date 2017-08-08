@@ -20,9 +20,9 @@ setup jail_mount
 if $DO_JAIL_SETUP; then
 	setup pacstrap
 	setup jail_genfstab
-	pacmanS rsync
-	setup jail_tkarch
 fi;
 
+pacmanS rsync
+setup jail_tkarch
 setup arch_chroot
 echo 'Now remove USB drive and reboot.'
