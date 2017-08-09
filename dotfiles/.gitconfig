@@ -1,0 +1,26 @@
+[user]
+	email = clock126@126.com
+	name = t-k-
+[alias]
+	lo = log --graph --oneline --decorate --color --pretty=format:'%d [%h %ad %ae]  %s' --date=short
+	lol = log --graph --oneline --decorate --color
+	lolall = log --graph --oneline --all --decorate --color
+	logauthor = log --format=fuller
+	co = checkout
+	df = diff -U100 --color 
+	dff = diff --name-only
+	showf = diff --name-only
+	dfcm = diff --cached HEAD
+	cmdf = diff --cached HEAD
+	br = branch -a -vv --color
+	st = status --untracked-files=no
+	lodf = log --color -U100 -p --full-diff
+	dflo = log --color -U100 -p --full-diff
+[core]
+	editor = vi
+[pager]
+	branch = less 
+[https]
+	# proxy = socks5://127.0.0.1:3081
+[http]
+	# proxy = socks5://127.0.0.1:3081

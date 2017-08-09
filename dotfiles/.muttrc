@@ -1,0 +1,49 @@
+# 把单文件风格(mbox)的mail box改成qmail风格(Maildir)
+set mbox_type=Maildir
+
+# 设置mail box路径
+set folder="~/maildir"
+set mbox="~/maildir"
+set spoolfile="~/maildir"
+
+# sent messages goes ./sent 
+set record="+sent-in-`date +%Y-%m`"
+
+# an 'internal' box for mutt basically
+set postponed="+drafts"
+
+# a regular expression, optionally preceded by the not operator 
+# `!'. Only files whose names match this mask will be shown.
+set mask="!^\\.[^.]"
+
+# set default composer 
+set editor="vim"
+
+# no beep
+set beep=no
+set beep_new=no
+
+# set default From: address, and set the envelope sender. I do not
+# expect the $USER appears in my email header. It would be embarrassing
+# if you see `root' in an email header.
+set from = "wei@zhazha.info"
+set realname = "wei"
+set envelope_from = yes
+
+# if this variable is set, the default From: line of 
+# the reply messages is built using the address where 
+# you received the messages you are replying to.
+# 这里关闭一下以防它overwrite $from变量
+set reverse_name = no
+set reverse_realname = no
+
+# signature
+set sig_dashes = yes
+set signature = "~/mail-signature"
+
+# turn off wrap, it should be editor's job
+set smart_wrap = no
+
+# display proudly the user agent
+set user_agent = yes
+
