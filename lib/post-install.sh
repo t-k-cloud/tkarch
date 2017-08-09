@@ -36,7 +36,7 @@ if $DO_DESKTOP_ENV; then
 	setup input_method
 	setup font
 	setup autostart
-	setup bash_profile
+	setup desktop_start
 fi
 
 ### extra packages ###

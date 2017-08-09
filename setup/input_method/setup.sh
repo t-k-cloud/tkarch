@@ -6,6 +6,5 @@ cat << EOF >> /home/$USERNAME/.xinitrc
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
-exec cinnamon-session
 
 EOF
