@@ -14,8 +14,10 @@ STEPS
 
 4. boot into USB stick, select archlinux boot entry and login to Arch Linux installer.
 
-5. In this installer, run `/run/archiso/img_dev/tkarch/install.sh`.
+5. in this installer, run `/run/archiso/img_dev/tkarch/install.sh`.
 
 6. if installing on Macbook Air, further run `my-arch-mid-install-macbookair.sh` to setup grub EFI boot.
 
-7. Now reboot and login as `tk`.
+7. now reboot and login as `root`, use `passwd <username>` to set password for the user.
+
+8. login as the user.
