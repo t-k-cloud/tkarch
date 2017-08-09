@@ -24,17 +24,20 @@ pacmanS git tmux vim rsync openssh
 ln -sf `which vim` `which vi`
 
 ### desktop environment ###
-setup desktop_env
-setup desktop_utils
-setup gschema
-setup stardict
-setup my_terminal
-setup keybindings
-setup pannel_icon
-setup launcher
-setup input_method
-setup font
-setup autostart
+if $DO_DESKTOP_ENV; then
+	setup desktop_env
+	setup desktop_utils
+	setup gschema
+	setup stardict
+	setup my_terminal
+	setup keybindings
+	setup pannel_icon
+	setup launcher
+	setup input_method
+	setup font
+	setup autostart
+	setup bash_profile
+fi
 
 ### extra packages ###
 #setup pacman_extra
