@@ -46,5 +46,6 @@ fi
 setup network_mg
 
 ### dotfiles and global scripts ###
+setup home_tkarch
 setup dotfiles
 setup global_scripts
