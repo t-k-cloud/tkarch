@@ -1,4 +1,4 @@
-pacmanS gnome-calculator # calculator
+pacmanS mate-calc # calculator
 pacmanS mate-terminal # terminal
 pacmanS chromium # browser (another option: opera)
 pacmanS xfce4-screenshooter # screenshot
