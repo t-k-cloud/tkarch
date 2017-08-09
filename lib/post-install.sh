@@ -44,3 +44,6 @@ fi
 
 ### network hand-over ###
 setup network_mg
+
+### dotfiles ###
+setup dotfiles

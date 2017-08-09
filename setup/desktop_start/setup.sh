@@ -4,6 +4,6 @@ echo '[[ -z \$DISPLAY && \$XDG_VTNR -eq 1 ]] && exec startx' >> /home/${USERNAME
 EOF
 
 cat << EOF >> /home/$USERNAME/.xinitrc
+# start cinnamon session
 exec cinnamon-session
-
 EOF
