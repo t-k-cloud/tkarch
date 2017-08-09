@@ -1,0 +1,16 @@
+#!/usr/bin/expect
+set usrname [lindex $argv 0]
+set passwd [lindex $argv 1]
+
+exec git add -A
+puts [exec git status]
+sleep 2
+# `catch' will prevent expect aborts from non-zero exec return.
+puts [catch {exec git commit -m 'update'} ret]
+spawn git push
+expect "Username"
+send $usrname\r
+expect "Password"
+send $passwd\r
+
+interact
