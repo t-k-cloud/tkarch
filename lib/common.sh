@@ -13,7 +13,7 @@ function setup() {
 
 	# exec this setup.
 	pushd ${TKARCH_DIR}/setup/${1}
-	source ./main.sh
+	source ./setup.sh
 	popd
 }
 
