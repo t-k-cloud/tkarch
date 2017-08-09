@@ -45,5 +45,6 @@ fi
 ### network hand-over ###
 setup network_mg
 
-### dotfiles ###
+### dotfiles and global scripts ###
 setup dotfiles
+setup global_scripts

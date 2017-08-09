@@ -8,5 +8,5 @@ rsync -a --progress --chown=${USERNAME}:${USERNAME} /root/tkarch/ "$user_tkarch_
 
 # overwrite user dotfiles
 sudo -u $USERNAME bash << EOF
-$user_tkarch_dest/dotfiles/overwrite.sh
+${user_tkarch_dest}/dotfiles/overwrite.sh
 EOF
