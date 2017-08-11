@@ -19,7 +19,7 @@ setup users
 setup sudoer
 
 ### core packages ###
-pacmanS iw wpa_supplicant
+pacmanS dhcpcd iw wpa_supplicant
 pacmanS git tmux vim rsync openssh
 ln -sf `which vim` `which vi`
 
