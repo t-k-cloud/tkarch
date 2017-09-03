@@ -107,17 +107,26 @@ alias ..5="cd ../../../../.."
 
 alias to-polipo="http_proxy=http://localhost:8123 https_proxy=http://localhost:8123"
 
+function do_srchcntnt() {
+	d=100
+	[ -z $2 ] && return;
+	[ ! -z $3 ] && d=$3;
+	bash -c "find . -maxdepth ${d} -type f \( -name .git \) -prune -o $1 -print" | \
+		xargs grep -n -C 3 -P --color $2
+}
+
 function do_srchname() {
 	[ -z $1 ] && return;
 	find . -name "*${1}*"
 }
 
-alias srch="find . -type f | xargs grep -n -C 3 -P --color"
-alias srchc="find . -name '*.[ch]' -o -name '*.cpp' | xargs grep -n -C 3 -P --color"
-alias srchsrc="find . -name '*.[c]' -o -name '*.cpp' | xargs grep -n -C 3 -P --color"
-alias srchh="find . -name '*.[h]' | xargs grep -n -C 3 -P --color"
-alias srchmk="find . -name '*.mk' -o -name '[Mm]akefile' -o -name 'Android.mk' | xargs grep -n -C 3 -P --color"
-alias srchjs="find . -name '*.js' | xargs grep -n -C 3 -P --color"
+alias srch="do_srchcntnt    \"-name '*'\""
+alias srchjs="do_srchcntnt  \"-name '*.js'\""
+alias srchC="do_srchcntnt   \"\\( -name '*.[ch]' -o -name '*.cpp' \\)\""
+alias srchc="do_srchcntnt   \"-name '*.c'\""
+alias srchcpp="do_srchcntnt \"-name '*.cpp'\""
+alias srchh="do_srchcntnt   \"-name '*.h'\""
+alias srchmk="do_srchcntnt  \"\\( -name '*.mk' -o -name '[Mm]akefile' -o -name 'Android.mk' \\)\""
 alias srchname="do_srchname"
 
 function do_svnshow() {
