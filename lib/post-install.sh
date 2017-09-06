@@ -19,7 +19,7 @@ setup users
 setup sudoer
 
 ### core packages ###
-pacmanS iw wpa_supplicant
+pacmanS dhcpcd iw wpa_supplicant
 pacmanS git tmux vim rsync openssh
 ln -sf `which vim` `which vi`
 
@@ -46,5 +46,6 @@ fi
 setup network_mg
 
 ### dotfiles and global scripts ###
+setup home_tkarch
 setup dotfiles
 setup global_scripts
