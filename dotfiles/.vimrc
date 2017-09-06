@@ -65,10 +65,13 @@ endfunc
 let g:toggle_flag_setnu=0
 nnoremap <Leader>nu :call ToggleCallbk("g:toggle_flag_setnu", ":set nu", ":set nonu")<cr><cr>
 
-"c语言环境toggle
+"C 语言环境toggle
 let g:toggle_flag_c_environment=0
-set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
 nnoremap <Leader>ci :call ToggleCallbk("g:toggle_flag_c_environment", ":set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab autoindent \|set nu\|syntax on", ":set nonu\|set nocindent\|syntax off")<cr><cr>
+
+"python 语言环境toggle
+let g:toggle_flag_py_env=0
+nnoremap <Leader>pi :call ToggleCallbk("g:toggle_flag_py_env", ":set tabstop=4 softtabstop=4 shiftwidth=4 expandtab autoindent \|set nu\|syntax on", ":set nonu\|set nocindent\|syntax off")<cr><cr>
 
 "搜索高亮toggle
 let g:toggle_flag_hl_search=0
