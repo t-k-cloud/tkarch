@@ -111,8 +111,11 @@ function do_srchcntnt() {
 	d=100
 	[ -z $2 ] && return;
 	[ ! -z $3 ] && d=$3;
-	bash -c "find . -maxdepth ${d} -type f \( -name .git \) -prune -o $1 -print" | \
-		xargs grep -n -C 3 -P --color $2
+	#set -x
+	bash -c "find . -maxdepth ${d} -name .git -prune -o \
+	\( ! \( -type d \) -a \( $1 \) \) \
+	-exec grep -n -H -C 3 -P --color $2 \{\} \;"
+	#set +x
 }
 
 function do_srchname() {
