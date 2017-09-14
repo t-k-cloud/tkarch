@@ -114,7 +114,7 @@ function do_srchcntnt() {
 	#set -x
 	bash -c "find . -maxdepth ${d} -name .git -prune -o \
 	\( ! \( -type d \) -a \( $1 \) \) \
-	-exec grep -n -H -C 3 -P --color $2 \{\} \;"
+	-exec grep -n -H -C 3 -P --color '$2' \{\} \;"
 	#set +x
 }
 
@@ -125,6 +125,7 @@ function do_srchname() {
 
 alias srch="do_srchcntnt    \"-name '*'\""
 alias srchjs="do_srchcntnt  \"-name '*.js'\""
+alias srchpy="do_srchcntnt  \"-name '*.py'\""
 alias srchC="do_srchcntnt   \"\\( -name '*.[ch]' -o -name '*.cpp' \\)\""
 alias srchc="do_srchcntnt   \"-name '*.c'\""
 alias srchcpp="do_srchcntnt \"-name '*.cpp'\""
