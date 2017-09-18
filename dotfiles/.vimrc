@@ -283,16 +283,20 @@ nnoremap <leader><leader> :e #<CR>
 nnoremap <leader>x :bp <BAR> bd #<CR>
 " show function name of current cursor position
 function Showfunname()
-	let lnum = line(".")
-	let lcol = col(".")
-	let funname = getline(search('^\w\+\s\+.*(.*)[^;]*$', 'bW'))
-	call search("\\%" . lnum . "l" . "\\%" . lcol . "c")
-	return funname[0:60]
+	if g:toggle_flag_c_environment
+		let lnum = line(".")
+		let lcol = col(".")
+		let funname = getline(search('^\w\+\s\+.*(.*)[^;]*$', 'bW'))
+		call search("\\%" . lnum . "l" . "\\%" . lcol . "c")
+		return ">> ".funname[0:60]
+	else
+		return ''
+	endif
 endfunc
 "specify which extensions to load (status bar string)
 let g:airline_section_a = airline#section#create(['mode'])
 let g:airline_section_b = ''
-let g:airline_section_c = '%f %l,%v --%p%%-- >> %{Showfunname()}' " refer to Vim statusline.
+let g:airline_section_c = '%f %l,%v --%p%%-- %{Showfunname()}' " refer to Vim statusline.
 let g:airline_section_x = '' 
 let g:airline_section_y = airline#section#create(['ffenc'])
 let g:airline_section_z = airline#section#create(['spell', 'readonly'])
