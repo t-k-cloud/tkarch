@@ -313,3 +313,29 @@ nnoremap <leader>9 :b9<CR>
 
 "不检查开头字母大写
 set spellcapcheck= 
+
+"""
+" Bookmarks
+"""
+let g:bookmark_no_default_key_mappings = 1
+let g:bookmark_auto_close = 0
+
+let g:bookmark_annotation_sign = '⚑ '
+let g:bookmark_sign = '☰ '
+highlight BookmarkSign           ctermbg=None ctermfg=Yellow
+highlight BookmarkAnnotationSign ctermbg=None ctermfg=Yellow
+"书签列不要颜色
+highlight clear SignColumn
+
+nmap mm <Plug>BookmarkToggle
+nmap mj <Plug>BookmarkAnnotate
+nmap ml <Plug>BookmarkShowAll
+nmap mn <Plug>BookmarkNext
+nmap mN <Plug>BookmarkPrev
+"Clear bookmarks in current buffer only
+nmap md <Plug>BookmarkClear
+"Clear bookmarks in all buffers
+nmap mD <Plug>BookmarkClearAll
+"Save/Load into file
+nnoremap <Leader>ms :BookmarkSave bookmarks.vim<cr>
+nnoremap <Leader>ml :BookmarkLoad bookmarks.vim<cr>
