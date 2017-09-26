@@ -65,6 +65,10 @@ endfunc
 let g:toggle_flag_setnu=0
 nnoremap <Leader>nu :call ToggleCallbk("g:toggle_flag_setnu", ":set nu", ":set nonu")<cr><cr>
 
+"光标列尺toggle
+let g:toggle_flag_cursorcolumn=0
+nnoremap <Leader>cl :call ToggleCallbk("g:toggle_flag_cursorcolumn", ":set cursorcolumn", ":set nocursorcolumn")<cr><cr>
+
 "C 语言环境toggle
 let g:toggle_flag_c_environment=0
 nnoremap <Leader>ci :call ToggleCallbk("g:toggle_flag_c_environment", ":set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab autoindent \|set nu\|syntax on", ":set nonu\|set nocindent\|syntax off")<cr><cr>
