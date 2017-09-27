@@ -287,11 +287,17 @@ nnoremap <leader><leader> :e #<CR>
 nnoremap <leader>x :bp <BAR> bd #<CR>
 " show function name of current cursor position
 function Showfunname()
+	let lnum = line(".")
+	let lcol = col(".")
 	if g:toggle_flag_c_environment
-		let lnum = line(".")
-		let lcol = col(".")
 		let funname = getline(search('^\w\+\s\+.*(.*)[^;]*$', 'bW'))
 		call search("\\%" . lnum . "l" . "\\%" . lcol . "c")
+		return ">> ".funname[0:60]
+	elseif g:toggle_flag_py_env
+		let funname = getline(search('^\s*def\ ', 'bW'))
+		call search("\\%" . lnum . "l" . "\\%" . lcol . "c")
+		" strip leading and tailing spaces
+		let funname = substitute(funname, '^\s*\(.\{-}\)\s*$', '\1', '')
 		return ">> ".funname[0:60]
 	else
 		return ''
