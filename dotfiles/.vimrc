@@ -66,6 +66,7 @@ let g:toggle_flag_setnu=0
 nnoremap <Leader>nu :call ToggleCallbk("g:toggle_flag_setnu", ":set nu", ":set nonu")<cr><cr>
 
 "光标列尺toggle
+highlight ColorColumn ctermbg=235 guibg=#2c2d27
 let g:toggle_flag_cursorcolumn=0
 nnoremap <Leader>cl :call ToggleCallbk("g:toggle_flag_cursorcolumn", ":let &colorcolumn=col('.')", ":set colorcolumn=")<cr><cr>
 
