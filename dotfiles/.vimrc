@@ -67,7 +67,7 @@ nnoremap <Leader>nu :call ToggleCallbk("g:toggle_flag_setnu", ":set nu", ":set n
 
 "光标列尺toggle
 let g:toggle_flag_cursorcolumn=0
-nnoremap <Leader>cl :call ToggleCallbk("g:toggle_flag_cursorcolumn", ":set cursorcolumn", ":set nocursorcolumn")<cr><cr>
+nnoremap <Leader>cl :call ToggleCallbk("g:toggle_flag_cursorcolumn", ":let &colorcolumn=col('.')", ":set colorcolumn=")<cr><cr>
 
 "C 语言环境toggle
 let g:toggle_flag_c_environment=0
