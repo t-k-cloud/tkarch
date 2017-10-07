@@ -8,8 +8,8 @@ setup grub_install
 
 ### when lack of confidence ###
 if $REBOOT_TEST; then
-	echo 'reboot test in 10 sec ...' && sleep 10
-	reboot
+	echo 'reboot to test booting.'
+	exit
 fi;
 
 ### locale, timezone and hostname ###

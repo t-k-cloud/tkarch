@@ -7,5 +7,5 @@ if $GRUB_ELF_INSTALL; then
 	mount $DISKPART_BIOSBOOT /mnt/boot/efi
 
 	# clear old EFI entry
-	rm -rf /mnt/boot/efi/EFI/
+	rm -rf /mnt/boot/efi/EFI/arch_grub
 fi;

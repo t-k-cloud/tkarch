@@ -8,8 +8,9 @@ cat << EOF >> /home/$USERNAME/.xinitrc
 # Make Caps Lock an additional Esc
 setxkbmap -option caps:escape
 
-# Uncomment below for macbook air
-#setxkbmap -option altwin:swap_alt_win
+if $SWAP_ALT_WIN; then
+setxkbmap -option altwin:swap_alt_win
+fi;
 
 # (more options refer to :
 # cat /usr/share/X11/xkb/rules/evdev.lst | grep swap_alt_win
