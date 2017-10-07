@@ -1,38 +1,53 @@
 #!/bin/sh
-parted /dev/sda --script print 
+function echo_dev_num() {
+	echo $(basename "$1" | grep -o '[[:digit:]]*')
+}
 
-sectors=`blockdev --getsize /dev/sda`
-tput setaf 2; echo "sda has $sectors sectors in total, erase in 10 sec..."; tput sgr0; 
-sleep 10
-tput setaf 2; echo "sda: erase disk head ..."; tput sgr0; 
-dd if=/dev/zero of=/dev/sda bs=512 count=8192
-tput setaf 2; echo "sda: erase disk tail ..."; tput sgr0; 
-dd if=/dev/zero of=/dev/sda bs=512 seek=`expr $sectors - 8192` count=8192
+N_BIOSBOOT=$(echo_dev_num $DISKPART_BIOSBOOT)
+N_BOOT=$(echo_dev_num $DISKPART_BOOT)
+N_SWAP=$(echo_dev_num $DISKPART_SWAP)
+N_ROOT=$(echo_dev_num $DISKPART_ROOT)
 
-# GPT table creation 
-parted /dev/sda --script mklabel gpt 
-# 2M grub loader 
-parted /dev/sda --script mkpart primary 1MiB 3MiB 
-parted /dev/sda --script name 1 my_grub 
-parted /dev/sda --script set 1 bios_grub on 
-# 128M boot partition
-parted /dev/sda --script mkpart primary 3MiB 131MiB 
-parted /dev/sda --script name 2 my_boot 
-# 512M swap partition
-parted /dev/sda --script mkpart primary 131MiB 643MiB 
-parted /dev/sda --script name 3 my_swap
-# root partition for the rest of the disk
-parted /dev/sda --script mkpart primary 643MiB -- -1MiB 
-parted /dev/sda --script name 4 my_root
-# mark EFI System Partition 
-parted /dev/sda --script set 2 boot on 
+parted $DISKPART_DEV --script print
 
-tput setaf 2; echo 'making filesystem...'; tput sgr0; 
-mkfs.vfat /dev/sda1
-mkfs.ext4 -F /dev/sda2
-mkswap -f /dev/sda3
-swapon /dev/sda3
-mkfs.ext4 -F /dev/sda4
+if ! $GRUB_ELF_INSTALL; then
+	# erase partition table completely
+	sectors=`blockdev --getsize $DISKPART_DEV`
+	tput setaf 2; echo "$DISKPART_DEV has $sectors sectors in total, erase in 10 sec..."; tput sgr0;
+	sleep 10
+	tput setaf 2; echo "erase disk head ..."; tput sgr0;
+	dd if=/dev/zero of=$DISKPART_DEV bs=512 count=8192
+	tput setaf 2; echo "erase disk tail ..."; tput sgr0;
+	dd if=/dev/zero of=$DISKPART_DEV bs=512 seek=`expr $sectors - 8192` count=8192
 
-tput setaf 2; echo 'resulting parition:'; tput sgr0; 
-parted /dev/sda --script print 
+	tput setaf 2; echo 'creating partition table...'; tput sgr0;
+	# GPT table creation
+	parted $DISKPART_DEV --script mklabel gpt
+	# 2M grub loader
+	parted $DISKPART_DEV --script mkpart primary 1MiB 3MiB
+	parted $DISKPART_DEV --script name $N_BIOSBOOT tkarch_grub
+	parted $DISKPART_DEV --script set $N_BIOSBOOT bios_grub on
+	# 128M boot partition
+	parted $DISKPART_DEV --script mkpart primary 3MiB 131MiB
+	# 512M swap partition
+	parted $DISKPART_DEV --script mkpart primary 131MiB 643MiB
+	# root partition for the rest of the disk
+	parted $DISKPART_DEV --script mkpart primary 643MiB -- -1MiB
+	# mark EFI System Partition
+	parted $DISKPART_DEV --script set $N_BOOT boot on
+fi;
+
+tput setaf 2; echo 'name partitions...'; tput sgr0;
+parted $DISKPART_DEV --script name $N_BOOT tkarch_boot
+parted $DISKPART_DEV --script name $N_SWAP tkarch_swap
+parted $DISKPART_DEV --script name $N_ROOT tkarch_root
+
+tput setaf 2; echo 'making filesystem...'; tput sgr0;
+if ! $GRUB_ELF_INSTALL; then mkfs.vfat $DISKPART_BIOSBOOT; fi;
+mkfs.ext4 -F $DISKPART_BOOT
+mkswap -f    $DISKPART_SWAP
+swapon       $DISKPART_SWAP
+mkfs.ext4 -F $DISKPART_ROOT
+
+tput setaf 2; echo 'resulting parition:'; tput sgr0;
+parted $DISKPART_DEV --script print
