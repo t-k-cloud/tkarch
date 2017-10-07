@@ -8,8 +8,8 @@ cat << EOF >> /home/$USERNAME/.xinitrc
 # Make Caps Lock an additional Esc
 setxkbmap -option caps:escape
 
-if $SWAP_ALT_WIN; then
-setxkbmap -option altwin:swap_alt_win
+if $ALT_ALSO_WIN; then
+setxkbmap -option altwin:alt_win
 fi;
 
 # (more options refer to :
