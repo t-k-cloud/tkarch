@@ -6,6 +6,12 @@ source ${TKARCH_DIR}/lib/common.sh
 pacmanS grub
 setup grub_install
 
+### when lack of confidence ###
+if $REBOOT_TEST; then
+	echo 'reboot test in 10 sec ...' && sleep 10
+	reboot
+fi;
+
 ### locale, timezone and hostname ###
 setup locale_gen
 setup timezone
