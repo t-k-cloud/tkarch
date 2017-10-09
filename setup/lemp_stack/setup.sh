@@ -54,4 +54,8 @@ find $httpd_root -type f -exec chmod 664 {} \;
 find $httpd_root -type d -exec chown http:http {} \;
 find $httpd_root -type f -exec chown http:http {} \;
 chmod 777 $httpd_root # this should be after "find chmod of dir"
-echo 'Done.'
+
+## tkblog
+chmod 777 /home/tk
+usermod tk -a -G http
+echo 'last step: ln -s path/to/tkblog /usr/share/nginx/html/'
