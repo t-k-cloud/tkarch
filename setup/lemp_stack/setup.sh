@@ -1,5 +1,6 @@
 tput setaf 2; echo 'Installing LEMP stack...'; tput sgr0;
 
+systemctl stop mysqld
 # install mariadb
 pacman --noconfirm -S mariadb
 mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
@@ -13,6 +14,7 @@ create database thoughts_ga6840;
 GRANT ALL PRIVILEGES ON thoughts_ga6840.* TO 'thoughts_ga6840'@'%' IDENTIFIED BY 'xxxxxxxxxxxxx';
 EOF
 # install nginx
+pacman --noconfirm -Rn nginx
 pacman --noconfirm -S nginx
 systemctl start nginx
 # install php-fpm
@@ -52,3 +54,4 @@ find $httpd_root -type f -exec chmod 664 {} \;
 find $httpd_root -type d -exec chown http:http {} \;
 find $httpd_root -type f -exec chown http:http {} \;
 chmod 777 $httpd_root # this should be after "find chmod of dir"
+echo 'Done.'
