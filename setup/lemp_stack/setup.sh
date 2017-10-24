@@ -49,7 +49,7 @@ httpd_root=/usr/share/nginx/html
 # write some test pages for php error and sql
 cp -r /root/tkarch/setup/lemp_stack/test-php $httpd_root
 # set permission
-find $httpd_root -type d -exec chmod 755 {} \;
+find $httpd_root -type d -exec chmod 775 {} \;
 find $httpd_root -type f -exec chmod 664 {} \;
 find $httpd_root -type d -exec chown http:http {} \;
 find $httpd_root -type f -exec chown http:http {} \;
@@ -58,4 +58,5 @@ chmod 777 $httpd_root # this should be after "find chmod of dir"
 ## tkblog
 chmod 777 /home/tk
 usermod tk -a -G http
+usermod http -a -G tk
 echo 'last step: ln -s path/to/tkblog /usr/share/nginx/html/'

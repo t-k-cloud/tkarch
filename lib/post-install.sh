@@ -45,6 +45,9 @@ if $DO_DESKTOP_ENV; then
 	setup desktop_start
 fi
 
+### auto-mount normal user write permission ###
+setup median_perm
+
 ### extra packages ###
 #setup pacman_extra
 
