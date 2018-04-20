@@ -98,12 +98,8 @@ export LESS_TERMCAP_se=$(tput rmso; tput sgr0)
 # set 256 color, otherwise vim-airline has no color in MATE-terminal 
 TERM=xterm-256color
 
-alias ..="cd .."
-alias ..1="cd .."
-alias ..2="cd ../.."
-alias ..3="cd ../../.."
-alias ..4="cd ../../../.."
-alias ..5="cd ../../../../.."
+# auto cd, this feature only appeared in bash 4.0
+shopt -s autocd
 
 alias to-polipo="http_proxy=http://localhost:8123 https_proxy=http://localhost:8123"
 
