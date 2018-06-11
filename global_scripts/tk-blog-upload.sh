@@ -11,7 +11,7 @@ exit
 fi
 
 publish="abc=1"
-url='http://127.0.0.1/tkblog/entry.php?id=0'
+url='http://104.198.193.4'
 
 if [ $# -eq 0 ] 
 then
@@ -22,10 +22,9 @@ then
 	if [ $2 == "publish" ] 
 	then
 		publish="ifPublish=1"
-		url='http://127.0.0.1/tkblog/index.php'
 	else
 		echo "bad agreement."
 		exit
 	fi
 fi
-curl -F $publish -F "action=upload" -F "files=@${1}" 'http://127.0.0.1/tkblog/file_input.php'
+curl -F $publish -F "action=upload" -F "files=@${1}" "${url}/tkblog/file_input.php"
