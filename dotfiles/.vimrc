@@ -84,7 +84,7 @@ nnoremap <Leader><S-s> :call ToggleCallbk("g:toggle_flag_hl_search", ":set hlsea
 
 "语法高亮toggle
 let g:toggle_flag_hl_syntax=0
-nnoremap <Leader>sy :call ToggleCallbk("g:toggle_flag_hl_syntax", ":syntax on", ":syntax off")<cr><cr>
+nnoremap <Leader>sy :call ToggleCallbk("g:toggle_flag_hl_syntax", ":syntax on\|syntax sync fromstart", ":syntax off")<cr><cr>
 
 "自动匹配插入toggle
 let g:toggle_flag_insert_pair_auto=0
