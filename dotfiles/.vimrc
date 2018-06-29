@@ -14,7 +14,7 @@ set mouse=
 
 "为了使snippet识别更多后缀文件
 "使用 `:set filetype?' 得到当前使用的filetype变量值。
-au BufNewFile,BufRead *.blog set filetype=blog
+au BufNewFile,BufRead *.blog set filetype=tkblog
 au BufNewFile,BufRead *.y set filetype=yacc
 au BufNewFile,BufRead *.l set filetype=lex
 
