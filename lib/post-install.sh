@@ -41,6 +41,7 @@ if $DO_DESKTOP_ENV; then
 	setup launcher
 	setup input_method
 	setup font
+	setup lemp_stack
 	setup autostart
 	setup desktop_start
 fi
