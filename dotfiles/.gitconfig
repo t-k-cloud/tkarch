@@ -24,3 +24,5 @@
 	# proxy = socks5://127.0.0.1:3081
 [http]
 	# proxy = socks5://127.0.0.1:3081
+[push]
+	default = simple
