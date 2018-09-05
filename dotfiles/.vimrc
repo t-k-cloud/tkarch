@@ -358,3 +358,7 @@ nmap mD <Plug>BookmarkClearAll
 "Save/Load into file
 nnoremap <Leader>ms :BookmarkSave bookmarks.vim<cr>
 nnoremap <Leader>ml :BookmarkLoad bookmarks.vim<cr>
+
+" For the most accurate but slowest result, set the syntax synchronization
+" method to fromstart. 
+autocmd BufEnter * :syntax sync fromstart
