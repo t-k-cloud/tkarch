@@ -11,7 +11,8 @@ exit
 fi
 
 publish="abc=1"
-url='http://104.198.193.4'
+ip=`curl https://t-k-cloud.github.io 2> /dev/null | grep 'var IP' | grep -o '[0-9.]*'`
+url="http://${ip}/tkblog/file_input.php"
 
 if [ $# -eq 0 ] 
 then
@@ -27,4 +28,5 @@ then
 		exit
 	fi
 fi
-curl -F $publish -F "action=upload" -F "files=@${1}" "${url}/tkblog/file_input.php"
+curl -F $publish -F "action=upload" -F "files=@${1}" "${url}" &> /dev/null
+echo "== Done == (IP: $ip)"
