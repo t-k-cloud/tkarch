@@ -230,8 +230,8 @@ nnoremap <Leader>me gdgE:let tt=expand('<cword>')<cr>``:exec "tag ".tt<cr>
 nnoremap <Leader>mE gDgE:let tt=expand('<cword>')<cr>``:exec "tag ".tt<cr>
 
 "netrw相关
-"使用netrw打开feed文件所在的目录
-nmap <silent> <leader>fd :e ~/feeds/<cr> 
+"使用netrw 打开当前目录
+nmap <silent> <leader>e. :Explore .<cr> 
 "隐藏 dot开头的、~结尾的 隐藏文件
 let g:netrw_list_hide= '^\.[^/]\+,\~$'
 "设置默认x键打开方式
@@ -244,6 +244,8 @@ let g:netrw_keepdir = 1
 let g:netrw_hide = 1
 "默认删除目录的命令
 let g:netrw_localrmdir="rm -r"
+" when browsing, <cr> will open file by re-using the same window
+let g:netrw_browse_split = 0
 
 "设置x键打开方式 为只针对.tkfd文件
 "let g:netrw_browsex_viewer="-"
