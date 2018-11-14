@@ -72,15 +72,15 @@ nnoremap <Leader>cl :call ToggleCallbk("g:toggle_flag_cursorcolumn", ":let &colo
 
 "C 语言环境toggle
 let g:toggle_flag_c_environment=0
-nnoremap <Leader>ci :call ToggleCallbk("g:toggle_flag_c_environment", ":set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab autoindent \|set nu\|syntax on", ":set nonu\|set nocindent\|syntax off")<cr><cr>
+nnoremap <Leader>ci :call ToggleCallbk("g:toggle_flag_c_environment", ":set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab autoindent \|set nu\|syntax on\|syntax sync fromstart", ":set nonu\|set nocindent\|syntax off")<cr><cr>
 
 "python 语言环境toggle
 let g:toggle_flag_py_env=0
-nnoremap <Leader>pi :call ToggleCallbk("g:toggle_flag_py_env", ":set tabstop=4 softtabstop=4 shiftwidth=4 expandtab autoindent \|set nu\|syntax on", ":set nonu\|set nocindent\|syntax off")<cr><cr>
+nnoremap <Leader>pi :call ToggleCallbk("g:toggle_flag_py_env", ":set tabstop=4 softtabstop=4 shiftwidth=4 expandtab autoindent \|set nu\|syntax on\|syntax sync fromstart", ":set nonu\|set nocindent\|syntax off")<cr><cr>
 
 "HTML/WEB 语言环境toggle
 let g:toggle_flag_html_env=0
-nnoremap <Leader>wi :call ToggleCallbk("g:toggle_flag_html_env", ":set tabstop=2 softtabstop=2 shiftwidth=2 expandtab autoindent \|set nu\|syntax on", ":set nonu\|set nocindent\|syntax off")<cr><cr>
+nnoremap <Leader>wi :call ToggleCallbk("g:toggle_flag_html_env", ":set tabstop=2 softtabstop=2 shiftwidth=2 expandtab autoindent \|set nu\|syntax on\|syntax sync fromstart", ":set nonu\|set nocindent\|syntax off")<cr><cr>
 
 "搜索高亮toggle
 let g:toggle_flag_hl_search=0
