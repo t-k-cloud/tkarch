@@ -1,4 +1,4 @@
-"设置自定义前缀
+"e置自定义前缀
 let mapleader=" "
 
 "在tmux里如果要开启mouse的全部效果（比如拖动），
@@ -148,7 +148,7 @@ vnoremap <Leader>td <esc>:'<,'>s/[\ ]*\(\*\\|\)[a-zA-Z_1-9]*\(,\\|)\)/\1\2/g<cr>
 vnoremap <Leader>ts <esc>:'<,'>s/\s\+$//gc<cr>
 
 "session快捷保存
-nnoremap <Leader>se :mksession! session.vim<cr>:w<cr>
+nnoremap <Leader>se :mksession! vim.session<cr>:w<cr>
 
 "替换当前词快捷键
 nnoremap <Leader>ss :%s/<c-r><c-w>/
