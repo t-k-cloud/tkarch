@@ -89,7 +89,7 @@ fi
 
 # added by t.k.
 PS1="\[\e[31;1m\]\u\[\e[0m\] \w \[\e[36;1m\]\$?\[\e[0m\] "
-alias gg='xdg-open'
+alias gg='xdg-open &> /dev/null'
 alias tt='stat -c "%y"'
 export PATH=$PATH:/home/tk/.cabal/bin
 # man page highlight color
