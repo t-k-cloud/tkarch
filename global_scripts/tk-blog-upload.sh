@@ -11,7 +11,8 @@ exit
 fi
 
 publish="abc=1"
-ip=`curl https://t-k-cloud.github.io 2> /dev/null | grep 'var IP' | grep -o '[0-9.]*'`
+#ip=`curl https://t-k-cloud.github.io 2> /dev/null | grep 'var IP' | grep -o '[0-9.]*'`
+ip='127.0.0.1' # for fast preview, use localhost instead.
 url="http://${ip}/tkblog/file_input.php"
 
 if [ $# -eq 0 ] 
