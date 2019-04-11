@@ -103,6 +103,14 @@ shopt -s autocd
 
 alias to-polipo="http_proxy=http://localhost:8123 https_proxy=http://localhost:8123"
 
+function do_countdown(){
+   date1=$((`date +%s` + $1));
+   while [ "$date1" -ge `date +%s` ]; do
+     echo -ne "$(date -u --date @$(($date1 - `date +%s`)) +%H:%M:%S)\r";
+     sleep 0.2
+   done
+}
+
 function do_repeat() {
 	[ -z $1 ] && return;
 	while true; do clear; $1; sleep 1; done;
@@ -125,6 +133,7 @@ function do_srchname() {
 }
 
 alias repeat="do_repeat"
+alias cntdown="do_countdown"
 
 alias srch="do_srchcntnt    \"-name '*'\""
 alias srchjs="do_srchcntnt  \"-name '*.js'\""
