@@ -294,6 +294,7 @@ nnoremap <leader><leader> :e #<CR>
 nnoremap <leader>x :bp <BAR> bd #<CR>
 " show function name of current cursor position
 function Showfunname()
+    return ''
 	let lnum = line(".")
 	let lcol = col(".")
 	if g:toggle_flag_c_environment
