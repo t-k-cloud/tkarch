@@ -63,3 +63,8 @@ StackExchange
 OPTs
 Approach0
 subgraph
+Pytorch
+GRU
+RNN
+maxout
+softmax

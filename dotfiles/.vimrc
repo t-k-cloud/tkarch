@@ -68,7 +68,7 @@ nnoremap <Leader>nu :call ToggleCallbk("g:toggle_flag_setnu", ":set nu", ":set n
 "光标列尺toggle
 highlight ColorColumn ctermbg=235 guibg=#2c2d27
 let g:toggle_flag_cursorcolumn=0
-nnoremap <Leader>cl :call ToggleCallbk("g:toggle_flag_cursorcolumn", ":let &colorcolumn=col('.')", ":set colorcolumn=")<cr><cr>
+nnoremap <Leader>cl :call ToggleCallbk("g:toggle_flag_cursorcolumn", ":let &colorcolumn=virtcol('.')", ":set colorcolumn=")<cr><cr>
 
 "C 语言环境toggle
 let g:toggle_flag_c_environment=0
@@ -136,6 +136,10 @@ nnoremap <Leader>wo <esc>i#include <stdio.h><cr>#include <stdlib.h><cr>int main(
 
 "c语言函数折叠
 nnoremap <Leader>z zfa{
+
+"c语言头文和源文件之间切换
+nnoremap <Leader>he :e  %:p:s,.h$,.X123X,:s,.c$,.h,:s,.X123X$,.c,<CR>
+nnoremap <Leader>hp :sp %:p:s,.h$,.X123X,:s,.c$,.h,:s,.X123X$,.c,<CR>
 
 "toggle 'foldenable':
 " zfa{
