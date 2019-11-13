@@ -137,10 +137,6 @@ nnoremap <Leader>wo <esc>i#include <stdio.h><cr>#include <stdlib.h><cr>int main(
 "c语言函数折叠
 nnoremap <Leader>z zfa{
 
-"c语言头文和源文件之间切换
-nnoremap <Leader>he :e  %:p:s,.h$,.X123X,:s,.c$,.h,:s,.X123X$,.c,<CR>
-nnoremap <Leader>hp :sp %:p:s,.h$,.X123X,:s,.c$,.h,:s,.X123X$,.c,<CR>
-
 "toggle 'foldenable':
 " zfa{
 
