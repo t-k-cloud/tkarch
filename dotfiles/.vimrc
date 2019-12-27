@@ -18,6 +18,9 @@ au BufNewFile,BufRead *.blog set filetype=tkblog
 au BufNewFile,BufRead *.y set filetype=yacc
 au BufNewFile,BufRead *.l set filetype=lex
 
+au BufNewFile,BufRead *.wxml set filetype=html
+au BufNewFile,BufRead *.wxss set filetype=css
+
 "包含有关ctags
 "set tags+=~/systags
 
