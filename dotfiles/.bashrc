@@ -156,6 +156,8 @@ alias svnshow="do_svnshow '' "
 alias svnlog="svn log | less"
 alias svnshownameonly="do_svnshow --summarize"
 
+alias pipgfw="sudo pip install -i http://pypi.douban.com/simple/ --trusted-host=pypi.douban.com/simple"
+
 export SVN_EDITOR=vi
 
 PATH="/home/tk/perl5/bin${PATH:+:${PATH}}"; export PATH;
