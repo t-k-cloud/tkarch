@@ -1,7 +1,7 @@
 pacmanS \
 	wget curl graphviz enca strace ctags cscope flex bison \
 	expect dnsutils imagemagick mlocate dosfstools parted \
-	fuse-exfat exfat-utils python-pip mplayer \
+	fuse-exfat exfat-utils python-pip mplayer htop \
 
 pacmanS evince # pdf reader that supports .djvu format
 pacmanS xournal # pdf annotation/note
