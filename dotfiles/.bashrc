@@ -88,7 +88,11 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 # added by t.k.
-PS1="\[\e[31;1m\]\u\[\e[0m\] \w \[\e[36;1m\]\$?\[\e[0m\] "
+parse_git_branch() {
+	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
+
+PS1="\[\e[31;1m\]\u \[\e[0m\] \w \[\e[32m\]\$(parse_git_branch) \[\e[36;1m\]\$?\[\e[0m\] "
 alias gg='xdg-open &> /dev/null'
 alias tt='stat -c "%y"'
 export PATH=$PATH:/home/tk/.cabal/bin
