@@ -17,6 +17,7 @@
 	re = remote -v
 	lodf = log --color -U100 -p --full-diff
 	dflo = log --color -U100 -p --full-diff
+	mergeto = "!f() { [ -n \"$1\" ] && cur=$(git branch --show-current) && git checkout $1 && git merge $cur && git checkout -; }; f"
 [core]
 	editor = vi
 [pager]
