@@ -89,10 +89,24 @@ fi
 
 # added by t.k.
 parse_git_branch() {
-	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1 /'
 }
 
-PS1="\[\e[31;1m\]\u \[\e[0m\] \w \[\e[32m\]\$(parse_git_branch) \[\e[36;1m\]\$?\[\e[0m\] "
+__prompt_command() {
+	lastec=$?
+	show_user="\[\e[31;1m\]\u"
+	show_wdir="\[\e[0m\]\w"
+	gitbrance="\[\e[32m\]\$(parse_git_branch)"
+	if [ $lastec -eq 0 ]; then
+		lastcode="\[\e[0m\]\\$"
+	else
+		lastcode="\[\e[31;1m\]\${lastec}"
+	fi
+	PS1="$show_user $show_wdir $gitbrance$lastcode \[\e[0m\]"
+}
+
+PROMPT_COMMAND=__prompt_command
+
 alias gg='xdg-open &> /dev/null'
 alias tt='stat -c "%y"'
 export PATH=$PATH:/home/tk/.cabal/bin
