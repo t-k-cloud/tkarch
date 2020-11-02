@@ -23,9 +23,10 @@
 [pager]
 	branch = less 
 [https]
-	# proxy = socks5://127.0.0.1:3081
+	#proxy = socks5://127.0.0.1:3081
 [http]
-	# proxy = socks5://127.0.0.1:3081
+	#proxy = socks5://127.0.0.1:3081
+	postBuffer = 524288000
 [push]
 	default = simple
 [diff]
