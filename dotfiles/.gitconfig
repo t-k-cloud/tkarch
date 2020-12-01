@@ -10,7 +10,7 @@
 	df = diff -U100 --color 
 	dff = diff --name-only
 	showf = diff --name-only
-	dfcm = diff --cached HEAD
+	dfcm = diff -U100 --color --cached HEAD
 	cmdf = diff --cached HEAD
 	br = branch -a -vv --color
 	st = status --untracked-files=no

@@ -82,3 +82,5 @@ TOML
 DevOps
 sharding
 VPS
+Nginx
+rsync
