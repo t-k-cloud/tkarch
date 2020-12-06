@@ -18,6 +18,7 @@
 	lodf = log --color -U100 -p --full-diff
 	dflo = log --color -U100 -p --full-diff
 	mergeto = "!f() { [ -n \"$1\" ] && cur=$(git branch --show-current) && git checkout $1 && git merge $cur && git checkout -; }; f"
+	lg = log --decorate --all --date-order --date=format:'%Y-%m-%d %H:%M:%S' --pretty=format:'%C(cyan)%h%Creset %C(black bold)%ad%Creset%C(auto)%d %s'
 [core]
 	editor = vi
 [pager]
