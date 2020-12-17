@@ -21,6 +21,7 @@ syn match tkblogElement "\[\/\?photo\]"
 syn match tkblogElement "\[\/\?underline\]" 
 syn match tkblogElement "\[\/\?overline\]" 
 syn match tkblogElement "\[\/\?link\]" 
+syn match tkblogElement "\[\/\?diagram\]" 
 
 hi def link tkblogTags Statement
 hi def link tkblogTagKey PreProc 
