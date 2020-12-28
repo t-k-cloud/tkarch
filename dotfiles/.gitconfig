@@ -7,7 +7,7 @@
 	lolall = log --graph --oneline --all --decorate --color
 	logauthor = log --format=fuller
 	co = checkout
-	df = diff -U100 --color 
+	df = diff -U100 --color --no-prefix
 	dff = diff --name-only
 	showf = diff --name-only
 	dfcm = diff -U100 --color --cached HEAD
@@ -30,7 +30,5 @@
 	postBuffer = 524288000
 [push]
 	default = simple
-[diff]
-	noprefix = true # remove diff 'a/' and 'b/' prefix
 [pull]
 	rebase = false
