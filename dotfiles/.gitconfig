@@ -10,8 +10,9 @@
 	df = diff -U100 --color --no-prefix
 	dff = diff --name-only
 	showf = diff --name-only
+	showw = show --word-diff=color
 	dfcm = diff -U100 --color --cached HEAD
-	cmdf = diff --cached HEAD
+	cmdf = diff --cached HEAD  --no-prefix
 	br = branch -a -vv --color
 	st = status --untracked-files=no
 	re = remote -v
