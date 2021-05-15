@@ -46,3 +46,13 @@ overwrite it using available template:
 7. now reboot and login as `root`, use `passwd <username>` to set password for the user.
 
 8. exit root and login as the user.
+
+DEBUG
+=====
+Under installer environment, issue following commands to enter jail environment:
+```sh
+cd /run/archiso/img_dev/tkarch/
+source install.sh # and abort
+setup jail_mount
+arch-chroot /mnt /bin/bash
+```
