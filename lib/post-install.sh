@@ -59,3 +59,6 @@ setup network_mg
 setup home_tkarch
 setup dotfiles
 setup global_scripts
+
+### prompt user to enter root password */
+passwd

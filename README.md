@@ -41,7 +41,7 @@ overwrite it using available template:
 
 5. boot into USB stick, select archlinux boot entry and login to Arch Linux installer.
 
-6. in this installer, run `/run/archiso/img_dev/tkarch/install.sh`.
+6. in this installer, run `/run/archiso/img_dev/tkarch/install.sh`, you will be prompted to setup root password at the end.
 
 7. now reboot and login as `root`, use `passwd <username>` to set password for the user.
 
