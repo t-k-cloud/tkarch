@@ -27,7 +27,7 @@ setup sudoer
 ### core packages ###
 pacmanS dhcpcd iw wpa_supplicant
 pacmanS git tmux vim rsync openssh
-ln -sf `which vim` `which vi`
+ln -sf `which vim` /usr/bin/vi
 
 ### desktop environment ###
 if $DO_DESKTOP_ENV; then
@@ -50,7 +50,7 @@ fi
 setup median_perm
 
 ### extra packages ###
-#setup pacman_extra
+setup pacman_extra
 
 ### network hand-over ###
 setup network_mg
