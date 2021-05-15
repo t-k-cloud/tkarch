@@ -10,7 +10,7 @@ bold-color='#000000000000'
 foreground-color='#AAAAAAAAAAAA'
 visible-name='Default'
 use-system-font=false
-font='文泉驿等宽微米黑 12'
+font='Terminus 16'
 
 [org.cinnamon.desktop.a11y.applications]
 screen-magnifier-enabled=true

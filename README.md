@@ -4,11 +4,11 @@ STEPS
 
 2. `cd` to USB stick partition,
 
-	* check if a GRUB `boot` folder is already there
+	* double-check if GRUB is installed by checking if `boot` folder is there
 
 	* `git clone` this repo.
 
-	* `wget` a `archlinux-20**.**.**-x86_64.iso` **and rename it** to `archlinux.iso`.
+	* `wget archlinux-2021.05.01-x86_64` **and rename it** to `archlinux.iso`.
 
 3. In `tkarch` folder on your USB stick, edit installation configuration file `install.cfg`, or
 overwrite it using available template:
