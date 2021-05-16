@@ -7,9 +7,15 @@ pacmanS evince # pdf reader that supports .djvu format
 pacmanS xournal # pdf annotation/note
 
 # install proxy tools
-pacmanS shadowsocks-libev simple-obfs polipo
+pacmanS shadowsocks-libev simple-obfs proxychains-ng
 ln -sf /usr/bin/obfs-local /usr/local/bin/obfs-local
-cat << EOF > /etc/polipo/config
-socksParentProxy = "localhost:3080"
-socksProxyType = socks5
+cat << EOF > /etc/proxychains.conf
+strict_chain
+proxy_dns
+remote_dns_subnet 224
+tcp_read_time_out 15000
+tcp_connect_time_out 8000
+
+[ProxyList]
+socks5 127.0.0.1 3081
 EOF
