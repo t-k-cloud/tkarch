@@ -345,8 +345,8 @@ set spellcapcheck=
 let g:bookmark_no_default_key_mappings = 1
 let g:bookmark_auto_close = 0
 
-let g:bookmark_annotation_sign = '☰ '
-let g:bookmark_sign = '⚑ '
+let g:bookmark_annotation_sign = 'A '
+let g:bookmark_sign = 'B '
 highlight BookmarkSign           ctermbg=None ctermfg=Yellow
 highlight BookmarkAnnotationSign ctermbg=None ctermfg=Yellow
 "书签列不要颜色
