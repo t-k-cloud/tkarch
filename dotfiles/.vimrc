@@ -175,7 +175,7 @@ nnoremap <Leader>0 :call CleanMutiHighlihtList()<cr>
 
 function! CleanMutiHighlihtList()
 	let g:hl_words = []
-	execute "match Search '' " 
+	execute "match Search2 '' " 
 endfunc
 
 function! Mk_or_words_in_qoutes(words)
@@ -208,8 +208,8 @@ function! MutiHighliht(word)
 	call Hlwords_list_toggle(a:word)
 	let tmp_words = Mk_or_words_in_qoutes(g:hl_words)
 	echo tmp_words
-	execute "match Search ".tmp_words 
-	" using the `Search' highlight group color
+	execute "match Search2 ".tmp_words 
+	" using the `Search2' highlight group color
 endfunc
 
 "cscope相关键位绑定
@@ -266,7 +266,8 @@ endif
 :highlight MatchParen cterm=bold ctermfg=yellow ctermbg=None
 
 "自定义搜索高亮颜色
-:highlight Search cterm=NONE ctermfg=black ctermbg=yellow
+:highlight Search  cterm=NONE ctermfg=black ctermbg=yellow
+:highlight Search2 cterm=NONE ctermfg=white ctermbg=darkblue
 
 "自定义 vimdiff 颜色
 highlight DiffAdd cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
