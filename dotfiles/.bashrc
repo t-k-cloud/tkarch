@@ -92,8 +92,15 @@ parse_git_branch() {
 	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1 /'
 }
 
+show_conda_env() {
+	if [ -n "$CONDA_DEFAULT_ENV" ]; then
+		echo "($CONDA_DEFAULT_ENV) "
+	fi
+}
+
 __prompt_command() {
 	lastec=$?
+	show_pyenv="\$(show_conda_env)"
 	show_user="\[\e[31;1m\]\u"
 	show_wdir="\[\e[0m\]\w"
 	gitbrance="\[\e[32m\]\$(parse_git_branch)"
@@ -102,7 +109,7 @@ __prompt_command() {
 	else
 		lastcode="\[\e[31;1m\]\${lastec}"
 	fi
-	PS1="$show_user $show_wdir $gitbrance$lastcode \[\e[0m\]"
+	PS1="${show_pyenv}${show_user} $show_wdir $gitbrance$lastcode \[\e[0m\]"
 }
 
 PROMPT_COMMAND=__prompt_command
@@ -183,3 +190,25 @@ PERL5LIB="/home/tk/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
 PERL_LOCAL_LIB_ROOT="/home/tk/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
 PERL_MB_OPT="--install_base \"/home/tk/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/tk/perl5"; export PERL_MM_OPT;
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/tk/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/tk/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/tk/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/tk/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/tk/google-cloud-sdk/path.bash.inc' ]; then . '/home/tk/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/tk/google-cloud-sdk/completion.bash.inc' ]; then . '/home/tk/google-cloud-sdk/completion.bash.inc'; fi
