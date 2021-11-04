@@ -369,3 +369,6 @@ nnoremap <Leader>ml :BookmarkLoad bookmarks.vim<cr>
 " For the most accurate but slowest result, set the syntax synchronization
 " method to fromstart. 
 autocmd BufEnter * :syntax sync fromstart
+
+" 强制关闭自动换行
+set textwidth=0 wrapmargin=0
