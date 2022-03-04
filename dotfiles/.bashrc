@@ -116,7 +116,7 @@ PROMPT_COMMAND=__prompt_command
 
 alias gg='xdg-open &> /dev/null'
 alias tt='stat -c "%y"'
-export PATH=$PATH:/home/tk/.cabal/bin
+export PATH=$PATH:/home/tk/.cabal/bin:/home/tk/Desktop/bin:/home/tk/.local/share/gem/ruby/3.0.0/bin
 # man page highlight color
 export LESS_TERMCAP_so=$(tput bold; tput setaf 3; tput setab 4) # yellow on blue
 export LESS_TERMCAP_se=$(tput rmso; tput sgr0)
