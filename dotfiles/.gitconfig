@@ -13,6 +13,7 @@
 	showw = show --word-diff=color
 	dfcm = diff -U100 --color --cached HEAD
 	cmdf = diff --cached HEAD  --no-prefix
+	cmdfw = diff --cached HEAD  --no-prefix --word-diff=color
 	br = branch -a -vv --color
 	st = status --untracked-files=no
 	re = remote -v
