@@ -113,6 +113,7 @@ get_gitstatus() {
 __prompt_command() {
 	lastcode=$?
 	bold=$(tput bold)
+	dim=$(tput dim)
 	normal=$(tput sgr0)
 	red_bkgd=$(tput setab 1)
 	magenta_fg=$(tput setaf 5)
@@ -128,7 +129,7 @@ __prompt_command() {
 	show_date=$(date +%d/%m\|%Y)
 	show_time="\t"
 	show_pyenv="${blue_fg}${bold}\$(show_conda_env)"
-	show_gitbrance="${yellow_fg}\$(parse_git_branch)"
+	show_gitbrance="${dim}${yellow_fg}\$(parse_git_branch)"
 	show_gitstatus="\$(get_gitstatus)"
 	if [ $lastcode -eq 0 ]; then
 		show_prompt_head="${white_fg}${bold}\\$"
