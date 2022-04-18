@@ -104,6 +104,8 @@ get_gitstatus() {
 			tput setaf 1 && echo "●" # red
 		elif ! git diff --cached --quiet; then
 			tput setaf 2 && echo "●" # green
+		elif [ "$(git log --branches --not --remotes)" != "" ]; then
+			tput setaf 6 && echo "↑" # cyan
 		fi
 	fi
 }
