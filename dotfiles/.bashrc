@@ -89,7 +89,9 @@ fi
 
 # added by t.k.
 parse_git_branch() {
-	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1 /'
+	if which git &> /dev/null; then
+		git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1 /'
+	fi
 }
 
 show_conda_env() {
@@ -99,13 +101,15 @@ show_conda_env() {
 }
 
 get_gitstatus() {
-	if git rev-parse --is-inside-work-tree &> /dev/null; then
-		if ! git diff --quiet; then
-			tput setaf 1 && echo "●" # red
-		elif ! git diff --cached --quiet; then
-			tput setaf 2 && echo "●" # green
-		elif [ "$(git log --branches --not --remotes)" != "" ]; then
-			tput setaf 6 && echo "↑" # cyan
+	if which git &> /dev/null; then
+		if git rev-parse --is-inside-work-tree &> /dev/null; then
+			if ! git diff --quiet; then
+				tput setaf 1 && echo "●" # red
+			elif ! git diff --cached --quiet; then
+				tput setaf 2 && echo "●" # green
+			elif [ "$(git log --branches --not --remotes)" != "" ]; then
+				tput setaf 6 && echo "↑" # cyan
+			fi
 		fi
 	fi
 }
