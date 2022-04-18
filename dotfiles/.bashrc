@@ -99,33 +99,35 @@ show_conda_env() {
 }
 
 get_gitstatus() {
-    if ! git diff --quiet; then
-        tput setaf 1 && echo "●" # red
-    elif ! git diff --cached --quiet; then
-        tput setaf 2 && echo "●" # green
-    fi
+	if git rev-parse --is-inside-work-tree &> /dev/null; then
+		if ! git diff --quiet; then
+			tput setaf 1 && echo "●" # red
+		elif ! git diff --cached --quiet; then
+			tput setaf 2 && echo "●" # green
+		fi
+	fi
 }
 
 __prompt_command() {
 	lastcode=$?
-    bold=$(tput bold)
-    normal=$(tput sgr0)
-    red_bkgd=$(tput setab 1)
-    magenta_fg=$(tput setaf 5)
-    blue_fg=$(tput setaf 4)
-    yellow_fg=$(tput setaf 3)
-    green_fg=$(tput setaf 2)
-    white_fg=$(tput setaf 7)
-    underline=$(tput smul)
+	bold=$(tput bold)
+	normal=$(tput sgr0)
+	red_bkgd=$(tput setab 1)
+	magenta_fg=$(tput setaf 5)
+	blue_fg=$(tput setaf 4)
+	yellow_fg=$(tput setaf 3)
+	green_fg=$(tput setaf 2)
+	white_fg=$(tput setaf 7)
+	underline=$(tput smul)
 	show_user="\u"
 	show_host="\h"
 	show_wdir="\w"
 	show_newline="\n"
-    show_date=$(date +%d/%m\|%Y)
-    show_time="\t"
+	show_date=$(date +%d/%m\|%Y)
+	show_time="\t"
 	show_pyenv="${blue_fg}${bold}\$(show_conda_env)"
 	show_gitbrance="${yellow_fg}\$(parse_git_branch)"
-    show_gitstatus="\$(get_gitstatus)"
+	show_gitstatus="\$(get_gitstatus)"
 	if [ $lastcode -eq 0 ]; then
 		show_prompt_head="${white_fg}${bold}\\$"
 	else
