@@ -98,18 +98,40 @@ show_conda_env() {
 	fi
 }
 
+get_gitstatus() {
+    if ! git diff --quiet; then
+        tput setaf 1 && echo "●" # red
+    elif ! git diff --cached --quiet; then
+        tput setaf 2 && echo "●" # green
+    fi
+}
+
 __prompt_command() {
-	lastec=$?
-	show_pyenv="\$(show_conda_env)"
-	show_user="\[\e[31;1m\]\u"
-	show_wdir="\[\e[0m\]\w"
-	gitbrance="\[\e[32m\]\$(parse_git_branch)"
-	if [ $lastec -eq 0 ]; then
-		lastcode="\[\e[0m\]\\$"
+	lastcode=$?
+    bold=$(tput bold)
+    normal=$(tput sgr0)
+    red_bkgd=$(tput setab 1)
+    magenta_fg=$(tput setaf 5)
+    blue_fg=$(tput setaf 4)
+    yellow_fg=$(tput setaf 3)
+    green_fg=$(tput setaf 2)
+    white_fg=$(tput setaf 7)
+    underline=$(tput smul)
+	show_user="\u"
+	show_host="\h"
+	show_wdir="\w"
+	show_newline="\n"
+    show_date=$(date +%d/%m\|%Y)
+    show_time="\t"
+	show_pyenv="${blue_fg}${bold}\$(show_conda_env)"
+	show_gitbrance="${yellow_fg}\$(parse_git_branch)"
+    show_gitstatus="\$(get_gitstatus)"
+	if [ $lastcode -eq 0 ]; then
+		show_prompt_head="${white_fg}${bold}\\$"
 	else
-		lastcode="\[\e[31;1m\]\${lastec}"
+		show_prompt_head="${white_fg}${red_bkgd}\${lastcode}${normal} \\$"
 	fi
-	PS1="${show_pyenv}${show_user} $show_wdir $gitbrance$lastcode \[\e[0m\]"
+	PS1="╭─ ${bold}${magenta_fg}${show_user}@${show_host}${normal} ${show_wdir} ${show_pyenv}${show_gitstatus}${show_gitbrance}${normal}${underline}${show_date} ${show_time}${normal}${show_newline}${normal}╰─ ${show_prompt_head}${normal} "
 }
 
 PROMPT_COMMAND=__prompt_command
