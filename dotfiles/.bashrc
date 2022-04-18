@@ -140,7 +140,7 @@ __prompt_command() {
 	else
 		show_prompt_head="${white_fg}${red_bkgd}\${lastcode}${normal} \\$"
 	fi
-	PS1="╭─ ${bold}${magenta_fg}${show_user}@${show_host}${normal} ${show_wdir} ${show_pyenv}${show_gitstatus}${show_gitbrance}${normal}${underline}${show_date} ${show_time}${normal}${show_newline}${normal}╰─ ${show_prompt_head}${normal} "
+	PS1="╭─ ${bold}${magenta_fg}${show_user}@${show_host}${normal} ${bold}${show_wdir}${normal} ${show_pyenv}${show_gitstatus}${show_gitbrance}${normal}${underline}${show_date} ${show_time}${normal}${show_newline}${normal}╰─ ${show_prompt_head}${normal} "
 }
 
 PROMPT_COMMAND=__prompt_command
