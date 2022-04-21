@@ -101,31 +101,40 @@ show_conda_env() {
 }
 
 get_gitstatus() {
+	red_ink=$(tput setaf 1)
+	green_ink=$(tput setaf 2)
+	cyan_ink=$(tput setaf 6)
 	if which git &> /dev/null; then
 		if git rev-parse --is-inside-work-tree &> /dev/null; then
 			if ! git diff --quiet; then
-				tput setaf 1 && echo "●" # red
+				echo "${red_ink}●"
 			elif ! git diff --cached --quiet; then
-				tput setaf 2 && echo "●" # green
+				echo "${green_ink}●"
 			elif [ "$(git log --branches --not --remotes)" != "" ]; then
-				tput setaf 6 && echo "↑" # cyan
+				echo "${cyan_ink}↑"
 			fi
 		fi
 	fi
 }
 
+mytput() {
+	echo -n '\['
+	tput $@
+	echo -n '\]'
+}
+
 __prompt_command() {
 	lastcode=$?
-	bold=$(tput bold)
-	dim=$(tput dim)
-	normal=$(tput sgr0)
-	red_bkgd=$(tput setab 1)
-	magenta_fg=$(tput setaf 5)
-	blue_fg=$(tput setaf 4)
-	yellow_fg=$(tput setaf 3)
-	green_fg=$(tput setaf 2)
-	white_fg=$(tput setaf 7)
-	underline=$(tput smul)
+	bold=$(mytput bold)
+	dim=$(mytput dim)
+	normal=$(mytput sgr0)
+	red_bkgd=$(mytput setab 1)
+	magenta_fg=$(mytput setaf 5)
+	blue_fg=$(mytput setaf 4)
+	yellow_fg=$(mytput setaf 3)
+	green_fg=$(mytput setaf 2)
+	white_fg=$(mytput setaf 7)
+	underline=$(mytput smul)
 	show_user="\u"
 	show_host="\h"
 	show_wdir="\w"
@@ -135,10 +144,9 @@ __prompt_command() {
 	show_pyenv="${blue_fg}${bold}\$(show_conda_env)"
 	show_gitbrance="${dim}${yellow_fg}\$(parse_git_branch)"
 	show_gitstatus="\$(get_gitstatus)"
-	if [ $lastcode -eq 0 ]; then
-		show_prompt_head="${white_fg}${bold}\\$"
-	else
-		show_prompt_head="${white_fg}${red_bkgd}\${lastcode}${normal} \\$"
+	show_prompt_head="${white_fg}${bold}\\$"
+	if [ ! $lastcode -eq 0 ]; then
+		show_prompt_head="${white_fg}${red_bkgd}\${lastcode}${normal} ${show_prompt_head}"
 	fi
 	PS1="╭─ ${bold}${show_wdir}${normal} ${show_pyenv}${show_gitstatus}${show_gitbrance}${normal} ${bold}${magenta_fg}${show_user}@${show_host}${normal} ${underline}${show_date} ${show_time}${normal}${show_newline}${normal}╰─ ${show_prompt_head}${normal} "
 }
