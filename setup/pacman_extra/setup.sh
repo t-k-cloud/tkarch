@@ -3,7 +3,7 @@ pacmanS \
 	fuse-exfat exfat-utils python-pip mplayer htop imagemagick nodejs npm \
 	man-db man-pages
 
-pacmanS evince # pdf reader that supports .djvu format
+pacmanS zathura-pdf-mupdf # using fast pdf engine and VI-like, supports history.
 pacmanS xournal # pdf annotation/note
 
 # install proxy tools
