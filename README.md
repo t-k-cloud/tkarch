@@ -57,6 +57,15 @@ setup jail_mount
 arch-chroot /mnt /bin/bash
 ```
 
+Cherry Picking
+==============
+```sh
+su # input your password
+TKARCH_DIR=`pwd`
+source lib/common.sh
+setup translator
+```
+
 GFW
 ===
 To bypass GFW of China,
