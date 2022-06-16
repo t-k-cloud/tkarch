@@ -1,0 +1,1 @@
+/home/tk/tkarch/dotfiles/./.vim
