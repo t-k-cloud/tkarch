@@ -1,5 +1,5 @@
 set sandbox none
-set font "inconsolata 20"
+set font "inconsolata 15"
 set highlight-color "#FF0000" #00
 set highlight-fg "#FFFFFF" #00
 set highlight-transparency 1
