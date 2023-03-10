@@ -162,3 +162,7 @@ stemmer
 warmup
 rerankers
 autoencoder
+SPLADE
+equivariant
+siamese
+wildcard
