@@ -9,6 +9,7 @@
 	co = checkout
 	df = diff -U100 --color --no-prefix
 	dff = diff --name-only
+	diffw = diff --word-diff=color
 	showf = diff --name-only
 	showw = show --word-diff=color
 	dfcm = diff -U100 --color --cached HEAD
