@@ -208,6 +208,7 @@ alias srchC="do_srchcntnt   \"\\( -name '*.[ch]' -o -name '*.cpp' \\)\""
 alias srchc="do_srchcntnt   \"-name '*.c'\""
 alias srchcpp="do_srchcntnt \"-name '*.cpp'\""
 alias srchh="do_srchcntnt   \"-name '*.h'\""
+alias srchtex="do_srchcntnt  \"-name '*.tex'\""
 alias srchmk="do_srchcntnt  \"\\( -name '*.mk' -o -name '[Mm]akefile' -o -name 'Android.mk' \\)\""
 alias srchname="do_srchname"
 
