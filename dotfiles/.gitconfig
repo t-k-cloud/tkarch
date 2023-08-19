@@ -1,6 +1,6 @@
 [user]
 	email = clock126@126.com
-	name = t-k-
+	name = w32zhong
 [alias]
 	lo = log --graph --oneline --decorate --color --pretty=format:'%d [%h %ad %ae]  %s' --date=short
 	lol = log --graph --oneline --decorate --color
