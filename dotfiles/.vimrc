@@ -17,6 +17,7 @@ set mouse=
 au BufNewFile,BufRead *.blog set filetype=tkblog
 au BufNewFile,BufRead *.y set filetype=yacc
 au BufNewFile,BufRead *.l set filetype=lex
+au BufNewFile,BufRead *.mojo,*.🔥 setf mojo
 
 au BufNewFile,BufRead *.wxml set filetype=html
 au BufNewFile,BufRead *.wxss set filetype=css

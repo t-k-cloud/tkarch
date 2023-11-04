@@ -254,3 +254,5 @@ if [ -f '/home/tk/google-cloud-sdk/path.bash.inc' ]; then . '/home/tk/google-clo
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/tk/google-cloud-sdk/completion.bash.inc' ]; then . '/home/tk/google-cloud-sdk/completion.bash.inc'; fi
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/.local/lib/mojo
+export PATH=$PATH:~/.modular/pkg/packages.modular.com_mojo/bin/
