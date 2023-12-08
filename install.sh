@@ -11,7 +11,7 @@ if $DO_CONN; then
 fi;
 
 pacman -Sy
-which wget | pacmanS wget
+pacmanS wget
 internet || exit 
 
 ### Do dist partition ###
@@ -23,13 +23,14 @@ fi;
 setup jail_mount
 
 if $DO_JAIL_SETUP; then
-	setup pacstrap
-	setup jail_genfstab
+	setup pacstrap # this takes time
+	setup genfstab # better do only once
 fi;
 
 pacmanS rsync
-setup root_tkarch
+setup root_tkarch # create a tkarch under ./root
 
-### Change root to jail and do post-install
+### Change root to jail and do jail-install ###
 setup arch_chroot
+
 echo 'Now remove USB drive and reboot.'
