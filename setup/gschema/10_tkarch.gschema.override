@@ -10,7 +10,7 @@ bold-color='#000000000000'
 foreground-color='#AAAAAAAAAAAA'
 visible-name='Default'
 use-system-font=false
-font='Terminus 16'
+font='Inconsolata 15'
 
 [org.cinnamon.desktop.a11y.applications]
 screen-magnifier-enabled=true
