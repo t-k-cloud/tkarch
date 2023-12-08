@@ -1,7 +1,7 @@
 {
     "launcherList": {
         "type": "generic",
-        "default": ["leafpad.desktop", "stardict.desktop", "mate-calc.desktop", "xfce4-screenshooter.desktop", "my-terminal.desktop", "chromium.desktop"]
+        "default": ["leafpad.desktop", "mate-calc.desktop", "xfce4-screenshooter.desktop", "my-terminal.desktop", "chromium.desktop"]
     },
     "allow-dragging": {
         "type": "checkbox",
