@@ -9,19 +9,20 @@ function setup() {
 	# print notice
 	tput setaf 3;
 	echo "setup ${1}";
+	sleep 1
 	tput sgr0;
 
 	# exec this setup.
 	pushd ${TKARCH_DIR}/setup/${1} > /dev/null
-    (set -x
-        trap 'set +x; catch; set -x' ERR
-        catch() {
-            tput setaf 1;
-            echo "^-- One command may have failed";
-            tput sgr0;
-        }
-        source ./setup.sh
-    )
+	(set -x
+		 trap 'set +x; catch; set -x' ERR
+		 catch() {
+			 tput setaf 1;
+			 echo "^-- One command may have failed";
+			 tput sgr0;
+		 }
+		 source ./setup.sh
+	)
 	popd > /dev/null
 }
 

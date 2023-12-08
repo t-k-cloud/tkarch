@@ -20,9 +20,15 @@ setup hostname
 ### NTP time sync ###
 setup timesync
 
-### root/user password ###
+### create user ###
 setup users
 setup sudoer
+
+### dotfiles and global scripts ###
+setup home_tkarch
+setup dotfiles
+setup global_scripts
+setup media_perm
 
 ### core packages ###
 pacmanS dhcpcd iw wpa_supplicant
@@ -35,34 +41,30 @@ systemctl enable sshd
 
 ### desktop environment ###
 if $DO_DESKTOP_ENV; then
+	# install desktop env/utils
 	setup desktop_env
 	setup desktop_utils
+	setup translator
+	# styles and customization
 	setup gschema
 	setup my_terminal
-	setup keybindings
 	setup pannel_icon
 	setup launcher
-	setup input_method
-	setup font
-	setup translator
-	setup lemp_stack
 	setup autostart
+	setup keybindings # write to ~/.xinitrc
+	setup font # write to ~/.xinitrc
+	# input methods
+	setup input_method # write to ~/.xinitrc
+	# finally, write "exec session" in ~/.xinitrc
 	setup desktop_start
 fi
 
-### auto-mount normal user write permission ###
-setup media_perm
-
 ### extra packages ###
-setup pacman_extra
+setup nongui_utils
+setup lemp_stack
 
 ### network hand-over ###
 setup network_mg
-
-### dotfiles and global scripts ###
-setup home_tkarch
-setup dotfiles
-setup global_scripts
 
 ### prompt user to enter root password */
 passwd
