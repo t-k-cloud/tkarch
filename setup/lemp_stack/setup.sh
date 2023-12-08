@@ -14,6 +14,6 @@ systemctl enable mysqld nginx php-fpm
 groupadd -f http
 useradd -g http http
 
-## make tk and http mutual-permissive
-usermod tk -a -G http
-usermod http -a -G tk
+## make user and http mutual-permissive
+usermod $USERNAME -a -G http
+usermod http -a -G $USERNAME

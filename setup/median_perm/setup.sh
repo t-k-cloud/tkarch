@@ -1,1 +1,1 @@
-chmod -R tk:tk /run/median/tk
+chmod -R $USERNAME:$USERNAME /run/median/$USERNAME
