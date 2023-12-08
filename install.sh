@@ -28,7 +28,7 @@ if $DO_JAIL_SETUP; then
 fi;
 
 pacmanS rsync
-setup root_tkarch # copy tkarch to ./mnt/root
+setup root_tkarch # copy /root/tkarch to ./mnt/root
 
 ### Change root to jail and do jail-install ###
 setup arch_chroot
