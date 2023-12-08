@@ -26,8 +26,12 @@ setup sudoer
 
 ### core packages ###
 pacmanS dhcpcd iw wpa_supplicant
-pacmanS git tmux vim rsync openssh
+pacmanS git tmux vim rsync
 ln -sf `which vim` /usr/bin/vi
+
+### Setup ssh/sshd ###
+pacmanS openssh
+systemctl enable sshd
 
 ### desktop environment ###
 if $DO_DESKTOP_ENV; then
