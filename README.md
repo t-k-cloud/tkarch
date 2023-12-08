@@ -64,7 +64,8 @@ Debug
 Under installer environment, issue following commands to enter jail environment:
 ```sh
 cd /run/archiso/img_dev/tkarch/
-source install.sh # and abort
+TKARCH_DIR=`pwd`
+source lib/common.sh
 setup jail_mount
 arch-chroot /mnt /bin/bash
 ```
