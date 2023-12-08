@@ -30,7 +30,7 @@ terminal=['']
 
 [org.cinnamon.desktop.keybindings.wm]
 show-desktop=['<Primary><Alt>d']
-switch-to-workspace-down=['<Primary><Alt>Down', '<Super>e']
+switch-to-workspace-down=['<Primary><Alt>Down']
 
 [org.cinnamon.settings-daemon.peripherals.touchpad]
 natural-scroll=false
