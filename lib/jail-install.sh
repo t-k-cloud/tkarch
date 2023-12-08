@@ -8,7 +8,8 @@ setup grub_install
 
 ### when lack of confidence ###
 if $REBOOT_TEST; then
-	echo 'reboot to test booting.'
+	echo 'About to reboot and test booting.'
+ 	passwd
 	exit
 fi;
 
