@@ -12,4 +12,4 @@ pacmanS xfce4-clipman-plugin # clipman
 pacmanS imagemagick # simple image editor
 pacmanS mplayer # powerful media player
 pacmanS zathura-pdf-mupdf # using fast pdf engine and VI-like, supports history.
-pacmanS xournal # pdf annotation/note
+pacmanS xournalpp # Xournal++: pdf annotation/note

@@ -6,7 +6,7 @@ pacmanS fcitx fcitx-configtool # input method
 # "Fcitx Configure UI" section.
 pacmanS extra/xorg-xprop
 pacmanS fcitx-gtk2 fcitx-gtk3
-pacmanS fcitx-qt4  fcitx-qt5
+pacmanS fcitx-qt5
 
 cat << EOF >> /home/$USERNAME/.xinitrc
 # Config input method

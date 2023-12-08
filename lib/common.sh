@@ -29,13 +29,10 @@ function setup() {
 }
 
 function pacmanS() {
-	# print notice
-	tput setaf 3;
-	echo "install list [$@]";
-	tput sgr0;
-
 	# pacman install package
+	tput setaf 4;
 	pacman --noconfirm -S $@
+	tput sgr0;
 }
 
 function internet() {
