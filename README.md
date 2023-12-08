@@ -59,17 +59,6 @@ vim install.cfg # you may need to change the HOSTNAME
 ./install.sh
 ```
 
-Debug
-=====
-Under installer environment, issue following commands to enter jail environment:
-```sh
-cd /run/archiso/img_dev/tkarch/
-TKARCH_DIR=`pwd`
-source lib/common.sh
-setup jail_mount
-arch-chroot /mnt /bin/bash
-```
-
 Run individual setup
 ==============
 ```sh
