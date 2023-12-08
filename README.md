@@ -47,6 +47,17 @@ overwrite it using available template:
 
 8. exit root and login as the user.
 
+From Archlinux ISO
+==================
+No need to make a grub-enabled USB-stick, just boot the live ISO and
+```sh
+pacman -S git vim
+git clone https://github.com/t-k-cloud/tkarch
+cd tkarch
+vim install.cfg # you may need to change the HOSTNAME
+./install.sh
+```
+
 Debug
 =====
 Under installer environment, issue following commands to enter jail environment:
