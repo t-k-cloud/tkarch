@@ -44,4 +44,5 @@ id="org.cinnamon.settings-daemon.peripherals.touchpad"
 Reference
 =========
 [1] https://man.archlinux.org/man/core/glib2/glib-compile-schemas.1.en
+
 [2] https://unix.stackexchange.com/questions/687514
