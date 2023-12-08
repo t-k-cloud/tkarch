@@ -51,7 +51,7 @@ if $DO_DESKTOP_ENV; then
 fi
 
 ### auto-mount normal user write permission ###
-setup median_perm
+setup media_perm
 
 ### extra packages ###
 setup pacman_extra

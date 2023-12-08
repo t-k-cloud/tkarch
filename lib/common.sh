@@ -4,17 +4,25 @@ echo "tkarch dir: $TKARCH_DIR"
 cat ${TKARCH_DIR}/install.cfg
 source ${TKARCH_DIR}/install.cfg
 
-### install functions ###
+### common utility functions ###
 function setup() {
 	# print notice
 	tput setaf 3;
-	echo "setup [${1}]";
+	echo "setup ${1}";
 	tput sgr0;
 
 	# exec this setup.
-	pushd ${TKARCH_DIR}/setup/${1}
-	source ./setup.sh
-	popd
+	pushd ${TKARCH_DIR}/setup/${1} > /dev/null
+    (set -x
+        trap 'set +x; catch; set -x' ERR
+        catch() {
+            tput setaf 1;
+            echo "^-- One command may have failed";
+            tput sgr0;
+        }
+        source ./setup.sh
+    )
+	popd > /dev/null
 }
 
 function pacmanS() {
