@@ -89,27 +89,75 @@ fi
 
 # added by t.k.
 parse_git_branch() {
-	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1 /'
+	if which git &> /dev/null; then
+		git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1 /'
+	fi
+}
+
+show_conda_env() {
+	if [ -n "$CONDA_DEFAULT_ENV" ]; then
+		echo "($CONDA_DEFAULT_ENV) "
+	fi
+}
+
+get_gitstatus() {
+	red_ink=$(tput setaf 1)
+	green_ink=$(tput setaf 2)
+	cyan_ink=$(tput setaf 6)
+	if which git &> /dev/null; then
+		if git rev-parse --is-inside-work-tree &> /dev/null; then
+			if ! git diff --quiet; then
+				echo "${red_ink}●"
+			elif ! git diff --cached --quiet; then
+				echo "${green_ink}●"
+			elif [ "$(git log --branches --not --remotes)" != "" ]; then
+				echo "${cyan_ink}↑"
+			fi
+		fi
+	fi
+}
+
+mytput() {
+	echo -n '\['
+	tput $@
+	echo -n '\]'
 }
 
 __prompt_command() {
-	lastec=$?
-	show_user="\[\e[31;1m\]\u"
-	show_wdir="\[\e[0m\]\w"
-	gitbrance="\[\e[32m\]\$(parse_git_branch)"
-	if [ $lastec -eq 0 ]; then
-		lastcode="\[\e[0m\]\\$"
-	else
-		lastcode="\[\e[31;1m\]\${lastec}"
+	lastcode=$?
+	bold=$(mytput bold)
+	dim=$(mytput dim)
+	normal=$(mytput sgr0)
+	red_bkgd=$(mytput setab 1)
+	magenta_fg=$(mytput setaf 5)
+	blue_fg=$(mytput setaf 4)
+	yellow_fg=$(mytput setaf 3)
+	green_fg=$(mytput setaf 2)
+	white_fg=$(mytput setaf 7)
+	underline=$(mytput smul)
+	show_user="\u"
+	show_host="\h"
+	show_wdir="\w"
+	show_newline="\n"
+	show_date=$(date +%d/%m\|%Y)
+	show_time="\t"
+	show_pyenv="${blue_fg}${bold}\$(show_conda_env)"
+	show_gitbrance="${dim}${yellow_fg}\$(parse_git_branch)"
+	show_gitstatus="\$(get_gitstatus)"
+	show_prompt_head="${white_fg}${bold}\\$"
+	if [ ! $lastcode -eq 0 ]; then
+		show_prompt_head="${white_fg}${red_bkgd}\${lastcode}${normal} ${show_prompt_head}"
 	fi
-	PS1="$show_user $show_wdir $gitbrance$lastcode \[\e[0m\]"
+	PS1="╭─ ${bold}${show_wdir}${normal} ${show_pyenv}${show_gitstatus}${show_gitbrance}${normal} ${bold}${magenta_fg}${show_user}@${show_host}${normal} ${underline}${show_date} ${show_time}${normal}${show_newline}${normal}╰─ ${show_prompt_head}${normal} "
 }
 
 PROMPT_COMMAND=__prompt_command
 
 alias gg='xdg-open &> /dev/null'
 alias tt='stat -c "%y"'
-export PATH=$PATH:/home/tk/.cabal/bin
+alias rl='readlink -f'
+
+export PATH=$PATH:$HOME/.cabal/bin:$HOME/bin:$HOME/.local/share/gem/ruby/3.0.0/bin
 # man page highlight color
 export LESS_TERMCAP_so=$(tput bold; tput setaf 3; tput setab 4) # yellow on blue
 export LESS_TERMCAP_se=$(tput rmso; tput sgr0)
@@ -160,6 +208,7 @@ alias srchC="do_srchcntnt   \"\\( -name '*.[ch]' -o -name '*.cpp' \\)\""
 alias srchc="do_srchcntnt   \"-name '*.c'\""
 alias srchcpp="do_srchcntnt \"-name '*.cpp'\""
 alias srchh="do_srchcntnt   \"-name '*.h'\""
+alias srchtex="do_srchcntnt  \"-name '*.tex'\""
 alias srchmk="do_srchcntnt  \"\\( -name '*.mk' -o -name '[Mm]akefile' -o -name 'Android.mk' \\)\""
 alias srchname="do_srchname"
 
@@ -183,3 +232,27 @@ PERL5LIB="/home/tk/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
 PERL_LOCAL_LIB_ROOT="/home/tk/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
 PERL_MB_OPT="--install_base \"/home/tk/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/tk/perl5"; export PERL_MM_OPT;
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$(~/anaconda3/bin/conda 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f ~/anaconda3/etc/profile.d/conda.sh ]; then
+        . ~/anaconda3/etc/profile.d/conda.sh
+    else
+        export PATH=~/anaconda3/bin:$PATH
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/tk/google-cloud-sdk/path.bash.inc' ]; then . '/home/tk/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/tk/google-cloud-sdk/completion.bash.inc' ]; then . '/home/tk/google-cloud-sdk/completion.bash.inc'; fi
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/.local/lib/mojo
+export PATH=$PATH:~/.modular/pkg/packages.modular.com_mojo/bin/

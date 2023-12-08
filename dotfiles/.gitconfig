@@ -1,6 +1,6 @@
 [user]
 	email = clock126@126.com
-	name = t-k-
+	name = w32zhong
 [alias]
 	lo = log --graph --oneline --decorate --color --pretty=format:'%d [%h %ad %ae]  %s' --date=short
 	lol = log --graph --oneline --decorate --color
@@ -9,10 +9,12 @@
 	co = checkout
 	df = diff -U100 --color --no-prefix
 	dff = diff --name-only
+	diffw = diff --word-diff=color
 	showf = diff --name-only
 	showw = show --word-diff=color
 	dfcm = diff -U100 --color --cached HEAD
 	cmdf = diff --cached HEAD  --no-prefix
+	cmdfw = diff --cached HEAD  --no-prefix --word-diff=color
 	br = branch -a -vv --color
 	st = status --untracked-files=no
 	re = remote -v
@@ -35,3 +37,12 @@
 	default = simple
 [pull]
 	rebase = false
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+[init]
+	defaultBranch = master
+[credential]
+	helper = store

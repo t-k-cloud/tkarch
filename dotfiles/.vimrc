@@ -17,6 +17,7 @@ set mouse=
 au BufNewFile,BufRead *.blog set filetype=tkblog
 au BufNewFile,BufRead *.y set filetype=yacc
 au BufNewFile,BufRead *.l set filetype=lex
+au BufNewFile,BufRead *.mojo,*.🔥 setf mojo
 
 au BufNewFile,BufRead *.wxml set filetype=html
 au BufNewFile,BufRead *.wxss set filetype=css
@@ -175,7 +176,7 @@ nnoremap <Leader>0 :call CleanMutiHighlihtList()<cr>
 
 function! CleanMutiHighlihtList()
 	let g:hl_words = []
-	execute "match Search '' " 
+	execute "match Search2 '' " 
 endfunc
 
 function! Mk_or_words_in_qoutes(words)
@@ -208,8 +209,8 @@ function! MutiHighliht(word)
 	call Hlwords_list_toggle(a:word)
 	let tmp_words = Mk_or_words_in_qoutes(g:hl_words)
 	echo tmp_words
-	execute "match Search ".tmp_words 
-	" using the `Search' highlight group color
+	execute "match Search2 ".tmp_words 
+	" using the `Search2' highlight group color
 endfunc
 
 "cscope相关键位绑定
@@ -266,13 +267,17 @@ endif
 :highlight MatchParen cterm=bold ctermfg=yellow ctermbg=None
 
 "自定义搜索高亮颜色
-:highlight Search cterm=NONE ctermfg=black ctermbg=yellow
+:highlight Search  cterm=NONE ctermfg=black ctermbg=yellow
+:highlight Search2 cterm=NONE ctermfg=white ctermbg=darkblue
 
 "自定义 vimdiff 颜色
 highlight DiffAdd cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
 highlight DiffDelete cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
 highlight DiffChange cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
 highlight DiffText cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Red
+
+"self-define Visual model highlight colors
+:highlight Visual ctermbg=LightBlue cterm=bold gui=none
 
 "======== AIRLINE =======
 "airline theme 
@@ -345,8 +350,8 @@ set spellcapcheck=
 let g:bookmark_no_default_key_mappings = 1
 let g:bookmark_auto_close = 0
 
-let g:bookmark_annotation_sign = '☰ '
-let g:bookmark_sign = '⚑ '
+let g:bookmark_annotation_sign = 'A '
+let g:bookmark_sign = 'B '
 highlight BookmarkSign           ctermbg=None ctermfg=Yellow
 highlight BookmarkAnnotationSign ctermbg=None ctermfg=Yellow
 "书签列不要颜色
@@ -368,3 +373,6 @@ nnoremap <Leader>ml :BookmarkLoad bookmarks.vim<cr>
 " For the most accurate but slowest result, set the syntax synchronization
 " method to fromstart. 
 autocmd BufEnter * :syntax sync fromstart
+
+" 强制关闭自动换行
+set textwidth=0 wrapmargin=0

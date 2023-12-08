@@ -1,13 +1,7 @@
 pacmanS \
 	wget curl enca ctags expect dnsutils mlocate dosfstools parted \
-	fuse-exfat exfat-utils python-pip mplayer htop imagemagick
+	fuse-exfat exfat-utils python-pip mplayer htop imagemagick nodejs npm \
+	man-db man-pages
 
-pacmanS evince # pdf reader that supports .djvu format
+pacmanS zathura-pdf-mupdf # using fast pdf engine and VI-like, supports history.
 pacmanS xournal # pdf annotation/note
-
-# install proxy tools
-pacmanS shadowsocks-libev polipo
-cat << EOF > /etc/polipo/config
-socksParentProxy = "localhost:3080"
-socksProxyType = socks5
-EOF

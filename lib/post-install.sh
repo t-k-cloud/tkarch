@@ -34,13 +34,13 @@ if $DO_DESKTOP_ENV; then
 	setup desktop_env
 	setup desktop_utils
 	setup gschema
-	setup stardict
 	setup my_terminal
 	setup keybindings
 	setup pannel_icon
 	setup launcher
 	setup input_method
 	setup font
+	setup translator
 	setup lemp_stack
 	setup autostart
 	setup desktop_start
