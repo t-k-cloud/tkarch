@@ -23,12 +23,12 @@ fi;
 setup jail_mount
 
 if $DO_JAIL_SETUP; then
-	setup pacstrap # this takes time
-	setup genfstab # better do only once
+	setup pacstrap # install stuffs in jail, this takes time!
+	setup genfstab # better do only once, and outside of jail
 fi;
 
 pacmanS rsync
-setup root_tkarch # create a tkarch under ./root
+setup root_tkarch # copy tkarch to ./mnt/root
 
 ### Change root to jail and do jail-install ###
 setup arch_chroot
