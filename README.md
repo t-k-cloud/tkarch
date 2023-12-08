@@ -1,4 +1,4 @@
-STEPS
+Steps
 =====
 1. use `./global_scripts/tk-mk-usb-boot.sh` to make a bootable USB stick.
 
@@ -47,7 +47,7 @@ overwrite it using available template:
 
 8. exit root and login as the user.
 
-DEBUG
+Debug
 =====
 Under installer environment, issue following commands to enter jail environment:
 ```sh
@@ -57,47 +57,11 @@ setup jail_mount
 arch-chroot /mnt /bin/bash
 ```
 
-Cherry Picking
+Run individual setup
 ==============
 ```sh
 su # input your password
 TKARCH_DIR=`pwd`
 source lib/common.sh
 setup translator
-```
-
-GFW
-===
-To bypass GFW of China,
-```sh
-$ cat ss.json
-{
-    "server":"<server_IP>",
-    "server_port":80,
-    "local_port":3081,
-    "password":"<your_password>",
-    "timeout":60,
-    "plugin": "/usr/local/bin/obfs-local",
-    "plugin_opts": "obfs=http;obfs-host=iosapps.itunes.apple.com;failover=127.0.0.1:8080",
-    "method":"chacha20-ietf-poly1305"
-}
-$ ss-local -c ss.json
-```
-and then start chromium with proxy setting
-```sh
-$ chromium --proxy-server="socks5://127.0.0.1:3081"
-```
-
-For command line interface proxy, you can use `proxychains`:
-```sh
-$ cat /etc/proxychains.conf 
-strict_chain
-proxy_dns
-remote_dns_subnet 224
-tcp_read_time_out 15000
-tcp_connect_time_out 8000
-[ProxyList]
-socks5 127.0.0.1 3081
-
-$ proxychains git push
 ```
