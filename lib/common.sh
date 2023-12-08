@@ -17,9 +17,11 @@ function setup() {
 	(set -x
 		 trap 'set +x; catch; set -x' ERR
 		 catch() {
-			 tput setaf 1;
-			 echo "^-- One command may have failed";
-			 tput sgr0;
+			tput setaf 1;
+			echo "^-- One command may have failed.";
+			echo "(pause 3 secs here)";
+			tput sgr0;
+			sleep 3
 		 }
 		 source ./setup.sh
 	)
