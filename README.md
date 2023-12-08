@@ -51,7 +51,7 @@ From Archlinux ISO
 ==================
 No need to make a grub-enabled USB-stick, just boot from the live ISO and
 ```sh
-pacman -S git vim
+pacman -Sy git vim
 git clone https://github.com/t-k-cloud/tkarch
 cd tkarch
 vim install.cfg # you may need to change the HOSTNAME
