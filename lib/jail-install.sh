@@ -12,6 +12,15 @@ if $REBOOT_TEST; then
 	exit
 fi;
 
+### core packages ###
+pacmanS dhcpcd iw wpa_supplicant
+pacmanS git tmux vim rsync
+ln -sf `which vim` /usr/bin/vi
+
+### Setup ssh/sshd ###
+pacmanS openssh
+systemctl enable sshd
+
 ### locale, timezone and hostname ###
 setup locale_gen
 setup timezone
@@ -23,21 +32,12 @@ setup timesync
 ### create user ###
 setup users
 setup sudoer
+setup media_perm
 
 ### dotfiles and global scripts ###
 setup home_tkarch
 setup dotfiles
 setup global_scripts
-setup media_perm
-
-### core packages ###
-pacmanS dhcpcd iw wpa_supplicant
-pacmanS git tmux vim rsync
-ln -sf `which vim` /usr/bin/vi
-
-### Setup ssh/sshd ###
-pacmanS openssh
-systemctl enable sshd
 
 ### desktop environment ###
 if $DO_DESKTOP_ENV; then
