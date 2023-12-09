@@ -34,6 +34,7 @@ setup timesync
 setup users
 setup sudoer
 setup media_perm
+setup cloud_init
 
 ### dotfiles and global scripts ###
 setup home_tkarch
