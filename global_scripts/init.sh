@@ -2,9 +2,10 @@
 if [ "$1" == "-h" ]; then
 cat << USAGE
 Description:
-Setup tk scripts in ${BIN}, root permission required.
+Copy this folder's scripts to destination directory.
+
 Examples:
-$0
+$0 /etc/systemd/system
 USAGE
 exit
 fi
@@ -14,14 +15,13 @@ touch /root/test || exit
 
 SKIP=`basename ${0}`
 CDIR=$(cd `dirname ${0}` && pwd)
-BIN=/usr/local/bin
+DST=${1-/usr/local/bin}
 TMP=`mktemp`
 
 cd "${CDIR}"
-
 find . -maxdepth 1 \( -path './.git' \) -prune -o ! \( -name '.' -o -name '*.swp' -o -name "${SKIP}" \) -print > $TMP
 
-cd "${BIN}"
+cd "${DST}"
 rm -f tk-*
 while read script
 do
