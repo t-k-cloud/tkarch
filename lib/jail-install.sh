@@ -40,6 +40,7 @@ setup cloud_init
 setup home_tkarch
 setup dotfiles
 setup global_scripts
+setup systemd_services
 
 ### desktop environment ###
 if $DO_DESKTOP_ENV; then

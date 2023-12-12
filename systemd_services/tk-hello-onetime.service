@@ -1,0 +1,8 @@
+[Unit]
+Description=Hello Service (Onetime)
+
+[Service]
+ExecStart=/usr/local/bin/tk-service-hello.sh
+
+[Install]
+WantedBy=multi-user.target
