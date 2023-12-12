@@ -169,3 +169,16 @@ wildcard
 fngerprint
 HuggingFace
 LoRa
+Proxmox
+hostname
+sudo
+init
+passwd
+sshd
+dir
+cfg
+hypervisor
+proxmox
+datasource
+systemd
+redhat
