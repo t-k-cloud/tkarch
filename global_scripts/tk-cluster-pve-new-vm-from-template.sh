@@ -12,7 +12,7 @@ SRC_VMID=$1
 
 # clone the template
 NEXT_VM_ID=$(pvesh get /cluster/nextid)
-qm clone $SRC_VMID $NEXT_VM_ID --full false --name pve-archlinux-vm${NEXT_VM_ID}
+qm clone $SRC_VMID $NEXT_VM_ID --full false --name pve-tkarch-vm${NEXT_VM_ID}
 VM_ID=$NEXT_VM_ID
 
 # setup cloud-init parameters
@@ -21,4 +21,5 @@ qm set $VM_ID --sshkey ~/.ssh/id_rsa.pub # use the host key for SSH
 qm set $VM_ID --ciupgrade 0 # avoid upgrade on system boot up
 qm cloudinit dump $VM_ID user # see the applied user-data
 
-echo "To start, issue: qm start $VM_ID"
+# start vm
+qm start $VM_ID
