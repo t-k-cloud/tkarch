@@ -1,10 +1,13 @@
 tput setaf 2; echo 'Installing LEMP stack...'; tput sgr0;
 
-# install mariadb
-pacman --noconfirm -S mariadb
-# install nginx
+# install nginx (E)
 pacman --noconfirm -S nginx
-# install php-fpm
+
+# install mariadb (M)
+pacman --noconfirm -S mariadb
+mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+
+# install php-fpm (P)
 pacman --noconfirm -S php-fpm
 
 # enable them
