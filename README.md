@@ -51,7 +51,8 @@ From Archlinux ISO
 ==================
 No need to make a grub-enabled USB-stick, just boot from the live ISO and
 ```sh
-pacman -Sy
+pacman-key --init
+pacman -Sy archlinux-keyring
 pacman -S git vim
 git clone https://github.com/t-k-cloud/tkarch
 cd tkarch
