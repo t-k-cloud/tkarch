@@ -2,4 +2,4 @@
 pacmanS \
 	wget curl enca ctags expect dnsutils mlocate dosfstools parted \
 	hwinfo fuse-exfat exfat-utils python-pip htop nodejs npm nfs-utils \
-	man-db man-pages ncdu
+	man-db man-pages ncdu docker
