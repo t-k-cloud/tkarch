@@ -94,7 +94,7 @@ nnoremap <Leader>wi :call ToggleCallbk("g:toggle_flag_html_env", ":set tabstop=2
 
 "搜索高亮toggle
 let g:toggle_flag_hl_search=0
-nnoremap <Leader><S-s> :call ToggleCallbk("g:toggle_flag_hl_search", ":set hlsearch", ":set hlsearch!")<cr><cr>
+nnoremap <Leader><S-s> :call ToggleCallbk("g:toggle_flag_hl_search", ":set hlsearch \| highlight Search  cterm=NONE ctermfg=black ctermbg=yellow", ":set hlsearch!")<cr><cr>
 
 "语法高亮toggle
 let g:toggle_flag_hl_syntax=0
@@ -215,6 +215,7 @@ function! MutiHighliht(word)
 	call Hlwords_list_toggle(a:word)
 	let tmp_words = Mk_or_words_in_qoutes(g:hl_words)
 	echo tmp_words
+	highlight Search2 cterm=NONE ctermfg=white ctermbg=blue
 	execute "match Search2 ".tmp_words 
 	" using the `Search2' highlight group color
 endfunc
@@ -274,7 +275,6 @@ highlight MatchParen cterm=bold ctermfg=yellow ctermbg=None
 
 "自定义搜索高亮颜色
 highlight Search  cterm=NONE ctermfg=black ctermbg=yellow
-highlight Search2 cterm=NONE ctermfg=white ctermbg=blue
 
 "自定义 vimdiff 颜色
 highlight DiffAdd cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
