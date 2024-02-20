@@ -274,7 +274,7 @@ endif
 
 "自定义搜索高亮颜色
 :highlight Search  cterm=NONE ctermfg=black ctermbg=yellow
-:highlight Search2 cterm=NONE ctermfg=white ctermbg=darkblue
+:highlight Search2 cterm=NONE ctermfg=white ctermbg=blue
 
 "自定义 vimdiff 颜色
 highlight DiffAdd cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
