@@ -32,8 +32,8 @@ au BufNewFile,BufRead *.wxss set filetype=css
 "set tags+=~/systags
 
 "拼写检查的高亮
-:highlight clear SpellBad
-:highlight SpellBad gui=undercurl ctermfg=red cterm=underline
+highlight clear SpellBad
+highlight SpellBad gui=undercurl ctermfg=red cterm=underline
 
 "包含cscope
 if has("cscope")
@@ -270,11 +270,11 @@ if has("persistent_undo")
 endif
 
 "自定义括号匹配高亮颜色
-:highlight MatchParen cterm=bold ctermfg=yellow ctermbg=None
+highlight MatchParen cterm=bold ctermfg=yellow ctermbg=None
 
 "自定义搜索高亮颜色
-:highlight Search  cterm=NONE ctermfg=black ctermbg=yellow
-:highlight Search2 cterm=NONE ctermfg=white ctermbg=blue
+highlight Search  cterm=NONE ctermfg=black ctermbg=yellow
+highlight Search2 cterm=NONE ctermfg=white ctermbg=blue
 
 "自定义 vimdiff 颜色
 highlight DiffAdd cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
@@ -283,7 +283,7 @@ highlight DiffChange cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Re
 highlight DiffText cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Red
 
 "self-define Visual model highlight colors
-:highlight Visual ctermbg=LightBlue cterm=bold gui=none
+highlight Visual ctermbg=LightBlue cterm=bold gui=none
 
 "======== AIRLINE =======
 "airline theme 
