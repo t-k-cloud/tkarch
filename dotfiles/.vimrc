@@ -1,5 +1,11 @@
-"e置自定义前缀
+"设置自定义前缀
 let mapleader=" "
+
+"设置颜色主题
+colorscheme desert
+" blue       delek      evening    morning    peachpuff  slate
+" darkblue   desert     industry   murphy     ron        torte
+" default    elflord    koehler    pablo      shine      zellner
 
 "在tmux里如果要开启mouse的全部效果（比如拖动），
 "就需要设置ttymouse=xterm2
