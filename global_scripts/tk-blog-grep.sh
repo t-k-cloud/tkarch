@@ -11,7 +11,7 @@ fi
 
 [ $# -ne 1 ] && echo 'bad arg.' && exit
 
-r_path=/home/tk/tksync/proj/tkblog
+r_path=/home/tk/master-tree/proj/tkblog/
 cd $r_path
 patten=$1
 find . -type f -name '*.txt' -print0 | while read -d $'\0' i
