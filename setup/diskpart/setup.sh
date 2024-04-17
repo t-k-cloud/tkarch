@@ -1,6 +1,6 @@
 #!/bin/sh
 function echo_dev_num() {
-	echo $(basename "$1" | grep -o '[[:digit:]]*')
+	echo $(basename "$1" | grep -o '[[:digit:]]*$')
 }
 
 N_BIOSBOOT=$(echo_dev_num $DISKPART_BIOSBOOT)
