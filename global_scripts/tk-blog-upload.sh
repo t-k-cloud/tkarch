@@ -11,7 +11,7 @@ exit
 fi
 
 publish="abc=1"
-url="https://vm.xitizu.com/tkblog/file_input.php"
+url="https://karmenchung.life/tkblog/file_input.php"
 
 if [ $# -eq 0 ] 
 then
