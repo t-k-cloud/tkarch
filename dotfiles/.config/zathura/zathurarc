@@ -1,6 +1,0 @@
-set sandbox none
-set font "inconsolata 15"
-set highlight-color "#FF0000" #00
-set highlight-fg "#FFFFFF" #00
-set highlight-transparency 1
-set first-page-column 1

@@ -162,7 +162,7 @@ export PATH=$PATH:$HOME/.cabal/bin:$HOME/bin:$HOME/.local/share/gem/ruby/3.0.0/b
 export LESS_TERMCAP_so=$(tput bold; tput setaf 3; tput setab 4) # yellow on blue
 export LESS_TERMCAP_se=$(tput rmso; tput sgr0)
 # set 256 color, otherwise vim-airline has no color in MATE-terminal 
-TERM=xterm-256color
+TERM=screen-256color
 
 # auto cd, this feature only appeared in bash 4.0
 shopt -s autocd
