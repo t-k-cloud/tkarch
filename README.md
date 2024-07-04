@@ -47,6 +47,12 @@ overwrite it using available template:
 
 8. exit root and login as the user.
 
+Test Grub-Install
+==================
+Install as normal except we set `REBOOT_TEST=true` to test grub-install. 
+
+If grub-install works (you can successfully boot into the newly installed partition), just set `DO_JAIL_SETUP=false` and `DO_PART=false` for the second run of `install.sh`.
+
 From Archlinux ISO
 ==================
 No need to make a grub-enabled USB-stick, just boot from the live ISO and
@@ -56,7 +62,7 @@ pacman -Sy archlinux-keyring
 pacman -S git vim
 git clone https://github.com/t-k-cloud/tkarch
 cd tkarch
-vim install.cfg # you may need to change the HOSTNAME
+vim install.cfg # if you want to change HOSTNAME etc.
 ./install.sh
 ```
 
