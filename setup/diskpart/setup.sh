@@ -27,12 +27,12 @@ if ! $GRUB_ELF_INSTALL; then
 	parted $DISKPART_DEV --script mkpart primary 1MiB 3MiB
 	parted $DISKPART_DEV --script name $N_BIOSBOOT tkarch_grub
 	parted $DISKPART_DEV --script set $N_BIOSBOOT bios_grub on
-	# 128M boot partition
-	parted $DISKPART_DEV --script mkpart primary 4MiB 200MiB
-	# 512M swap partition
-	parted $DISKPART_DEV --script mkpart primary 201MiB 900MiB
-	# root partition for the rest of the disk
-	parted $DISKPART_DEV --script mkpart primary 901MiB -- -1MiB
+	# 1GiB boot partition
+	parted $DISKPART_DEV --script mkpart primary 4MiB 1000MiB
+	# 4GiB swap partition
+	parted $DISKPART_DEV --script mkpart primary 1001MiB 5000MiB
+	# root partition using the rest of the disk
+	parted $DISKPART_DEV --script mkpart primary 5001MiB -- -1MiB
 	# mark EFI System Partition
 	parted $DISKPART_DEV --script set $N_BOOT boot on
 fi;
