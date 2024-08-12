@@ -2,7 +2,7 @@
 let mapleader=" "
 
 "设置颜色主题
-colorscheme desert
+colorscheme slate
 " blue       delek      evening    morning    peachpuff  slate
 " darkblue   desert     industry   murphy     ron        torte
 " default    elflord    koehler    pablo      shine      zellner
