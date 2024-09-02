@@ -5,7 +5,8 @@ pacmanS \
 	man-db man-pages ncdu
 
 # install docker
-pacmanS docker
+pacmanS docker nvidia-container-toolkit
+
 DOCKER_MIRROR=https://docker.io
 mkdir -p /etc/docker
 cat > '/etc/docker/daemon.json' << EOF
