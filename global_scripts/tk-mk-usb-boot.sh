@@ -1,5 +1,5 @@
 #!/bin/bash
-example="Example: $0 [uefi|legacy] /dev/sdX"
+example="Example: $0 [uefi|legacy|erase] /dev/sdX"
 
 if [ "$1" == "-h" ]; then
 cat << USAGE
@@ -35,8 +35,10 @@ dd if=/dev/zero of="$devpath" bs=512 count=8192
 dd if=/dev/zero of="$devpath" bs=512 seek=`expr $sectors - 8192` count=8192
 sync
 
-echo "partitioning..."
 case "$partmode" in
+    "erase")
+        exit 0
+        ;;
     "legacy")
         # MBR table creation
         parted $devpath -- mklabel msdos
