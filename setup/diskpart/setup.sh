@@ -23,15 +23,15 @@ dd if=/dev/zero of=$DISKPART_DEV bs=512 seek=`expr $sectors - 8192` count=8192
 tput setaf 2; echo 'creating partitions and make filesystems...'; tput sgr0;
 # GPT table creation
 parted $DISKPART_DEV --script mklabel gpt
-# 2M grub boot code
+# 2M grub boot code (for legacy compatibility)
 parted $DISKPART_DEV --script mkpart primary 1MiB 3MiB
 parted $DISKPART_DEV --script name $N_BIOSBOOT tkarch_grub
 parted $DISKPART_DEV --script set $N_BIOSBOOT bios_grub on
-# 1GiB boot partition
+# 1GiB boot partition + EFI partion (EFI requires FAT format)
 parted $DISKPART_DEV --script mkpart primary 4MiB 1000MiB
 parted $DISKPART_DEV --script name $N_BOOT tkarch_boot
 parted $DISKPART_DEV --script set $N_BOOT boot on
-mkfs.ext4 -F $DISKPART_BOOT
+mkfs.vfat -F 32 -I $DISKPART_BOOT
 # 4GiB swap partition
 parted $DISKPART_DEV --script mkpart primary 1001MiB 5000MiB
 parted $DISKPART_DEV --script name $N_SWAP tkarch_swap
