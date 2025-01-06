@@ -60,7 +60,7 @@ No need to make a grub-enabled USB-stick, just boot from the live ISO and
 pacman-key --init
 pacman -Sy archlinux-keyring
 pacman -S git vim
-git clone https://github.com/t-k-cloud/tkarch
+git clone --depth 1 https://github.com/t-k-cloud/tkarch
 cd tkarch
 vim install.cfg # if you want to change HOSTNAME etc.
 ./install.sh
