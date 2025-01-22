@@ -1,5 +1,5 @@
 #!/bin/bash
-set -d
+set -e
 year=$(date +%Y)
 tput bold setaf 1 && echo "local => nas" && tput sgr0
 set -x
