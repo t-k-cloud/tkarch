@@ -5,6 +5,7 @@ function get_vendor_ids() {
     done
 }
 
+lspci -v | grep NVIDIA
 vendor_ids=$(get_vendor_ids | tr '\n' ',' | head -c -1)
 
 set -ex
