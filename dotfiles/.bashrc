@@ -227,12 +227,6 @@ alias pipgfw="sudo pip install -i http://pypi.douban.com/simple/ --trusted-host=
 
 export SVN_EDITOR=vi
 
-PATH="/home/tk/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/home/tk/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/home/tk/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/home/tk/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/home/tk/perl5"; export PERL_MM_OPT;
-
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$(~/anaconda3/bin/conda 'shell.bash' 'hook' 2> /dev/null)"
@@ -248,18 +242,10 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/tk/google-cloud-sdk/path.bash.inc' ]; then . '/home/tk/google-cloud-sdk/path.bash.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/tk/google-cloud-sdk/completion.bash.inc' ]; then . '/home/tk/google-cloud-sdk/completion.bash.inc'; fi
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/.local/lib/mojo
-export PATH=$PATH:~/.modular/pkg/packages.modular.com_mojo/bin/
-
 # https://wiki.archlinux.org/title/SSH_keys
 # This will run a ssh-agent process if there is not one already, and save the output thereof. If there is one running already, we retrieve the cached ssh-agent output and evaluate it which will set the necessary environment variables. The lifetime of the unlocked keys is set to 24 hour.
 if ! pgrep -u "$USER" ssh-agent > /dev/null; then
     ssh-agent > "$XDG_RUNTIME_DIR/ssh-agent.env"
 fi
 source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
+export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
