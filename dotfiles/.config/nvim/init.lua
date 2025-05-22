@@ -1,3 +1,5 @@
+-- use :source/:so to reload configs
+
 require('w32zhong')
 require('plugins')
 -- run :PackerSync and then :PackerStatus for new plugin installation
@@ -17,3 +19,13 @@ require('hardline').setup {
 		{class = 'mode', item = require('hardline.parts.line').get_item},
 	},
 }
+
+require("neo-tree").setup({
+	filesystem = {
+		name = {
+			trailing_slash = true,
+			highlight = "NeoTreeFileName",
+		},
+		hijack_netrw_behavior = "open_current",
+	},
+})

@@ -150,5 +150,11 @@ vim.keymap.set("n", "<Leader>0", function()
 	vim.cmd("match Search2 ''")
 end, { noremap = true, silent = true })
 
--- bookmarks (m*)
---vim.keymap.set('n', 'mm', 'BookmarksMark', { noremap = true, silent = true })
+-- buffer switch
+vim.keymap.set('n', '<Leader>l', ':bnext<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<Leader>h', ':bprevious<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<Leader><Leader>', ':e #<CR>', { noremap = true, silent = true }) -- toggle
+vim.keymap.set('n', '<Leader>x', ':bp <BAR> bd #<CR>', { noremap = true, silent = true }) -- close
+for i = 1, 19 do
+  vim.keymap.set('n', '<leader>'..i, ':b'..i..'<CR>', { noremap = true, silent = true })
+end
