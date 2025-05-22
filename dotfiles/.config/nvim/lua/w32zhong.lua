@@ -149,3 +149,6 @@ vim.keymap.set("n", "<Leader>0", function()
 	_G.hl_words = {}
 	vim.cmd("match Search2 ''")
 end, { noremap = true, silent = true })
+
+-- bookmarks (m*)
+--vim.keymap.set('n', 'mm', 'BookmarksMark', { noremap = true, silent = true })
