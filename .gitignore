@@ -1,2 +1,3 @@
 *.swp
-dotfiles/.config/
+dotfiles/.config/*
+!dotfiles/.config/nvim/
