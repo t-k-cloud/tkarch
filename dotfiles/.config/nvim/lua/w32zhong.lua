@@ -1,5 +1,8 @@
 vim.g.mapleader = ' '
 vim.cmd.colorscheme 'slate'
+vim.opt.guicursor = ''
+vim.opt.termguicolors = true
+vim.opt.incsearch = true
 
 -- vim.o: behaves like :set
 -- vim.go: behaves like :setglobal
@@ -156,5 +159,5 @@ vim.keymap.set('n', '<Leader>h', ':bprevious<CR>', { noremap = true, silent = tr
 vim.keymap.set('n', '<Leader><Leader>', ':e #<CR>', { noremap = true, silent = true }) -- toggle
 vim.keymap.set('n', '<Leader>x', ':bp <BAR> bd #<CR>', { noremap = true, silent = true }) -- close
 for i = 1, 19 do
-  vim.keymap.set('n', '<leader>'..i, ':b'..i..'<CR>', { noremap = true, silent = true })
+	vim.keymap.set('n', '<leader>'..i, ':b'..i..'<CR>', { noremap = true, silent = true })
 end
