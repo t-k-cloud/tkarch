@@ -119,9 +119,9 @@ vim.keymap.set('n', '<Leader>wi', function()
 end, { noremap = true, silent = true })
 
 -- shortcut copy/paste to register (y/p)
-vim.keymap.set('v', '<Leader>y', '"ay', { noremap = true, silent = true })
-vim.keymap.set('n', '<Leader>p', 'viw"ap', { noremap = true, silent = true })
-vim.keymap.set('v', '<Leader>p', '"ap', { noremap = true, silent = true })
+vim.keymap.set('v', '<Leader>y', '"+y', { noremap = true, silent = true })
+vim.keymap.set('n', '<Leader>p', 'viw"+p', { noremap = true, silent = true })
+vim.keymap.set('v', '<Leader>p', '"+p', { noremap = true, silent = true })
 
 -- multi-word highlighting (*/0)
 _G.hl_words = {}
