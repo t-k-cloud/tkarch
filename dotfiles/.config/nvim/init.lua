@@ -35,9 +35,36 @@ require("neo-tree").setup({
 })
 
 -- LSP servers
-require('lsp')
+-- use i mode CTRL-X CTRL-O to trigger completion
+vim.diagnostic.config({
+	--signs = false, -- don't show signs in the gutter
+	signs = {
+		text = {
+			[vim.diagnostic.severity.ERROR] = '✘',
+			[vim.diagnostic.severity.WARN] = '⚠',
+		},
+		severity = {min = vim.diagnostic.severity.ERROR},
+	},
+	update_in_insert = false, -- don't update diagnostics in insert
+	underline = {
+		severity = {min = vim.diagnostic.severity.ERROR},
+	}, -- underline problematic code
+	virtual_lines = false, -- no inline messages
+	--virtual_text = true, -- show block messages
+	virtual_text = {
+		severity = {min = vim.diagnostic.severity.ERROR}
+	},
+})
 
+require('lsp')
 vim.lsp.enable('python-lsp')
+
+vim.keymap.set("n", "<leader>td", function()
+	vim.diagnostic.enable(not vim.diagnostic.is_enabled())
+end, { noremap = true, desc = "Toggle diagnostics"})
+
+vim.keymap.set("n", "<leader>dn", vim.diagnostic.goto_next)
+vim.keymap.set("n", "<leader>dN", vim.diagnostic.goto_prev)
 
 -- print enabled LSP configs
 for name in vim.spairs(vim.lsp._enabled_configs) do
