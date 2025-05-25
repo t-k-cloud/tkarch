@@ -1,8 +1,10 @@
 -- use :source/:so to reload configs
 
+-- my own coinfigs
 require('w32zhong')
-require('plugins')
+
 -- run :PackerSync and then :PackerStatus for new plugin installation
+require('plugins')
 
 require('hardline').setup {
 	theme = 'default',
@@ -11,12 +13,14 @@ require('hardline').setup {
 		exclude_terminal = false,  -- don't show terminal buffers in bufferline
 		show_index = true,        -- show buffer indexes (not the actual buffer numbers)
 	},
-	sections = {         -- define sections
+	sections = { -- define sections, see :help statusline
 		{class = 'mode', item = require('hardline.parts.mode').get_item},
-		{class = 'med', item = require('hardline.parts.cwd').get_item},
+		{class = 'med', item = '%f'}, -- show file path
+		'%<', -- align
 		{class = 'med', item = '%='}, -- padding
 		{class = 'warning', item = require('hardline.parts.whitespace').get_item},
-		{class = 'mode', item = require('hardline.parts.line').get_item},
+		{class = 'high', item = require('hardline.parts.filetype').get_item},
+		{class = 'mode', item = '%l,%v --%p%%--'},
 	},
 }
 
@@ -29,3 +33,17 @@ require("neo-tree").setup({
 		hijack_netrw_behavior = "open_current",
 	},
 })
+
+-- LSP servers
+require('lsp')
+
+vim.lsp.enable('python-lsp')
+
+-- print enabled LSP configs
+for name in vim.spairs(vim.lsp._enabled_configs) do
+	local config = vim.lsp.config[name]
+	for k, v in vim.spairs(config) do
+		print(name, ':', k, '->', vim.inspect(v))
+	end
+end
+print('Flush')
