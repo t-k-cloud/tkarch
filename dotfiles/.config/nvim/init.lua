@@ -49,10 +49,8 @@ vim.diagnostic.config({
 	underline = {
 		severity = {min = vim.diagnostic.severity.ERROR},
 	}, -- underline problematic code
-	virtual_lines = false, -- no inline messages
-	--virtual_text = true, -- show block messages
-	virtual_text = {
-		severity = {min = vim.diagnostic.severity.ERROR}
+	virtual_lines = {
+		severity = {min = vim.diagnostic.severity.ERROR},
 	},
 })
 
