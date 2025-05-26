@@ -13,7 +13,6 @@ return require('packer').startup(function(use)
 		event = "VimEnter",
 		opt = false,
 		config = function()
-			print('setup bookmarks...')
 			require('bookmarks').setup {
 				save_file = vim.fn.expand "$HOME/.cache/nvim/bookmarks.txt",
 				keywords =  {
@@ -48,5 +47,41 @@ return require('packer').startup(function(use)
 			"3rd/image.nvim", -- Optional image support in preview window.
 		}
 	})
+
+	use({
+		"kdheepak/lazygit.nvim",
+		-- optional for floating window border decoration
+		requires = {
+			"nvim-lua/plenary.nvim",
+		},
+	})
+
+	use {
+		"zbirenbaum/copilot.lua",
+		--cmd = "Copilot",
+		--event = "InsertEnter",
+		opt = false,
+		config = function()
+			require("copilot").setup({
+				panel = {
+					enabled = false,
+				},
+				suggestion = {
+					enabled = true,
+					auto_trigger = false,
+					hide_during_completion = true,
+					debounce = 75,
+					trigger_on_accept = true,
+					keymap = {
+						accept_word = "<M-\\>",
+						accept_line = false,
+						next = "<M-]>",
+						prev = "<M-[>",
+						accept = "<C-\\>",
+					},
+				},
+			})
+		end,
+	}
 
 end)

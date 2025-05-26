@@ -34,6 +34,8 @@ require("neo-tree").setup({
 	},
 })
 
+vim.keymap.set("n", "<leader>gt", ':LazyGit<CR>')
+
 -- LSP servers
 -- use i mode CTRL-X CTRL-O to trigger completion
 vim.diagnostic.config({
@@ -65,10 +67,13 @@ vim.keymap.set("n", "<leader>dn", vim.diagnostic.goto_next)
 vim.keymap.set("n", "<leader>dN", vim.diagnostic.goto_prev)
 
 -- print enabled LSP configs
-for name in vim.spairs(vim.lsp._enabled_configs) do
-	local config = vim.lsp.config[name]
-	for k, v in vim.spairs(config) do
-		print(name, ':', k, '->', vim.inspect(v))
-	end
-end
-print('Flush')
+--for name in vim.spairs(vim.lsp._enabled_configs) do
+--	local config = vim.lsp.config[name]
+--	for k, v in vim.spairs(config) do
+--		print(name, ':', k, '->', vim.inspect(v))
+--	end
+--end
+--print('Flush')
+
+-- Copilot (ALT-] or -[ to cycle suggestions, and Ctrl-\ or Alt-\ to accept all or words)
+vim.api.nvim_set_hl(0, 'CopilotSuggestion', { fg = '#93a1a1', bg = '#002b36', })
