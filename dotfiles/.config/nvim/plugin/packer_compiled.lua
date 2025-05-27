@@ -74,30 +74,55 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
-  ["avante.nvim"] = {
-    config = { "\27LJ\2\n4\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\vavante\frequire\0" },
-    loaded = true,
-    path = "/home/tk/.local/share/nvim/site/pack/packer/start/avante.nvim",
-    url = "https://github.com/yetone/avante.nvim"
-  },
   ["bookmarks.nvim"] = {
-    config = { "\27LJ\2\n–\2\0\1\b\0\20\0*6\1\0\0'\3\1\0B\1\2\0026\2\2\0009\2\3\0029\2\4\2\18\3\2\0'\5\5\0'\6\6\0009\a\a\1B\3\4\1\18\3\2\0'\5\5\0'\6\b\0009\a\t\1B\3\4\1\18\3\2\0'\5\5\0'\6\n\0009\a\v\1B\3\4\1\18\3\2\0'\5\5\0'\6\f\0009\a\r\1B\3\4\1\18\3\2\0'\5\5\0'\6\14\0009\a\15\1B\3\4\1\18\3\2\0'\5\5\0'\6\16\0009\a\17\1B\3\4\1\18\3\2\0'\5\5\0'\6\18\0009\a\19\1B\3\4\1K\0\1\0\18bookmark_list\aml\23bookmark_clear_all\amD\19bookmark_clean\amd\18bookmark_prev\amN\18bookmark_next\amn\17bookmark_ann\amj\20bookmark_toggle\amm\6n\bset\vkeymap\bvim\14bookmarks\frequireÛ\1\1\0\6\0\r\0\0176\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\a\0006\3\3\0009\3\4\0039\3\5\3'\5\6\0B\3\2\2=\3\b\0025\3\t\0=\3\n\0023\3\v\0=\3\f\2B\0\2\1K\0\1\0\14on_attach\0\rkeywords\1\0\3\a@f\t‚õè \a@t\f‚òëÔ∏è \a@w\f‚ö†Ô∏è \14save_file\1\0\3\14save_file\0\rkeywords\0\14on_attach\0$$HOME/.cache/nvim/bookmarks.txt\vexpand\afn\bvim\nsetup\14bookmarks\frequire\0" },
+    config = { "\27LJ\2\n–\2\0\1\b\0\20\0*6\1\0\0'\3\1\0B\1\2\0026\2\2\0009\2\3\0029\2\4\2\18\3\2\0'\5\5\0'\6\6\0009\a\a\1B\3\4\1\18\3\2\0'\5\5\0'\6\b\0009\a\t\1B\3\4\1\18\3\2\0'\5\5\0'\6\n\0009\a\v\1B\3\4\1\18\3\2\0'\5\5\0'\6\f\0009\a\r\1B\3\4\1\18\3\2\0'\5\5\0'\6\14\0009\a\15\1B\3\4\1\18\3\2\0'\5\5\0'\6\16\0009\a\17\1B\3\4\1\18\3\2\0'\5\5\0'\6\18\0009\a\19\1B\3\4\1K\0\1\0\18bookmark_list\aml\23bookmark_clear_all\amD\19bookmark_clean\amd\18bookmark_prev\amN\18bookmark_next\amn\17bookmark_ann\amj\20bookmark_toggle\amm\6n\bset\vkeymap\bvim\14bookmarks\frequireÛ\1\1\0\6\0\r\0\0176\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\a\0006\3\3\0009\3\4\0039\3\5\3'\5\6\0B\3\2\2=\3\b\0025\3\t\0=\3\n\0023\3\v\0=\3\f\2B\0\2\1K\0\1\0\14on_attach\0\rkeywords\1\0\3\a@f\t‚õè \a@w\f‚ö†Ô∏è \a@t\f‚òëÔ∏è \14save_file\1\0\3\rkeywords\0\14on_attach\0\14save_file\0$$HOME/.cache/nvim/bookmarks.txt\vexpand\afn\bvim\nsetup\14bookmarks\frequire\0" },
     loaded = false,
     needs_bufread = false,
     only_cond = false,
     path = "/home/tk/.local/share/nvim/site/pack/packer/opt/bookmarks.nvim",
     url = "https://github.com/tomasky/bookmarks.nvim"
   },
+  ["cmp-buffer"] = {
+    loaded = true,
+    path = "/home/tk/.local/share/nvim/site/pack/packer/start/cmp-buffer",
+    url = "https://github.com/hrsh7th/cmp-buffer"
+  },
+  ["cmp-cmdline"] = {
+    loaded = true,
+    path = "/home/tk/.local/share/nvim/site/pack/packer/start/cmp-cmdline",
+    url = "https://github.com/hrsh7th/cmp-cmdline"
+  },
+  ["cmp-nvim-lsp"] = {
+    loaded = true,
+    path = "/home/tk/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
+    url = "https://github.com/hrsh7th/cmp-nvim-lsp"
+  },
+  ["cmp-path"] = {
+    loaded = true,
+    path = "/home/tk/.local/share/nvim/site/pack/packer/start/cmp-path",
+    url = "https://github.com/hrsh7th/cmp-path"
+  },
+  ["cmp-vsnip"] = {
+    loaded = true,
+    path = "/home/tk/.local/share/nvim/site/pack/packer/start/cmp-vsnip",
+    url = "https://github.com/hrsh7th/cmp-vsnip"
+  },
+  ["codecompanion.nvim"] = {
+    config = { "\27LJ\2\n∏\1\0\0\5\0\n\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\b\0005\3\4\0005\4\3\0=\4\5\0035\4\6\0=\4\a\3=\3\t\2B\0\2\1K\0\1\0\15strategies\1\0\1\15strategies\0\vinline\1\0\1\fadapter\14anthropic\tchat\1\0\2\vinline\0\tchat\0\1\0\1\fadapter\14anthropic\nsetup\18codecompanion\frequire\0" },
+    loaded = true,
+    path = "/home/tk/.local/share/nvim/site/pack/packer/start/codecompanion.nvim",
+    url = "https://github.com/olimorris/codecompanion.nvim"
+  },
   ["copilot.lua"] = {
-    config = { "\27LJ\2\n®\2\0\0\5\0\n\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0005\4\a\0=\4\b\3=\3\t\2B\0\2\1K\0\1\0\15suggestion\vkeymap\1\0\5\tprev\n<M-[>\tnext\n<M-]>\16accept_line\1\16accept_word\n<M-\\>\vaccept\n<C-\\>\1\0\6\17auto_trigger\1\vkeymap\0\fenabled\2\22trigger_on_accept\2\rdebounce\3K\27hide_during_completion\2\npanel\1\0\2\15suggestion\0\npanel\0\1\0\1\fenabled\1\nsetup\fcopilot\frequire\0" },
+    config = { "\27LJ\2\n®\2\0\0\5\0\n\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0005\4\a\0=\4\b\3=\3\t\2B\0\2\1K\0\1\0\15suggestion\vkeymap\1\0\5\16accept_line\1\tnext\n<M-]>\16accept_word\n<M-\\>\vaccept\n<C-\\>\tprev\n<M-[>\1\0\6\fenabled\2\vkeymap\0\22trigger_on_accept\2\rdebounce\3K\27hide_during_completion\2\17auto_trigger\1\npanel\1\0\2\15suggestion\0\npanel\0\1\0\1\fenabled\1\nsetup\fcopilot\frequire\0" },
     loaded = true,
     path = "/home/tk/.local/share/nvim/site/pack/packer/start/copilot.lua",
     url = "https://github.com/zbirenbaum/copilot.lua"
   },
-  ["dressing.nvim"] = {
+  ["friendly-snippets"] = {
     loaded = true,
-    path = "/home/tk/.local/share/nvim/site/pack/packer/start/dressing.nvim",
-    url = "https://github.com/stevearc/dressing.nvim"
+    path = "/home/tk/.local/share/nvim/site/pack/packer/start/friendly-snippets",
+    url = "https://github.com/rafamadriz/friendly-snippets"
   },
   ["image.nvim"] = {
     loaded = true,
@@ -109,6 +134,12 @@ _G.packer_plugins = {
     path = "/home/tk/.local/share/nvim/site/pack/packer/start/lazygit.nvim",
     url = "https://github.com/kdheepak/lazygit.nvim"
   },
+  ["mini.nvim"] = {
+    loaded = false,
+    needs_bufread = false,
+    path = "/home/tk/.local/share/nvim/site/pack/packer/opt/mini.nvim",
+    url = "https://github.com/echasnovski/mini.nvim"
+  },
   ["neo-tree.nvim"] = {
     loaded = true,
     path = "/home/tk/.local/share/nvim/site/pack/packer/start/neo-tree.nvim",
@@ -118,6 +149,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/tk/.local/share/nvim/site/pack/packer/start/nui.nvim",
     url = "https://github.com/MunifTanjim/nui.nvim"
+  },
+  ["nvim-cmp"] = {
+    loaded = true,
+    path = "/home/tk/.local/share/nvim/site/pack/packer/start/nvim-cmp",
+    url = "https://github.com/hrsh7th/nvim-cmp"
   },
   ["nvim-hardline"] = {
     loaded = true,
@@ -145,21 +181,38 @@ _G.packer_plugins = {
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
   ["render-markdown.nvim"] = {
+    config = { "\27LJ\2\n~\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\2B\0\2\1K\0\1\0\15file_types\1\0\1\15file_types\0\1\3\0\0\rmarkdown\18codecompanion\nsetup\20render-markdown\frequire\0" },
+    load_after = {},
     loaded = true,
-    path = "/home/tk/.local/share/nvim/site/pack/packer/start/render-markdown.nvim",
+    needs_bufread = false,
+    path = "/home/tk/.local/share/nvim/site/pack/packer/opt/render-markdown.nvim",
     url = "https://github.com/MeanderingProgrammer/render-markdown.nvim"
+  },
+  ["vim-vsnip"] = {
+    loaded = true,
+    path = "/home/tk/.local/share/nvim/site/pack/packer/start/vim-vsnip",
+    url = "https://github.com/hrsh7th/vim-vsnip"
   }
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: codecompanion.nvim
+time([[Config for codecompanion.nvim]], true)
+try_loadstring("\27LJ\2\n∏\1\0\0\5\0\n\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\b\0005\3\4\0005\4\3\0=\4\5\0035\4\6\0=\4\a\3=\3\t\2B\0\2\1K\0\1\0\15strategies\1\0\1\15strategies\0\vinline\1\0\1\fadapter\14anthropic\tchat\1\0\2\vinline\0\tchat\0\1\0\1\fadapter\14anthropic\nsetup\18codecompanion\frequire\0", "config", "codecompanion.nvim")
+time([[Config for codecompanion.nvim]], false)
 -- Config for: copilot.lua
 time([[Config for copilot.lua]], true)
-try_loadstring("\27LJ\2\n®\2\0\0\5\0\n\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0005\4\a\0=\4\b\3=\3\t\2B\0\2\1K\0\1\0\15suggestion\vkeymap\1\0\5\tprev\n<M-[>\tnext\n<M-]>\16accept_line\1\16accept_word\n<M-\\>\vaccept\n<C-\\>\1\0\6\17auto_trigger\1\vkeymap\0\fenabled\2\22trigger_on_accept\2\rdebounce\3K\27hide_during_completion\2\npanel\1\0\2\15suggestion\0\npanel\0\1\0\1\fenabled\1\nsetup\fcopilot\frequire\0", "config", "copilot.lua")
+try_loadstring("\27LJ\2\n®\2\0\0\5\0\n\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0005\4\a\0=\4\b\3=\3\t\2B\0\2\1K\0\1\0\15suggestion\vkeymap\1\0\5\16accept_line\1\tnext\n<M-]>\16accept_word\n<M-\\>\vaccept\n<C-\\>\tprev\n<M-[>\1\0\6\fenabled\2\vkeymap\0\22trigger_on_accept\2\rdebounce\3K\27hide_during_completion\2\17auto_trigger\1\npanel\1\0\2\15suggestion\0\npanel\0\1\0\1\fenabled\1\nsetup\fcopilot\frequire\0", "config", "copilot.lua")
 time([[Config for copilot.lua]], false)
--- Config for: avante.nvim
-time([[Config for avante.nvim]], true)
-try_loadstring("\27LJ\2\n4\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\vavante\frequire\0", "config", "avante.nvim")
-time([[Config for avante.nvim]], false)
+-- Load plugins in order defined by `after`
+time([[Sequenced loading]], true)
+vim.cmd [[ packadd nvim-treesitter ]]
+vim.cmd [[ packadd render-markdown.nvim ]]
+
+-- Config for: render-markdown.nvim
+try_loadstring("\27LJ\2\n~\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\2B\0\2\1K\0\1\0\15file_types\1\0\1\15file_types\0\1\3\0\0\rmarkdown\18codecompanion\nsetup\20render-markdown\frequire\0", "config", "render-markdown.nvim")
+
+time([[Sequenced loading]], false)
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Event lazy-loads

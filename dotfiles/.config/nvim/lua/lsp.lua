@@ -1,3 +1,5 @@
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
 -- Python
 -- refer to: https://github.com/neovim/nvim-lspconfig/blob/master/lsp/*
 
@@ -52,4 +54,5 @@ vim.lsp.config['python-lsp'] = {
       complete = 'file',
     })
   end,
+  capabilities = capabilities, -- for cmp!
 }

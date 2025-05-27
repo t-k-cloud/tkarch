@@ -56,6 +56,7 @@ return require('packer').startup(function(use)
 		},
 	})
 
+	-- AI completion --
 	use {
 		"zbirenbaum/copilot.lua",
 		--cmd = "Copilot",
@@ -84,19 +85,54 @@ return require('packer').startup(function(use)
 		end,
 	}
 
-	-- avante.nvim --
-	use 'nvim-treesitter/nvim-treesitter'
-	use 'stevearc/dressing.nvim'
-	use 'nvim-lua/plenary.nvim'
-	use 'MunifTanjim/nui.nvim'
-	use 'MeanderingProgrammer/render-markdown.nvim'
+	-- AI agent --
+	
+	-- Run :CodeCompanionChat to open a chat buffer.
+	-- Type your prompt and send it by pressing <C-s> while in insert mode or <CR> in normal mode.
+	-- The #buffer variable shares the full contents from the buffer that the user was last in
+	-- when they initiated :CodeCompanionChat. To select another buffer, use the /buffer command.
 	use {
-		'yetone/avante.nvim',
-		branch = 'main',
-		run = 'make',
+		"olimorris/codecompanion.nvim",
 		config = function()
-			require('avante').setup()
-		end
+			require("codecompanion").setup({
+				strategies = {
+					chat = {
+						adapter = "anthropic",
+					},
+					inline = {
+						adapter = "anthropic",
+					},
+				},
+			})
+		end,
+		requires = {
+			"nvim-lua/plenary.nvim",
+			"nvim-treesitter/nvim-treesitter",
+		}
 	}
+
+	use({
+		'MeanderingProgrammer/render-markdown.nvim',
+		after = { 'nvim-treesitter' },
+		requires = { 'echasnovski/mini.nvim', opt = true }, -- if you use the mini.nvim suite
+		-- requires = { 'echasnovski/mini.icons', opt = true }, -- if you use standalone mini plugins
+		-- requires = { 'nvim-tree/nvim-web-devicons', opt = true }, -- if you prefer nvim-web-devicons
+		config = function()
+			require('render-markdown').setup({
+				file_types = { 'markdown', "codecompanion" }
+			})
+		end,
+	})
+
+	-- Snippets --
+	use {'hrsh7th/cmp-nvim-lsp'}
+	use {'hrsh7th/cmp-buffer'}
+	use {'hrsh7th/cmp-path'}
+	use {'hrsh7th/cmp-cmdline'}
+	use {'hrsh7th/nvim-cmp'}
+
+	use {'hrsh7th/cmp-vsnip'}
+	use {'hrsh7th/vim-vsnip'}
+	use {"rafamadriz/friendly-snippets"}
 
 end)
