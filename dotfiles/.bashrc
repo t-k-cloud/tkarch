@@ -249,3 +249,5 @@ if ! pgrep -u "$USER" ssh-agent > /dev/null; then
 fi
 source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
 export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
+
+source $HOME/.env

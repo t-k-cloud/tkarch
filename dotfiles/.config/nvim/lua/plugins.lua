@@ -84,4 +84,19 @@ return require('packer').startup(function(use)
 		end,
 	}
 
+	-- avante.nvim --
+	use 'nvim-treesitter/nvim-treesitter'
+	use 'stevearc/dressing.nvim'
+	use 'nvim-lua/plenary.nvim'
+	use 'MunifTanjim/nui.nvim'
+	use 'MeanderingProgrammer/render-markdown.nvim'
+	use {
+		'yetone/avante.nvim',
+		branch = 'main',
+		run = 'make',
+		config = function()
+			require('avante').setup()
+		end
+	}
+
 end)
