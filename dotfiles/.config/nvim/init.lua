@@ -129,7 +129,7 @@ vim.keymap.set("i", "<C-j>", function()
 	if vim.fn["vsnip#expandable"]() == 1 then
 		return "<Plug>(vsnip-expand)"
 	else
-		return "<C-j>"
+		return ""
 	end
 end, { expr = true, silent = true })
 
@@ -143,3 +143,10 @@ end, { expr = true, silent = true })
 
 -- show vsnip directory
 -- print(vim.g.vsnip_snippet_dir)
+
+-- print LSP capabilities
+-- for key in vim.spairs(capabilities) do
+-- 	local val = capabilities[key]
+-- 	print(key, ':', vim.inspect(val))
+-- end
+-- print('Flush')
