@@ -99,9 +99,7 @@ cmp.setup({
 		['<PageUp>'] = cmp.mapping.scroll_docs(-4), -- only for docs not for completion window
 		['<PageDown>'] = cmp.mapping.scroll_docs(4), -- only for docs not for completion window
 		['<CR>'] = cmp.mapping.confirm({ select = false }),
-		["<S-Tab>"] = cmp.mapping.select_prev_item(),
 		["<Up>"] = cmp.mapping.select_prev_item(),
-		["<Tab>"] = cmp.mapping.select_next_item(),
 		["<Down>"] = cmp.mapping.select_next_item(),
 	}),
 	sources = cmp.config.sources({
@@ -128,21 +126,17 @@ cmp.setup.cmdline(':', {
 	matching = { disallow_symbol_nonprefix_matching = false }
 })
 -- for edit mode ...
-vim.keymap.set("i", "<C-j>", function()
+vim.keymap.set({"i", "s"}, "<Tab>", function()
 	if vim.fn["vsnip#expandable"]() == 1 then
 		return "<Plug>(vsnip-expand)"
-	else
-		return ""
-	end
-end, { expr = true, silent = true })
-
-vim.keymap.set("i", "<Tab>", function()
-	if vim.fn["vsnip#jumpable"](1) == 1 then
+	elseif vim.fn["vsnip#jumpable"](1) == 1 then
 		return "<Plug>(vsnip-jump-next)"
 	else
 		return "<Tab>"
 	end
 end, { expr = true, silent = true })
+
+vim.g.vsnip_snippet_dir = vim.fn.stdpath("config") .. "/snippets"
 
 -- print LSP capabilities
 -- for key in vim.spairs(capabilities) do

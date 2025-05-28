@@ -1,0 +1,16 @@
+{
+  "html tag": {
+    "prefix": "<",
+    "body": [
+      "<${1:h3}>${2}</${1}>${3}"
+    ],
+    "description": "html tag"
+  },
+  "blog tag": {
+    "prefix": "[",
+    "body": [
+      "[${1:imath}]${2}[/${1}]${3}"
+    ],
+    "description": "blog tag"
+  }
+}
