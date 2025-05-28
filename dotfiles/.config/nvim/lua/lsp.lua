@@ -1,4 +1,6 @@
 -- refer to: https://github.com/neovim/nvim-lspconfig/blob/master/lsp/*
+--
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 vim.lsp.config('pyright', {
 	settings = {
@@ -12,11 +14,7 @@ vim.lsp.config('pyright', {
 			},
 		},
 	},
+	capabilities = capabilities
 })
 
 vim.lsp.enable('pyright')
-
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
-require('lspconfig')['pyright'].setup {
-	capabilities = capabilities
-}
