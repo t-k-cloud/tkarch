@@ -99,8 +99,10 @@ cmp.setup({
 		['<PageUp>'] = cmp.mapping.scroll_docs(-4), -- only for docs not for completion window
 		['<PageDown>'] = cmp.mapping.scroll_docs(4), -- only for docs not for completion window
 		['<CR>'] = cmp.mapping.confirm({ select = false }),
-		["<Tab>"] = cmp.mapping.select_next_item(),
 		["<S-Tab>"] = cmp.mapping.select_prev_item(),
+		["<Up>"] = cmp.mapping.select_prev_item(),
+		["<Tab>"] = cmp.mapping.select_next_item(),
+		["<Down>"] = cmp.mapping.select_next_item(),
 	}),
 	sources = cmp.config.sources({
 		{ name = 'nvim_lsp' },
