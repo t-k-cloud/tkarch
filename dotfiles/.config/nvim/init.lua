@@ -81,8 +81,12 @@ vim.api.nvim_set_hl(0, 'CopilotSuggestion', { fg = '#93a1a1', bg = '#002b36', })
 -- CodeCompanion
 vim.keymap.set("n", "<leader>ai", ':CodeCompanionChat Toggle<CR>', { noremap = true, desc = "Toggle AI"})
 
--- Snippets
+-- Auto-Completion
 local cmp = require'cmp'
+local function feedkey(key, mode)
+	-- utility to feed <Plug> key
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode or "", false)
+end
 cmp.setup({
 	snippet = {
 		expand = function(args)
@@ -91,7 +95,7 @@ cmp.setup({
 	},
 	window = {
 		completion = cmp.config.window.bordered({
-			winhighlight = 'Normal:none,FloatBorder:none'
+			winhighlight = 'Normal:none,FloatBorder:none,CursorLine:PmenuSel'
 		}),
 		documentation = cmp.config.window.bordered(),
 	},
@@ -101,6 +105,26 @@ cmp.setup({
 		['<CR>'] = cmp.mapping.confirm({ select = false }),
 		["<Up>"] = cmp.mapping.select_prev_item(),
 		["<Down>"] = cmp.mapping.select_next_item(),
+		['<Tab>'] = cmp.mapping(function(fallback)
+			if vim.fn["vsnip#expandable"]() == 1 then
+				vim.fn["vsnip#expand"]()
+			elseif vim.fn["vsnip#jumpable"](1) == 1 then
+				feedkey("<Plug>(vsnip-jump-next)")
+			elseif cmp.visible() then
+				cmp.select_next_item()
+			else
+				fallback() -- insert a literal <Tab>
+			end
+		end, { 'i', 's' }),
+		['<S-Tab>'] = cmp.mapping(function(fallback)
+			if vim.fn["vsnip#jumpable"](-1) == 1 then
+				feedkey("<Plug>(vsnip-jump-prev)")
+			elseif cmp.visible() then
+				cmp.select_prev_item()
+			else
+				fallback() -- insert a literal <S-Tab>
+			end
+		end, { 'i', 's' }),
 	}),
 	sources = cmp.config.sources({
 		{ name = 'nvim_lsp' },
@@ -108,14 +132,16 @@ cmp.setup({
 		{ name = 'buffer' },
 	}),
 })
--- for search mode ...
+
+-- Snippets keymap
+-- (search mode)
 cmp.setup.cmdline({ '/', '?' }, {
 	mapping = cmp.mapping.preset.cmdline(),
 	sources = {
 		{ name = 'buffer' }
 	}
 })
--- for command mode ...
+-- (command mode)
 cmp.setup.cmdline(':', {
 	mapping = cmp.mapping.preset.cmdline(),
 	sources = cmp.config.sources({
@@ -125,18 +151,11 @@ cmp.setup.cmdline(':', {
 	}),
 	matching = { disallow_symbol_nonprefix_matching = false }
 })
--- for edit mode ...
-vim.keymap.set({"i", "s"}, "<Tab>", function()
-	if vim.fn["vsnip#expandable"]() == 1 then
-		return "<Plug>(vsnip-expand)"
-	elseif vim.fn["vsnip#jumpable"](1) == 1 then
-		return "<Plug>(vsnip-jump-next)"
-	else
-		return "<Tab>"
-	end
-end, { expr = true, silent = true })
-
+-- allow our customized snippets to be discovered (e.g., tkblog).
 vim.g.vsnip_snippet_dir = vim.fn.stdpath("config") .. "/snippets"
+
+-- print friendly-snippets files
+-- print(vim.fn.stdpath("data") .. '/site/pack/packer/start/friendly-snippets/snippets')
 
 -- print LSP capabilities
 -- for key in vim.spairs(capabilities) do
