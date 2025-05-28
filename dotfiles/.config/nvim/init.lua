@@ -86,7 +86,7 @@ local cmp = require'cmp'
 cmp.setup({
 	snippet = {
 		expand = function(args)
-			vim.fn["vsnip#anonymous"](args.body)
+			vim.fn["vsnip#anonymous"](args.body) -- For vsnip users
 		end,
 	},
 	window = {
@@ -106,7 +106,7 @@ cmp.setup({
 	}),
 	sources = cmp.config.sources({
 		{ name = 'nvim_lsp' },
-		{ name = 'vsnip' }, -- For vsnip users.
+		{ name = 'vsnip' }, -- For vsnip users
 		{ name = 'buffer' },
 	}),
 })
@@ -128,7 +128,6 @@ cmp.setup.cmdline(':', {
 	matching = { disallow_symbol_nonprefix_matching = false }
 })
 -- for edit mode ...
--- how to setup this in nvim lua:
 vim.keymap.set("i", "<C-j>", function()
 	if vim.fn["vsnip#expandable"]() == 1 then
 		return "<Plug>(vsnip-expand)"
@@ -144,9 +143,6 @@ vim.keymap.set("i", "<Tab>", function()
 		return "<Tab>"
 	end
 end, { expr = true, silent = true })
-
--- show vsnip directory
--- print(vim.g.vsnip_snippet_dir)
 
 -- print LSP capabilities
 -- for key in vim.spairs(capabilities) do
