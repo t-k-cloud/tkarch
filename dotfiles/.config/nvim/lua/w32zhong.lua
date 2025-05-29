@@ -79,7 +79,7 @@ end, { noremap = true, silent = true })
 
 vim.api.nvim_set_hl(0, "ColorColumn", { bg = "#ff00ff" })
 
--- blog preview/upload (up/pu)
+-- blog upload/publish (up/pu)
 vim.keymap.set("n", "<Leader>up", "<Esc>:!tk-blog-upload.sh % &<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<Leader>pu", "<Esc>:!tk-blog-upload.sh % publish<CR>", { noremap = true, silent = true })
 
@@ -90,7 +90,7 @@ vim.filetype.add({
 	},
 })
 
--- file ext
+-- file extensions
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
 	pattern = { "*.mojo", "*.🔥" },
 	callback = function()
