@@ -1,6 +1,5 @@
 vim.g.mapleader = ' '
 vim.cmd.colorscheme 'slate'
-vim.opt.guicursor = ''
 vim.opt.termguicolors = true
 vim.opt.incsearch = true
 
@@ -8,6 +7,11 @@ vim.opt.incsearch = true
 -- vim.go: behaves like :setglobal
 -- vim.bo: for buffer-scoped options
 -- vim.wo: for window-scoped options (can be double indexed)
+
+-- style the cursor (block + blink)
+vim.o.guicursor = vim.o.guicursor .. ',a:blinkon1'
+vim.g.matchparen_disable_cursor_hl = 1
+vim.api.nvim_set_hl(0, "MatchParen", {reverse=true})
 
 -- disable mouse integration (allowing cursor-select copy etc.)
 vim.o.mouse = ""
