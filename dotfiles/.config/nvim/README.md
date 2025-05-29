@@ -1,6 +1,7 @@
 ## Clean Installation
 ```sh
 find ~ -name 'nvim' -type d | xargs rm -rf
+git checkout .
 nvim # will bootstrap for the first time...
 ```
 
