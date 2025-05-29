@@ -9,9 +9,16 @@ vim.opt.incsearch = true
 -- vim.wo: for window-scoped options (can be double indexed)
 
 -- style the cursor (block + blink)
-vim.o.guicursor = vim.o.guicursor .. ',a:blinkon1'
 vim.g.matchparen_disable_cursor_hl = 1
 vim.api.nvim_set_hl(0, "MatchParen", {reverse=true})
+vim.opt.guicursor = {
+  "n-v-c:block",
+  "i-ci-ve:ver25",
+  "r-cr:hor20",
+  "o:hor50",
+  "a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor",
+  "sm:block-blinkwait175-blinkoff150-blinkon175",
+}
 
 -- disable mouse integration (allowing cursor-select copy etc.)
 vim.o.mouse = ""

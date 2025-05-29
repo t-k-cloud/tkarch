@@ -75,7 +75,7 @@ time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
   ["bookmarks.nvim"] = {
-    config = { "\27LJ\2\n–\2\0\1\b\0\20\0*6\1\0\0'\3\1\0B\1\2\0026\2\2\0009\2\3\0029\2\4\2\18\3\2\0'\5\5\0'\6\6\0009\a\a\1B\3\4\1\18\3\2\0'\5\5\0'\6\b\0009\a\t\1B\3\4\1\18\3\2\0'\5\5\0'\6\n\0009\a\v\1B\3\4\1\18\3\2\0'\5\5\0'\6\f\0009\a\r\1B\3\4\1\18\3\2\0'\5\5\0'\6\14\0009\a\15\1B\3\4\1\18\3\2\0'\5\5\0'\6\16\0009\a\17\1B\3\4\1\18\3\2\0'\5\5\0'\6\18\0009\a\19\1B\3\4\1K\0\1\0\18bookmark_list\aml\23bookmark_clear_all\amD\19bookmark_clean\amd\18bookmark_prev\amN\18bookmark_next\amn\17bookmark_ann\amj\20bookmark_toggle\amm\6n\bset\vkeymap\bvim\14bookmarks\frequireÛ\1\1\0\6\0\r\0\0176\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\a\0006\3\3\0009\3\4\0039\3\5\3'\5\6\0B\3\2\2=\3\b\0025\3\t\0=\3\n\0023\3\v\0=\3\f\2B\0\2\1K\0\1\0\14on_attach\0\rkeywords\1\0\3\a@f\t‚õè \a@w\f‚ö†Ô∏è \a@t\f‚òëÔ∏è \14save_file\1\0\3\rkeywords\0\14on_attach\0\14save_file\0$$HOME/.cache/nvim/bookmarks.txt\vexpand\afn\bvim\nsetup\14bookmarks\frequire\0" },
+    config = { "\27LJ\2\n–\2\0\1\b\0\20\0*6\1\0\0'\3\1\0B\1\2\0026\2\2\0009\2\3\0029\2\4\2\18\3\2\0'\5\5\0'\6\6\0009\a\a\1B\3\4\1\18\3\2\0'\5\5\0'\6\b\0009\a\t\1B\3\4\1\18\3\2\0'\5\5\0'\6\n\0009\a\v\1B\3\4\1\18\3\2\0'\5\5\0'\6\f\0009\a\r\1B\3\4\1\18\3\2\0'\5\5\0'\6\14\0009\a\15\1B\3\4\1\18\3\2\0'\5\5\0'\6\16\0009\a\17\1B\3\4\1\18\3\2\0'\5\5\0'\6\18\0009\a\19\1B\3\4\1K\0\1\0\18bookmark_list\aml\23bookmark_clear_all\amD\19bookmark_clean\amd\18bookmark_prev\amN\18bookmark_next\amn\17bookmark_ann\amj\20bookmark_toggle\amm\6n\bset\vkeymap\bvim\14bookmarks\frequireÛ\1\1\0\6\0\r\0\0176\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\a\0006\3\3\0009\3\4\0039\3\5\3'\5\6\0B\3\2\2=\3\b\0025\3\t\0=\3\n\0023\3\v\0=\3\f\2B\0\2\1K\0\1\0\14on_attach\0\rkeywords\1\0\3\a@w\f‚ö†Ô∏è \a@f\t‚õè \a@t\f‚òëÔ∏è \14save_file\1\0\3\14on_attach\0\14save_file\0\rkeywords\0$$HOME/.cache/nvim/bookmarks.txt\vexpand\afn\bvim\nsetup\14bookmarks\frequire\0" },
     loaded = false,
     needs_bufread = false,
     only_cond = false,
@@ -108,13 +108,13 @@ _G.packer_plugins = {
     url = "https://github.com/hrsh7th/cmp-vsnip"
   },
   ["codecompanion.nvim"] = {
-    config = { "\27LJ\2\n∏\1\0\0\5\0\n\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\b\0005\3\4\0005\4\3\0=\4\5\0035\4\6\0=\4\a\3=\3\t\2B\0\2\1K\0\1\0\15strategies\1\0\1\15strategies\0\vinline\1\0\1\fadapter\14anthropic\tchat\1\0\2\tchat\0\vinline\0\1\0\1\fadapter\14anthropic\nsetup\18codecompanion\frequire\0" },
+    config = { "\27LJ\2\nÙ\3\0\0\b\0\23\0\0296\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\21\0005\3\n\0005\4\3\0005\5\a\0005\6\5\0005\a\4\0=\a\6\6=\6\b\5=\5\t\4=\4\v\0035\4\f\0005\5\15\0005\6\14\0005\a\r\0=\a\6\6=\6\16\0055\6\18\0005\a\17\0=\a\6\6=\6\19\5=\5\t\4=\4\20\3=\3\22\2B\0\2\1K\0\1\0\15strategies\1\0\1\15strategies\0\vinline\18reject_change\1\0\2\16description Reject the suggested change\nmodes\0\1\0\1\6n\agr\18accept_change\1\0\2\18reject_change\0\18accept_change\0\1\0\2\16description Accept the suggested change\nmodes\0\1\0\1\6n\aga\1\0\2\fadapter\14anthropic\fkeymaps\0\tchat\1\0\2\vinline\0\tchat\0\fkeymaps\tsend\1\0\1\tsend\0\nmodes\1\0\1\nmodes\0\1\0\2\6n\n<C-s>\6i\n<C-s>\1\0\2\fadapter\14anthropic\fkeymaps\0\nsetup\18codecompanion\frequire\0" },
     loaded = true,
     path = "/home/tk/.local/share/nvim/site/pack/packer/start/codecompanion.nvim",
     url = "https://github.com/olimorris/codecompanion.nvim"
   },
   ["copilot.lua"] = {
-    config = { "\27LJ\2\n®\2\0\0\5\0\n\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0005\4\a\0=\4\b\3=\3\t\2B\0\2\1K\0\1\0\15suggestion\vkeymap\1\0\5\16accept_line\1\vaccept\n<C-\\>\16accept_word\n<M-\\>\tnext\n<M-]>\tprev\n<M-[>\1\0\6\fenabled\2\22trigger_on_accept\2\rdebounce\3K\27hide_during_completion\2\17auto_trigger\1\vkeymap\0\npanel\1\0\2\15suggestion\0\npanel\0\1\0\1\fenabled\1\nsetup\fcopilot\frequire\0" },
+    config = { "\27LJ\2\n®\2\0\0\5\0\n\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0005\4\a\0=\4\b\3=\3\t\2B\0\2\1K\0\1\0\15suggestion\vkeymap\1\0\5\tnext\n<M-]>\16accept_word\n<M-\\>\vaccept\n<C-\\>\tprev\n<M-[>\16accept_line\1\1\0\6\vkeymap\0\22trigger_on_accept\2\rdebounce\3K\27hide_during_completion\2\17auto_trigger\1\fenabled\2\npanel\1\0\2\npanel\0\15suggestion\0\1\0\1\fenabled\1\nsetup\fcopilot\frequire\0" },
     loaded = true,
     path = "/home/tk/.local/share/nvim/site/pack/packer/start/copilot.lua",
     url = "https://github.com/zbirenbaum/copilot.lua"
@@ -206,14 +206,14 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: copilot.lua
-time([[Config for copilot.lua]], true)
-try_loadstring("\27LJ\2\n®\2\0\0\5\0\n\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0005\4\a\0=\4\b\3=\3\t\2B\0\2\1K\0\1\0\15suggestion\vkeymap\1\0\5\16accept_line\1\vaccept\n<C-\\>\16accept_word\n<M-\\>\tnext\n<M-]>\tprev\n<M-[>\1\0\6\fenabled\2\22trigger_on_accept\2\rdebounce\3K\27hide_during_completion\2\17auto_trigger\1\vkeymap\0\npanel\1\0\2\15suggestion\0\npanel\0\1\0\1\fenabled\1\nsetup\fcopilot\frequire\0", "config", "copilot.lua")
-time([[Config for copilot.lua]], false)
 -- Config for: codecompanion.nvim
 time([[Config for codecompanion.nvim]], true)
-try_loadstring("\27LJ\2\n∏\1\0\0\5\0\n\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\b\0005\3\4\0005\4\3\0=\4\5\0035\4\6\0=\4\a\3=\3\t\2B\0\2\1K\0\1\0\15strategies\1\0\1\15strategies\0\vinline\1\0\1\fadapter\14anthropic\tchat\1\0\2\tchat\0\vinline\0\1\0\1\fadapter\14anthropic\nsetup\18codecompanion\frequire\0", "config", "codecompanion.nvim")
+try_loadstring("\27LJ\2\nÙ\3\0\0\b\0\23\0\0296\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\21\0005\3\n\0005\4\3\0005\5\a\0005\6\5\0005\a\4\0=\a\6\6=\6\b\5=\5\t\4=\4\v\0035\4\f\0005\5\15\0005\6\14\0005\a\r\0=\a\6\6=\6\16\0055\6\18\0005\a\17\0=\a\6\6=\6\19\5=\5\t\4=\4\20\3=\3\22\2B\0\2\1K\0\1\0\15strategies\1\0\1\15strategies\0\vinline\18reject_change\1\0\2\16description Reject the suggested change\nmodes\0\1\0\1\6n\agr\18accept_change\1\0\2\18reject_change\0\18accept_change\0\1\0\2\16description Accept the suggested change\nmodes\0\1\0\1\6n\aga\1\0\2\fadapter\14anthropic\fkeymaps\0\tchat\1\0\2\vinline\0\tchat\0\fkeymaps\tsend\1\0\1\tsend\0\nmodes\1\0\1\nmodes\0\1\0\2\6n\n<C-s>\6i\n<C-s>\1\0\2\fadapter\14anthropic\fkeymaps\0\nsetup\18codecompanion\frequire\0", "config", "codecompanion.nvim")
 time([[Config for codecompanion.nvim]], false)
+-- Config for: copilot.lua
+time([[Config for copilot.lua]], true)
+try_loadstring("\27LJ\2\n®\2\0\0\5\0\n\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0005\4\a\0=\4\b\3=\3\t\2B\0\2\1K\0\1\0\15suggestion\vkeymap\1\0\5\tnext\n<M-]>\16accept_word\n<M-\\>\vaccept\n<C-\\>\tprev\n<M-[>\16accept_line\1\1\0\6\vkeymap\0\22trigger_on_accept\2\rdebounce\3K\27hide_during_completion\2\17auto_trigger\1\fenabled\2\npanel\1\0\2\npanel\0\15suggestion\0\1\0\1\fenabled\1\nsetup\fcopilot\frequire\0", "config", "copilot.lua")
+time([[Config for copilot.lua]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
 vim.cmd [[ packadd nvim-treesitter ]]

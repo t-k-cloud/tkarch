@@ -88,7 +88,7 @@ return require('packer').startup(function(use)
 	-- AI agent --
 	
 	-- Run :CodeCompanionChat to open a chat buffer.
-	-- Type your prompt and send it by pressing <C-s> while in insert mode or <CR> in normal mode.
+	-- Type your prompt and send it by pressing Ctrl-s.
 	-- The #buffer variable shares the full contents from the buffer that the user was last in
 	-- when they initiated :CodeCompanionChat. To select another buffer, use the /buffer command.
 	use {
@@ -98,9 +98,24 @@ return require('packer').startup(function(use)
 				strategies = {
 					chat = {
 						adapter = "anthropic",
+						keymaps = {
+							send = {
+								modes = { n = "<C-s>", i = "<C-s>" },
+							},
+						}
 					},
 					inline = {
 						adapter = "anthropic",
+						keymaps = {
+							accept_change = {
+								modes = { n = "ga" },
+								description = "Accept the suggested change",
+							},
+							reject_change = {
+								modes = { n = "gr" },
+								description = "Reject the suggested change",
+							},
+						},
 					},
 				},
 			})
