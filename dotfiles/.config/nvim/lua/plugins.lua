@@ -106,7 +106,7 @@ return require('packer').startup(function(use)
 	}
 
 	-- AI agent --
-	
+
 	-- Run :CodeCompanionChat to open a chat buffer.
 	-- Type your prompt and send it by pressing Ctrl-s.
 	-- The #buffer variable shares the full contents from the buffer that the user was last in
@@ -146,6 +146,7 @@ return require('packer').startup(function(use)
 		}
 	}
 
+	-- Markdown rendering --
 	use({
 		'MeanderingProgrammer/render-markdown.nvim',
 		after = { 'nvim-treesitter' },
@@ -154,7 +155,12 @@ return require('packer').startup(function(use)
 		-- requires = { 'nvim-tree/nvim-web-devicons', opt = true }, -- if you prefer nvim-web-devicons
 		config = function()
 			require('render-markdown').setup({
-				file_types = { 'markdown', "codecompanion" }
+				file_types = { 'markdown', "codecompanion" },
+				code = {
+					enabled = true,
+					highlight = 'RenderMarkdownCode',
+					highlight_inline = 'RenderMarkdownCodeInline',
+				},
 			})
 		end,
 	})
