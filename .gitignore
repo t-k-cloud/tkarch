@@ -1,4 +1,5 @@
 *.swp
 dotfiles/.config/*
+dotfiles/.config/nvim/plugin/
 !dotfiles/.config/nvim/
 dotfiles/.env
