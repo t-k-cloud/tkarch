@@ -70,7 +70,7 @@ vim.keymap.set("n", "<Leader>ss", ":%s/<C-r><C-w>/", { noremap = true })
 vim.keymap.set('n', '<Leader>cl', function()
 	local col = vim.wo.colorcolumn
 	if col == "" then
-		local cursor_col = vim.fn.col(".")
+		local cursor_col = vim.fn.virtcol(".")
 		vim.wo.colorcolumn = tostring(cursor_col)
 	else
 		vim.wo.colorcolumn = ""
