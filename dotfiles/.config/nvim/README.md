@@ -1,6 +1,7 @@
 ## Clean Installation
 ```sh
-find ~ -name 'nvim' -type d | rm -rf
+find ~ -name 'nvim' -type d | xargs rm -rf
+nvim # will bootstrap for the first time...
 ```
 
 | Command | Mode | Description |
