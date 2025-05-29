@@ -1,3 +1,7 @@
+## Clean Installation
+```sh
+find ~ -name 'nvim' -type d | rm -rf
+```
 
 | Command | Mode | Description |
 |---------|------|-------------|
