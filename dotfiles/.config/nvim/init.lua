@@ -6,6 +6,7 @@ require('w32zhong')
 -- run :PackerSync and then :PackerStatus for new plugin installation
 require('plugins')
 
+-- hardline coinfigs
 require('hardline').setup {
 	theme = 'default',
 	bufferline = true,
@@ -24,6 +25,7 @@ require('hardline').setup {
 	},
 }
 
+-- neo-tree coinfigs
 require("neo-tree").setup({
 	filesystem = {
 		name = {
@@ -34,10 +36,10 @@ require("neo-tree").setup({
 	},
 })
 
+-- LazyGit configs
 vim.keymap.set("n", "<leader>gt", ':LazyGit<CR>')
 
--- LSP servers
--- use i mode CTRL-X CTRL-O to trigger completion
+-- LSP diagnostic configs
 vim.diagnostic.config({
 	--signs = false, -- don't show signs in the gutter
 	signs = {
@@ -56,13 +58,16 @@ vim.diagnostic.config({
 	},
 })
 
+-- Enable LSP for Python and other languages
 require('lsp')
 vim.lsp.enable('python-lsp')
 
+-- Toggle LSP diagnostic messages
 vim.keymap.set("n", "<leader>td", function()
 	vim.diagnostic.enable(not vim.diagnostic.is_enabled())
 end, { noremap = true, desc = "Toggle diagnostics"})
 
+-- Go to next or previous diagnostic message
 vim.keymap.set("n", "<leader>dn", vim.diagnostic.goto_next)
 vim.keymap.set("n", "<leader>dN", vim.diagnostic.goto_prev)
 
@@ -75,7 +80,7 @@ vim.keymap.set("n", "<leader>dN", vim.diagnostic.goto_prev)
 --end
 --print('Flush')
 
--- Copilot (ALT-] or -[ to cycle suggestions, and Ctrl-\ or Alt-\ to accept all or words)
+-- Copilot suggested line color scheme
 vim.api.nvim_set_hl(0, 'CopilotSuggestion', { fg = '#93a1a1', bg = '#002b36', })
 
 -- CodeCompanion
@@ -154,6 +159,7 @@ cmp.setup.cmdline(':', {
 	}),
 	matching = { disallow_symbol_nonprefix_matching = false }
 })
+
 -- allow our customized snippets to be discovered (e.g., tkblog).
 vim.g.vsnip_snippet_dir = vim.fn.stdpath("config") .. "/snippets"
 

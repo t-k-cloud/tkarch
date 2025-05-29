@@ -55,6 +55,25 @@ nvim # will bootstrap for the first time...
 | `gr` | Normal | Reject suggested change (CodeCompanion inline) |
 
 
+**init.lua** (leftover key bindings):
+
+| Command | Mode | Description |
+|---------|------|-------------|
+| `<leader>gt` | Normal | Open LazyGit |
+| `<leader>td` | Normal | Toggle diagnostics on/off |
+| `<leader>dn` | Normal | Go to next diagnostic |
+| `<leader>dN` | Normal | Go to previous diagnostic |
+| `<leader>ai` | Normal | Toggle CodeCompanion AI chat |
+| `<leader>ai` | Visual | Add selected text to AI chat |
+| `ai` | Command | Abbreviation for CodeCompanionChat |
+| `<PageUp>` | Insert | Scroll completion docs up |
+| `<PageDown>` | Insert | Scroll completion docs down |
+| `<CR>` | Insert | Confirm completion selection |
+| `<Up>` | Insert | Select previous completion item |
+| `<Down>` | Insert | Select next completion item |
+| `<Tab>` | Insert | Smart tab (expand snippet, jump next, or select completion) |
+| `<S-Tab>` | Insert | Smart shift-tab (jump previous or select previous completion) |
+
 ## AI Sign-In
 * Copilot: `:Copilot auth`
 * CodeCompanion: `export ANTHROPIC_API_KEY=...`
