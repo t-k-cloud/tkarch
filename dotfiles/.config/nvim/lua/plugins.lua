@@ -18,9 +18,8 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function(use)
 	-- Packer can manage itself
 	use 'wbthomason/packer.nvim'
-	if packer_bootstrap then
-		require('packer').sync()
-	end
+	-- uncomment if we want to force a bootstrap
+	-- packer_bootstrap = true
 
 	use {
 		'tomasky/bookmarks.nvim',
@@ -169,4 +168,10 @@ return require('packer').startup(function(use)
 
 	-- LSP config --
 	use {"neovim/nvim-lspconfig"}
+
+	-- bootstrap for the 1st time and install everything...
+	if packer_bootstrap then
+		require('packer').sync()
+		print('packer bootstrap done!')
+	end
 end)
