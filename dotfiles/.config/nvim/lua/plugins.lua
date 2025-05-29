@@ -21,6 +21,7 @@ return require('packer').startup(function(use)
 	-- uncomment if we want to force a bootstrap
 	-- packer_bootstrap = true
 
+	-- bookmarks --
 	use {
 		'tomasky/bookmarks.nvim',
 		-- after = "telescope.nvim",
@@ -49,8 +50,10 @@ return require('packer').startup(function(use)
 		end
 	}
 
+	-- status and tab bars --
 	use {'ojroques/nvim-hardline'}
 
+	-- file explorer --
 	use({
 		"nvim-neo-tree/neo-tree.nvim",
 		branch = "v3.x",
@@ -62,6 +65,7 @@ return require('packer').startup(function(use)
 		}
 	})
 
+	-- git explorer --
 	use({
 		"kdheepak/lazygit.nvim",
 		-- optional for floating window border decoration
@@ -71,6 +75,8 @@ return require('packer').startup(function(use)
 	})
 
 	-- AI completion --
+
+	-- Run `:Copilot auth` to sign in.
 	use {
 		"zbirenbaum/copilot.lua",
 		--cmd = "Copilot",

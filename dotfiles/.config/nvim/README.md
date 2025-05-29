@@ -7,9 +7,10 @@ nvim # will bootstrap for the first time...
 
 ## Key Bindings
 
+**w32zhong.lua**:
+
 | Command | Mode | Description |
 |---------|------|-------------|
-| **w32zhong.lua** |
 | `<Leader><S-s>` | Normal | Toggle search highlight |
 | `<Leader>ta` | Normal | Toggle tab/space visualization |
 | `<Leader>ts` | Visual | Remove trailing spaces in selection |
@@ -33,3 +34,27 @@ nvim # will bootstrap for the first time...
 | `<Leader>x` | Normal | Close current buffer (keeping previous open) |
 | `<Leader>1-19` | Normal | Jump to buffer number 1-19 |
 
+
+**plugins.lua**:
+
+| Command | Mode | Description |
+|---------|------|-------------|
+| `mm` | Normal | Toggle bookmark at current line |
+| `mj` | Normal | Add or edit bookmark annotation at current line |
+| `mn` | Normal | Jump to next bookmark in local buffer |
+| `mN` | Normal | Jump to previous bookmark in local buffer |
+| `md` | Normal | Clean all bookmarks in local buffer |
+| `mD` | Normal | Remove all bookmarks globally |
+| `ml` | Normal | Show marked file list in quickfix window |
+| `<M-\>` | Insert | Accept word suggestion (Copilot) |
+| `<M-]>` | Insert | Next suggestion (Copilot) |
+| `<M-[>` | Insert | Previous suggestion (Copilot) |
+| `<C-\>` | Insert | Accept suggestion (Copilot) |
+| `<C-s>` | Normal/Insert | Send message (CodeCompanion chat) |
+| `ga` | Normal | Accept suggested change (CodeCompanion inline) |
+| `gr` | Normal | Reject suggested change (CodeCompanion inline) |
+
+
+## AI Sign-In
+* Copilot: `:Copilot auth`
+* CodeCompanion: `export ANTHROPIC_API_KEY=...`
