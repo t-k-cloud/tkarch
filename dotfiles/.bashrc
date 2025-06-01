@@ -244,6 +244,10 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+if ! conda env config vars list | grep -q "LD_LIBRARY_PATH"; then
+    conda env config vars set LD_LIBRARY_PATH="$CONDA_PREFIX/lib"
+fi
+
 # https://wiki.archlinux.org/title/SSH_keys
 # This will run a ssh-agent process if there is not one already, and save the output thereof. If there is one running already, we retrieve the cached ssh-agent output and evaluate it which will set the necessary environment variables. The lifetime of the unlocked keys is set to 24 hour.
 if ! pgrep -u "$USER" ssh-agent > /dev/null; then
