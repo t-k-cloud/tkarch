@@ -150,20 +150,44 @@ return require('packer').startup(function(use)
 	use({
 		'MeanderingProgrammer/render-markdown.nvim',
 		after = { 'nvim-treesitter' },
-		requires = { 'echasnovski/mini.nvim', opt = true }, -- if you use the mini.nvim suite
-		-- requires = { 'echasnovski/mini.icons', opt = true }, -- if you use standalone mini plugins
-		-- requires = { 'nvim-tree/nvim-web-devicons', opt = true }, -- if you prefer nvim-web-devicons
+		requires = { 'echasnovski/mini.nvim', opt = true },
 		config = function()
 			require('render-markdown').setup({
 				file_types = { 'markdown', "codecompanion" },
-				code = {
-					enabled = true,
-					highlight = 'RenderMarkdownCode',
-					highlight_inline = 'RenderMarkdownCodeInline',
-				},
+				code = { style = 'language' },
 			})
 		end,
 	})
+
+	use {
+		'nvim-treesitter/nvim-treesitter',
+		run = function()
+			local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+			ts_update()
+		end,
+		config = function()
+			require('nvim-treesitter.configs').setup {
+				ensure_installed = {
+					"c",
+					"cpp",
+					"python",
+					"lua",
+					"javascript",
+					"bash",
+					"rust",
+					"markdown",
+					"markdown_inline"
+				},
+				highlight = {
+					enable = true,
+					additional_vim_regex_highlighting = false,
+				},
+				indent = {
+					enable = true,
+				},
+			}
+		end
+	}
 
 	-- Snippets --
 	use {'hrsh7th/nvim-cmp'}
