@@ -245,7 +245,7 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 if ! conda env config vars list | grep -q "LD_LIBRARY_PATH"; then
-    conda env config vars set LD_LIBRARY_PATH="$CONDA_PREFIX/lib"
+	conda env config vars set LD_LIBRARY_PATH="/usr/lib:$CONDA_PREFIX/lib"
 fi
 
 # https://wiki.archlinux.org/title/SSH_keys
