@@ -227,16 +227,18 @@ alias pipgfw="sudo pip install -i http://pypi.douban.com/simple/ --trusted-host=
 
 export SVN_EDITOR=vi
 
+conda_prefix=/mnt/hg_cache
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$(~/anaconda3/bin/conda 'shell.bash' 'hook' 2> /dev/null)"
+__conda_setup="$($conda_prefix/anaconda3/bin/conda 'shell.bash' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f ~/anaconda3/etc/profile.d/conda.sh ]; then
-        . ~/anaconda3/etc/profile.d/conda.sh
+    if [ -f $conda_prefix/anaconda3/etc/profile.d/conda.sh ]; then
+        . $conda_prefix/anaconda3/etc/profile.d/conda.sh
     else
-        export PATH=~/anaconda3/bin:$PATH
+        export PATH=$conda_prefix/anaconda3/bin:$PATH
     fi
 fi
 unset __conda_setup
@@ -250,4 +252,6 @@ fi
 source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
 export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
 
-source $HOME/.env
+if [ -f $HOME/.env ]; then
+	source $HOME/.env
+fi
