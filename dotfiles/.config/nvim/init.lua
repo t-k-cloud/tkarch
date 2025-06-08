@@ -60,7 +60,7 @@ vim.diagnostic.config({
 
 -- Enable LSP for Python and other languages
 require('lsp')
-vim.lsp.enable('python-lsp')
+vim.lsp.enable('pyright')
 
 -- Toggle LSP diagnostic messages
 vim.keymap.set("n", "<leader>td", function()
