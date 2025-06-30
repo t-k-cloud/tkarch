@@ -1,0 +1,10 @@
+[Unit]
+Description=CloudFlare Tunnel
+
+[Service]
+ExecStart=docker run cloudflare/cloudflared:latest tunnel --no-autoupdate run --token <TOKEN>
+Restart=always
+RestartSec=5min 30s
+
+[Install]
+WantedBy=multi-user.target
