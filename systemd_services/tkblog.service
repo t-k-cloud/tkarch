@@ -1,0 +1,10 @@
+[Unit]
+Description=tkblog service
+
+[Service]
+ExecStart=/bin/bash /home/arch/tkblog.sh
+Restart=always
+RestartSec=15min 30s
+
+[Install]
+WantedBy=multi-user.target
