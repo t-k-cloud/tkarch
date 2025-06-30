@@ -3,7 +3,7 @@ Description=CloudFlare Tunnel
 
 [Service]
 ExecStart=docker run cloudflare/cloudflared:latest tunnel --no-autoupdate run --token <TOKEN>
-Restart=always
+Restart=on-failure
 RestartSec=5min 30s
 
 [Install]
