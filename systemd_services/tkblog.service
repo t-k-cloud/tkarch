@@ -3,7 +3,7 @@ Description=tkblog service
 
 [Service]
 ExecStart=/bin/bash /home/arch/tkblog.sh
-Restart=always
+Restart=on-failure
 RestartSec=15min 30s
 
 [Install]
