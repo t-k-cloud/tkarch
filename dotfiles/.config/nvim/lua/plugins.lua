@@ -21,6 +21,9 @@ return require('packer').startup(function(use)
 	-- uncomment if we want to force a bootstrap
 	-- packer_bootstrap = true
 
+	-- colorscheme --
+	use "rebelot/kanagawa.nvim"
+
 	-- bookmarks --
 	use {
 		'tomasky/bookmarks.nvim',

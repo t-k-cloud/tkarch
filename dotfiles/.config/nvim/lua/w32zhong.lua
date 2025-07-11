@@ -1,5 +1,5 @@
 vim.g.mapleader = ' '
-vim.cmd.colorscheme 'desert'
+vim.cmd.colorscheme 'kanagawa-dragon'
 vim.opt.termguicolors = true
 vim.opt.incsearch = true
 
