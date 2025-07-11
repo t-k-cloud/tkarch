@@ -135,6 +135,7 @@ vim.keymap.set('n', '<Leader>p', 'viw"+p', { noremap = true, silent = true })
 vim.keymap.set('v', '<Leader>p', '"+p', { noremap = true, silent = true })
 
 -- multi-word highlighting (*/0)
+-- use :hi to view all highlight groups
 _G.hl_words = {}
 vim.api.nvim_set_hl(0, "Search2", { fg = "white", bg = "blue", bold = true })
 
