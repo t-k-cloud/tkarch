@@ -87,7 +87,7 @@ vim.api.nvim_set_hl(0, 'CopilotSuggestion', { fg = '#93a1a1', bg = '#002b36', })
 -- refer to https://github.com/olimorris/codecompanion.nvim/tree/main/lua/codecompanion/adapters
 vim.keymap.set("n", "<leader>ai", ':CodeCompanionChat Toggle<CR>', { noremap = true, desc = "AI (toggle)"})
 vim.keymap.set("v", "<leader>ai", ':CodeCompanionChat Add<CR>', { noremap = true, desc = "AI (add selected)"})
-vim.keymap.set('c',  'ai', 'CodeCompanionChat') -- command-line abbreviation
+vim.keymap.set('c',  'AI', 'CodeCompanionChat') -- command-line abbreviation
 
 -- Auto-Completion
 local cmp = require'cmp'
