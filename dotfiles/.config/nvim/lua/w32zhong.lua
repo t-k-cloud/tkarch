@@ -1,5 +1,10 @@
 vim.g.mapleader = ' '
-vim.cmd.colorscheme 'kanagawa-dragon'
+if pcall(vim.cmd.colorscheme, 'kanagawa-dragon') then
+	do end
+else
+	vim.cmd.colorscheme 'blue'
+end
+
 vim.opt.termguicolors = true
 vim.opt.incsearch = true
 
@@ -12,12 +17,12 @@ vim.opt.incsearch = true
 vim.g.matchparen_disable_cursor_hl = 1
 vim.api.nvim_set_hl(0, "MatchParen", {reverse=true})
 vim.opt.guicursor = {
-  "n-v-c:block",
-  "i-ci-ve:ver25",
-  "r-cr:hor20",
-  "o:hor50",
-  "a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor",
-  "sm:block-blinkwait175-blinkoff150-blinkon175",
+	"n-v-c:block",
+	"i-ci-ve:ver25",
+	"r-cr:hor20",
+	"o:hor50",
+	"a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor",
+	"sm:block-blinkwait175-blinkoff150-blinkon175",
 }
 
 -- disable mouse integration (allowing cursor-select copy etc.)
