@@ -172,3 +172,16 @@ vim.g.vsnip_snippet_dir = vim.fn.stdpath("config") .. "/snippets"
 -- 	print(key, ':', vim.inspect(val))
 -- end
 -- print('Flush')
+
+-- Jupyter Notebook
+-- Install system-wide `jupytext --version`
+require("jupytext").setup({
+	jupytext = 'jupytext',
+	format = "markdown",
+	update = false,
+	filetype = require("jupytext").get_filetype,
+	new_template = '',
+	sync_patterns = { '*.md', '*.py'},
+	autosync = false,
+	handle_url_schemes = false,
+})
