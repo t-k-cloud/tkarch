@@ -80,6 +80,7 @@ return require('packer').startup(function(use)
 	-- AI completion --
 
 	-- Run `:Copilot auth` to sign in.
+	-- Run `:Copilot! attach` to forcefully attach to current filetype.
 	use {
 		"zbirenbaum/copilot.lua",
 		--cmd = "Copilot",
@@ -104,6 +105,12 @@ return require('packer').startup(function(use)
 						accept = "<C-\\>",
 					},
 				},
+				filetypes = {
+					["*"] = true
+				},
+				should_attach = function(_, bufname)
+					return true
+				end
 			})
 		end,
 	}
