@@ -227,7 +227,7 @@ alias pipgfw="sudo pip install -i http://pypi.douban.com/simple/ --trusted-host=
 
 export SVN_EDITOR=vi
 
-conda_prefix=/mnt/hg_cache
+conda_prefix=/mnt/cache
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -259,3 +259,5 @@ export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
 if [ -f $HOME/.env ]; then
 	source $HOME/.env
 fi
+
+. "$HOME/.local/bin/env"
