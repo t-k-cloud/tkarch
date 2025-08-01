@@ -63,6 +63,7 @@ require('lsp')
 vim.lsp.enable('pyright')
 
 -- Toggle LSP diagnostic messages
+vim.diagnostic.enable(false)
 vim.keymap.set("n", "<leader>td", function()
 	vim.diagnostic.enable(not vim.diagnostic.is_enabled())
 end, { noremap = true, desc = "Toggle diagnostics"})
