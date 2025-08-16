@@ -41,13 +41,17 @@ nvim # will bootstrap for the first time...
 
 | Command | Mode | Description |
 |---------|------|-------------|
-| `mm` | Normal | Toggle bookmark at current line |
-| `mj` | Normal | Add or edit bookmark annotation at current line |
-| `mn` | Normal | Jump to next bookmark in local buffer |
-| `mN` | Normal | Jump to previous bookmark in local buffer |
-| `md` | Normal | Clean all bookmarks in local buffer |
-| `mD` | Normal | Remove all bookmarks globally |
-| `ml` | Normal | Show marked file list in quickfix window |
+| `mm` | Normal | Toggle a letter mark on the current line |
+| `md` | Normal | Delete the mark on the current line |
+| `mD` | Normal | Delete all marks in the current buffer |
+| `mn` | Normal | Jump to the next mark in the current buffer |
+| `mN` | Normal | Jump to the previous mark in the current buffer |
+| `'x` | Normal | Jump to mark x (Vim default - where x is any letter) |
+| `m0` | Normal | Set a bookmark (⚑) at the current position |
+| `m]` | Normal | Jump to the next bookmark |
+| `m[` | Normal | Jump to the previous bookmark |
+| `m-` | Normal | Delete the bookmark at the current position |
+| `m_` | Normal | Delete all bookmarks |
 | `<M-\>` | Insert | Accept word suggestion (Copilot) |
 | `<M-]>` | Insert | Next suggestion (Copilot) |
 | `<M-[>` | Insert | Previous suggestion (Copilot) |
@@ -67,7 +71,7 @@ nvim # will bootstrap for the first time...
 | `<leader>dN` | Normal | Go to previous diagnostic |
 | `<leader>ai` | Normal | Toggle CodeCompanion AI chat |
 | `<leader>ai` | Visual | Add selected text to AI chat |
-| `ai` | Command | Abbreviation for CodeCompanionChat |
+| `AI` | Command | Abbreviation for CodeCompanionChat |
 | `<PageUp>` | Insert | Scroll completion docs up |
 | `<PageDown>` | Insert | Scroll completion docs down |
 | `<CR>` | Insert | Confirm completion selection |

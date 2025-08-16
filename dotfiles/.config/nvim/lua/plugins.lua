@@ -44,8 +44,8 @@ return require('packer').startup(function(use)
 					prev = "mN",
 					-- bookmarks (work across buffers)
 					set_bookmark0 = "m0",
-					next_bookmark0 = "m[",
-					prev_bookmark0 = "m]",
+					next_bookmark0 = "m]",
+					prev_bookmark0 = "m[",
 					delete_bookmark = "m-",
 					delete_bookmark0 = "m_",
 				},
