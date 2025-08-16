@@ -179,10 +179,7 @@ vim.g.vsnip_snippet_dir = vim.fn.stdpath("config") .. "/snippets"
 require("jupytext").setup({
 	jupytext = 'jupytext',
 	format = "markdown",
-	update = false,
 	filetype = require("jupytext").get_filetype,
 	new_template = '',
 	sync_patterns = { '*.md', '*.py'},
-	autosync = false,
-	handle_url_schemes = false,
 })

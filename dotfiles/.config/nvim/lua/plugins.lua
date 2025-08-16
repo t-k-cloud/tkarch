@@ -25,30 +25,33 @@ return require('packer').startup(function(use)
 	use "rebelot/kanagawa.nvim"
 
 	-- bookmarks --
+	-- Vim Default: use `x to jump to mark x
 	use {
-		'tomasky/bookmarks.nvim',
-		-- after = "telescope.nvim",
-		event = "VimEnter",
+		'chentoast/marks.nvim',
 		opt = false,
 		config = function()
-			require('bookmarks').setup {
-				save_file = vim.fn.expand "$HOME/.cache/nvim/bookmarks.txt",
-				keywords =  {
-					["@t"] = "☑️ ",
-					["@w"] = "⚠️ ",
-					["@f"] = "⛏ ",
+			require('marks').setup {
+				default_mappings = false,
+				cyclic = true,
+				refresh_interval = 250,
+				mappings = {
+					-- letter marks (named within a buffer)
+					set = false,
+					toggle = "mm",
+					delete_line = "md",
+					delete_buf = "mD",
+					next = "mn",
+					prev = "mN",
+					-- bookmarks (work across buffers)
+					set_bookmark0 = "m0",
+					next_bookmark0 = "m[",
+					prev_bookmark0 = "m]",
+					delete_bookmark = "m-",
+					delete_bookmark0 = "m_",
 				},
-				on_attach = function(bufnr)
-					local bm = require "bookmarks"
-					local map = vim.keymap.set
-					map("n","mm",bm.bookmark_toggle) -- add or remove bookmark at current line
-					map("n","mj",bm.bookmark_ann) -- add or edit mark annotation at current line
-					map("n","mn",bm.bookmark_next) -- jump to next mark in local buffer
-					map("n","mN",bm.bookmark_prev) -- jump to previous mark in local buffer
-					map("n","md",bm.bookmark_clean) -- clean all marks in local buffer
-					map("n","mD",bm.bookmark_clear_all) -- removes all bookmarks
-					map("n","ml",bm.bookmark_list) -- show marked file list in quickfix window
-				end
+				bookmark_0 = {
+					sign = "⚑"
+				}
 			}
 		end
 	}
