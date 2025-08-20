@@ -52,6 +52,10 @@ nvim # will bootstrap for the first time...
 | `m[` | Normal | Jump to the previous bookmark |
 | `m-` | Normal | Delete the bookmark at the current position |
 | `m_` | Normal | Delete all bookmarks |
+| `g?` | Normal | Show help for oil.nvim (File explorer) |
+| `-` | Normal | Navigate to parent directory (File explorer) |
+| `g.` | Normal | Toggle hidden files visibility (File explorer) |
+| `<CR>` | Normal | Select/open file or directory (File explorer) |
 | `<M-\>` | Insert | Accept word suggestion (Copilot) |
 | `<M-]>` | Insert | Next suggestion (Copilot) |
 | `<M-[>` | Insert | Previous suggestion (Copilot) |

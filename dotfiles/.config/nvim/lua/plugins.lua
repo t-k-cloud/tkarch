@@ -63,7 +63,15 @@ return require('packer').startup(function(use)
 	use({
 		"stevearc/oil.nvim",
 		config = function()
-			require("oil").setup()
+			require("oil").setup({
+				use_default_keymaps = false,
+				keymaps = {
+					["g?"] = { "actions.show_help", mode = "n" },
+					["-"] = { "actions.parent", mode = "n" },
+					["g."] = { "actions.toggle_hidden", mode = "n" },
+					["<CR>"] = "actions.select",
+				}
+			})
 		end,
 	})
 
