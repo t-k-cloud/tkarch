@@ -25,16 +25,8 @@ require('hardline').setup {
 	},
 }
 
--- neo-tree coinfigs
-require("neo-tree").setup({
-	filesystem = {
-		name = {
-			trailing_slash = true,
-			highlight = "NeoTreeFileName",
-		},
-		hijack_netrw_behavior = "open_current",
-	},
-})
+-- file explorer
+require("oil").setup()
 
 -- LazyGit configs
 vim.keymap.set("n", "<leader>gt", ':LazyGit<CR>')

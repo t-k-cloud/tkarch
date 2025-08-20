@@ -61,14 +61,10 @@ return require('packer').startup(function(use)
 
 	-- file explorer --
 	use({
-		"nvim-neo-tree/neo-tree.nvim",
-		branch = "v3.x",
-		requires = {
-			"nvim-lua/plenary.nvim",
-			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-			"MunifTanjim/nui.nvim",
-			"3rd/image.nvim", -- Optional image support in preview window.
-		}
+		"stevearc/oil.nvim",
+		config = function()
+			require("oil").setup()
+		end,
 	})
 
 	-- git explorer --
@@ -162,6 +158,7 @@ return require('packer').startup(function(use)
 	-- Markdown rendering --
 	use({
 		'MeanderingProgrammer/render-markdown.nvim',
+		--tag = 'v8.5.0',
 		after = { 'nvim-treesitter' },
 		requires = { 'echasnovski/mini.nvim', opt = true },
 		config = function()
