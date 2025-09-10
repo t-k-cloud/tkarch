@@ -227,7 +227,11 @@ alias pipgfw="sudo pip install -i http://pypi.douban.com/simple/ --trusted-host=
 
 export SVN_EDITOR=vi
 
-conda_prefix=/mnt/cache
+if [ -e /mnt/cache ]; then
+	conda_prefix=/mnt/cache
+else
+	conda_prefix=$HOME
+fi
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -256,8 +260,10 @@ fi
 source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
 export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
 
+# common credentials
 if [ -f $HOME/.env ]; then
 	source $HOME/.env
 fi
 
-. "$HOME/.local/bin/env"
+# pixi
+export PATH="$HOME/.pixi/bin:$PATH"
