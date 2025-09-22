@@ -95,11 +95,21 @@ vim.filetype.add({
 	},
 })
 
+local function set_python_indent()
+	vim.bo.tabstop = 4
+	vim.bo.softtabstop = 4
+	vim.bo.shiftwidth = 4
+	vim.bo.expandtab = true
+	vim.bo.autoindent = true
+	print("Python indent")
+end
+
 -- file extensions
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
 	pattern = { "*.mojo", "*.🔥" },
 	callback = function()
 		vim.cmd("setfiletype mojo")
+		set_python_indent()
 	end,
 })
 -- print(vim.bo.filetype)
@@ -116,12 +126,7 @@ end, { noremap = true, silent = true })
 
 -- Python-style indentation modes (pi)
 vim.keymap.set('n', '<Leader>pi', function()
-	vim.bo.tabstop = 4
-	vim.bo.softtabstop = 4
-	vim.bo.shiftwidth = 4
-	vim.bo.expandtab = true
-	vim.bo.autoindent = true
-	print("Python indent")
+	set_python_indent()
 end, { noremap = true, silent = true })
 
 -- WEB-style indentation modes (wi)
