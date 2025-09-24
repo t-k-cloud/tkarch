@@ -92,6 +92,7 @@ vim.keymap.set("n", "<Leader>pu", "<Esc>:!tk-blog-upload.sh % publish<CR>", { no
 vim.filetype.add({
 	extension = {
 		blog = "tkblog",
+		ll = "llvm",
 	},
 })
 
