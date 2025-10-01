@@ -13,3 +13,4 @@ pacmanS imagemagick # simple image editor
 pacmanS mplayer # powerful media player
 pacmanS zathura-pdf-mupdf # using fast pdf engine and VI-like, supports history.
 pacmanS xournalpp # Xournal++: pdf annotation/note
+pacmanS vlc # UI-included media player
