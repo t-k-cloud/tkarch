@@ -41,6 +41,10 @@ else
 fi
 unset color_prompt force_color_prompt
 
+# ensure UTF-8 PS1 and other contents would work (be sure to generate UTF-8 locale by calling `locale-gen` also)
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*)
