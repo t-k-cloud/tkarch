@@ -6,14 +6,25 @@ require('w32zhong')
 -- run :PackerSync and then :PackerStatus for new plugin installation
 require('plugins')
 
--- hardline coinfigs
+-- tab and status bar coinfigs
+local bufferline = require("bufferline")
+bufferline.setup {
+	options = {
+		mode = "buffers",
+		style_preset = bufferline.style_preset.minimal,
+		numbers = "buffer_id",
+		truncate_names = true,
+		show_buffer_icons = true,
+		show_buffer_close_icons = false,
+		show_close_icon = false,
+		show_tab_indicators = true,
+		persist_buffer_sort = false,
+		sort_by = 'id'
+	}
+}
 require('hardline').setup {
 	theme = 'default',
-	bufferline = true,
-	bufferline_settings = {
-		exclude_terminal = false,  -- don't show terminal buffers in bufferline
-		show_index = true,        -- show buffer indexes (not the actual buffer numbers)
-	},
+	bufferline = false, -- leave this function to bufferline...
 	sections = { -- define sections, see :help statusline
 		{class = 'mode', item = require('hardline.parts.mode').get_item},
 		{class = 'med', item = '%f'}, -- show file path

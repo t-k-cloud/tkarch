@@ -56,7 +56,8 @@ return require('packer').startup(function(use)
 		end
 	}
 
-	-- status and tab bars --
+	-- tab and status bars --
+	use {'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons'}
 	use {'ojroques/nvim-hardline'}
 
 	-- file explorer --
