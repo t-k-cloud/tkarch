@@ -90,6 +90,12 @@ vim.keymap.set("n", "<Leader>pu", "<Esc>:!tk-blog-upload.sh % publish<CR>", { no
 
 -- syntax files
 vim.filetype.add({
+	pattern = {
+		-- using Lua pattern --
+		['Dockerfile'] = 'dockerfile',
+		['dockerfile'] = 'dockerfile',
+		['.*_dockerfile'] = 'dockerfile',
+	},
 	extension = {
 		blog = "tkblog",
 		ll = "llvm",
