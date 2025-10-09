@@ -12,7 +12,7 @@ bufferline.setup {
 	options = {
 		mode = "buffers",
 		style_preset = bufferline.style_preset.minimal,
-		numbers = "buffer_id",
+		numbers = "ordinal",
 		truncate_names = true,
 		show_buffer_icons = true,
 		show_buffer_close_icons = false,
