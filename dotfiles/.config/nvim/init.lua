@@ -12,16 +12,29 @@ bufferline.setup {
 	options = {
 		mode = "buffers",
 		style_preset = bufferline.style_preset.minimal,
-		numbers = "ordinal",
+		numbers = "buffer_id",
 		truncate_names = true,
 		show_buffer_icons = true,
 		show_buffer_close_icons = false,
 		show_close_icon = false,
 		show_tab_indicators = true,
 		persist_buffer_sort = false,
-		sort_by = 'id'
+		sort_by = 'insert_after_current'
 	}
 }
+vim.keymap.set('n', '<Leader>l', ':BufferLineCycleNext<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<Leader>h', ':BufferLineCyclePrev<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<Leader><Leader>', ':e #<CR>', { noremap = true, silent = true }) -- toggle
+vim.keymap.set('n', '<Leader>x', ':bp <BAR> bd #<CR>', { noremap = true, silent = true }) -- close
+vim.keymap.set('n', '<leader>0', ':lua require("bufferline").move_to(1)<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>-', ':lua require("bufferline").move_to(-1)<CR>', { noremap = true, silent = true })
+for i = 1, 9 do
+	-- By buffer ID:
+	--vim.keymap.set('n', '<leader>'..i, ':b'..i..'<CR>', { noremap = true, silent = true })
+
+	-- By buffer absolute index:
+	vim.keymap.set('n', '<leader>'..i, ':lua require("bufferline").go_to('..i..', true)<CR>', { noremap = true, silent = true })
+end
 require('hardline').setup {
 	theme = 'default',
 	bufferline = false, -- leave this function to bufferline...
@@ -97,7 +110,7 @@ vim.keymap.set('c',  'AI', 'CodeCompanionChat') -- command-line abbreviation
 local cmp = require'cmp'
 local function feedkey(key, mode)
 	-- utility to feed <Plug> key
-    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode or "", false)
+	vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode or "", false)
 end
 cmp.setup({
 	snippet = {
