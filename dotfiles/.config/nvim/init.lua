@@ -26,8 +26,6 @@ vim.keymap.set('n', '<Leader>l', ':BufferLineCycleNext<CR>', { noremap = true, s
 vim.keymap.set('n', '<Leader>h', ':BufferLineCyclePrev<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<Leader><Leader>', ':e #<CR>', { noremap = true, silent = true }) -- toggle
 vim.keymap.set('n', '<Leader>x', ':bp <BAR> bd #<CR>', { noremap = true, silent = true }) -- close
-vim.keymap.set('n', '<leader>0', ':lua require("bufferline").move_to(1)<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>-', ':lua require("bufferline").move_to(-1)<CR>', { noremap = true, silent = true })
 for i = 1, 9 do
 	-- By buffer ID:
 	--vim.keymap.set('n', '<leader>'..i, ':b'..i..'<CR>', { noremap = true, silent = true })
