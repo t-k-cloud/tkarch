@@ -12,14 +12,23 @@ bufferline.setup {
 	options = {
 		mode = "buffers",
 		style_preset = bufferline.style_preset.minimal,
-		numbers = "buffer_id",
 		truncate_names = true,
 		show_buffer_icons = true,
 		show_buffer_close_icons = false,
 		show_close_icon = false,
 		show_tab_indicators = true,
 		persist_buffer_sort = false,
-		sort_by = 'insert_after_current'
+		sort_by = 'insert_after_current',
+		numbers = function(opts)
+			local state = require("bufferline.state")
+			for i, component in ipairs(state.components or {}) do
+				local element = component:as_element()
+				if element and element.id == opts.id then
+					return string.format('%s%s', opts.raise(i), opts.lower(opts.id))
+				end
+			end
+			return opts.lower(opts.id)
+		end
 	}
 }
 vim.keymap.set('n', '<Leader>l', ':BufferLineCycleNext<CR>', { noremap = true, silent = true })
@@ -55,7 +64,7 @@ local function insert_current_buffer_at(target)
 end
 for i = 1, 9 do
 	-- siwth to the buffer by buffer ID:
-	--vim.keymap.set('n', '<leader>'..i, ':b'..i..'<CR>', { noremap = true, silent = true })
+	-- Use :b123 to switch to buffer#123
 
 	-- siwth to the buffer by absolute index:
 	vim.keymap.set(
