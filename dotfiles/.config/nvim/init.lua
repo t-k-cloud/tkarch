@@ -26,13 +26,49 @@ vim.keymap.set('n', '<Leader>l', ':BufferLineCycleNext<CR>', { noremap = true, s
 vim.keymap.set('n', '<Leader>h', ':BufferLineCyclePrev<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<Leader><Leader>', ':e #<CR>', { noremap = true, silent = true }) -- toggle
 vim.keymap.set('n', '<Leader>x', ':bp <BAR> bd #<CR>', { noremap = true, silent = true }) -- close
+local function insert_current_buffer_at(target)
+	local command = require("bufferline.commands")
+	local state = require("bufferline.state")
+	local utils  = require("bufferline.utils")
+	local ui = require("bufferline.ui")
+
+	local current = command.get_current_element_index(state)
+	vim.print('Moving buffer #'..current..' => #'..target)
+	if not current then return end
+
+	local items = state.components
+	if #items == 0 then return end
+
+	target = math.min(target, #items)
+	if target < 0 then target = #items end
+	if target == current then return end
+
+	local entry = table.remove(items, current)
+	table.insert(items, target, entry)
+
+	state.custom_sort = utils.get_ids(items)
+	ui.refresh()
+end
 for i = 1, 9 do
-	-- By buffer ID:
+	-- siwth to the buffer by buffer ID:
 	--vim.keymap.set('n', '<leader>'..i, ':b'..i..'<CR>', { noremap = true, silent = true })
 
-	-- By buffer absolute index:
-	vim.keymap.set('n', '<leader>'..i, ':lua require("bufferline").go_to('..i..', true)<CR>', { noremap = true, silent = true })
+	-- siwth to the buffer by absolute index:
+	vim.keymap.set(
+		'n', '<leader>'..i, ':lua require("bufferline").go_to('..i..', true)<CR>',
+		{ noremap = true, silent = true }
+	)
+
+	-- move this buffer and insert to another absolute index:
+	local local_i = i -- holds a closure variable
+	vim.keymap.set('n', '<Leader>='..i, function()
+			insert_current_buffer_at(local_i)
+		end, { noremap = true, silent = true }
+	)
 end
+-- move this buffer to the very end of the buffer line
+vim.keymap.set('n', '<Leader>=-', function() insert_current_buffer_at(-1) end, { noremap = true, silent = true }
+	)
 require('hardline').setup {
 	theme = 'default',
 	bufferline = false, -- leave this function to bufferline...
