@@ -39,9 +39,13 @@ local function insert_current_buffer_at(target)
 	local items = state.components
 	if #items == 0 then return end
 
-	target = math.min(target, #items)
-	if target < 0 then target = #items end
-	if target == current then return end
+	if target == current then
+		return
+	elseif target <= 0 then
+		target = #items -- append at the tail
+	elseif target > #items then
+		target = #items
+	end
 
 	local entry = table.remove(items, current)
 	table.insert(items, target, entry)
