@@ -135,7 +135,7 @@ return require('packer').startup(function(use)
 			require("codecompanion").setup({
 				strategies = {
 					chat = {
-						adapter = "anthropic",
+						adapter = "gemini",
 						keymaps = {
 							send = {
 								modes = { n = "<C-s>", i = "<C-s>" },
@@ -143,7 +143,7 @@ return require('packer').startup(function(use)
 						}
 					},
 					inline = {
-						adapter = "anthropic",
+						adapter = "gemini",
 						keymaps = {
 							accept_change = {
 								modes = { n = "ga" },
@@ -167,7 +167,7 @@ return require('packer').startup(function(use)
 	-- Markdown rendering --
 	use({
 		'MeanderingProgrammer/render-markdown.nvim',
-		--tag = 'v8.5.0',
+		tag = 'v8.6.0',
 		after = { 'nvim-treesitter' },
 		requires = { 'echasnovski/mini.nvim', opt = true },
 		config = function()
