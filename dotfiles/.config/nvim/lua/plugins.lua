@@ -156,6 +156,15 @@ return require('packer').startup(function(use)
 						},
 					},
 				},
+				gemini = function()
+					return require("codecompanion.adapters").extend("gemini", {
+						schema = {
+							model = {
+								default = "gemini-2.5-flash-preview-05-20"
+							},
+						}
+					})
+				end,
 			})
 		end,
 		requires = {
