@@ -1,0 +1,9 @@
+# Uncomment and use `sudo loadkeys ./this_file.keymap` to remap
+# Capslock to Escape in a true-console / non-X environment.
+# Note, this keymap is only active for the current session.
+
+#keycode 1 = Caps_Lock
+#keycode 58 = Escape
+
+# Hint: use `sudo showkey -a` to lookup the keycode for pressed keys.
+# More ref: https://wiki.archlinux.org/title/Linux_console/Keyboard_configuration

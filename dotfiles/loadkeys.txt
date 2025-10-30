@@ -1,2 +1,0 @@
-# use loadkeys ./loadkeys.txt to remap capslock without X environment.
-keycode 58 = Escape
