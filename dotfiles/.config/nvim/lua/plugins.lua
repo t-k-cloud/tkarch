@@ -199,6 +199,8 @@ return require('packer').startup(function(use)
 					language_border = ' ',
 					language_left = '',
 					language_right = '',
+					width = 'block',
+					right_pad = 2,
 				},
 			})
 		end,
