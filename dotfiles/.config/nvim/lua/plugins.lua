@@ -181,8 +181,25 @@ return require('packer').startup(function(use)
 		requires = { 'echasnovski/mini.nvim', opt = true },
 		config = function()
 			require('render-markdown').setup({
+				render_modes = { 'n', 'c', 't' },
 				file_types = { 'markdown', "codecompanion" },
-				code = { style = 'language' },
+				heading = {
+					enabled = true,
+					render_modes = false,
+					position = 'overlay',
+					icons = { '' },
+					sign = false,
+					min_width = 0,
+					heading = { border = true },
+				},
+				code = {
+					enabled = true,
+					style = 'full',
+					sign = false,
+					language_border = ' ',
+					language_left = '',
+					language_right = '',
+				},
 			})
 		end,
 	})

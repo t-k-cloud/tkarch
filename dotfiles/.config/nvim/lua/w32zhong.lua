@@ -84,6 +84,12 @@ end, { noremap = true, silent = true })
 
 vim.api.nvim_set_hl(0, "ColorColumn", { bg = "#ff00ff" })
 
+-- Set some other highlight groups which are used to be linked to ColorColumn
+-- See :highlight for a list of HighLight Groups
+vim.api.nvim_set_hl(0, "RenderMarkdownCode", { bg = "#282727" })
+vim.api.nvim_set_hl(0, "RenderMarkdownCodeInline", { bg = "#282727" })
+vim.api.nvim_set_hl(0, "RenderMarkdownCodeBorder", { link = "FoldColumn" })
+
 -- blog upload/publish (up/pu)
 vim.keymap.set("n", "<Leader>up", "<Esc>:!tk-blog-upload.sh % &<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<Leader>pu", "<Esc>:!tk-blog-upload.sh % publish<CR>", { noremap = true, silent = true })
