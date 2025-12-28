@@ -194,7 +194,8 @@ return require('packer').startup(function(use)
 			ts_update()
 		end,
 		config = function()
-			require('nvim-treesitter.configs').setup {
+			-- older version: require('nvim-treesitter.configs').setup {
+			require('nvim-treesitter.config').setup {
 				ensure_installed = {
 					"c",
 					"cpp",
