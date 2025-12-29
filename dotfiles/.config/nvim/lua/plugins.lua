@@ -208,13 +208,14 @@ return require('packer').startup(function(use)
 
 	use {
 		'nvim-treesitter/nvim-treesitter',
+		branch = "master", -- avoid rewrite breaking changes
 		run = function()
 			local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
 			ts_update()
 		end,
 		config = function()
-			-- older version: require('nvim-treesitter.configs').setup {
-			require('nvim-treesitter.config').setup {
+			-- Newer main branch: require('nvim-treesitter.config').setup {
+			require('nvim-treesitter.configs').setup {
 				ensure_installed = {
 					"c",
 					"cpp",
