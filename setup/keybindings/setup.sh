@@ -6,6 +6,7 @@ sed -i -e 's/Super_L::Super_R//g' /usr/share/cinnamon/applets/menu@cinnamon.org/
 
 cat << EOF >> /home/$USERNAME/.xinitrc
 # Make Caps Lock an additional Esc
+setxkbmap -option '' -v
 setxkbmap -option caps:escape
 
 if $ALT_ALSO_WIN; then
