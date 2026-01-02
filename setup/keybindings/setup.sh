@@ -9,6 +9,11 @@ cat << EOF >> /home/$USERNAME/.xinitrc
 setxkbmap -option '' -v
 setxkbmap -option caps:escape
 
+# cinnamon has /usr/bin/csd-keyboard daemon resetting this xkb-options,
+# it uses gsettings as ground-truth, so we'd better follow this practice:
+gsettings set org.gnome.desktop.input-sources xkb-options "['caps:escape']"
+gsettings set org.cinnamon.desktop.input-sources xkb-options "['caps:escape']"
+
 if $ALT_ALSO_WIN; then
 setxkbmap -option altwin:alt_win
 fi;
