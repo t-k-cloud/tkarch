@@ -3,6 +3,8 @@
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 vim.lsp.config('pyright', {
+	cmd = { 'pyright-langserver', '--stdio' },
+	filetypes = { 'python' },
 	settings = {
 		python = {
 			analysis = {
@@ -14,5 +16,11 @@ vim.lsp.config('pyright', {
 			},
 		},
 	},
+	capabilities = capabilities
+})
+
+vim.lsp.config('clangd', {
+	cmd = {'clangd', '--background-index', '--clang-tidy', '--log=verbose'},
+	filetypes = { 'c', 'cpp', 'cuda' },
 	capabilities = capabilities
 })

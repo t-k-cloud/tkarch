@@ -1,6 +1,8 @@
 ## Clean Installation
 ```sh
+# https://wiki.archlinux.org/title/Language_Server_Protocol
 sudo npm install -g pyright
+sudo pacman -S clang # for clangd
 
 find ~ -name 'nvim' -type d | xargs rm -rf
 git checkout .

@@ -124,6 +124,7 @@ vim.diagnostic.config({
 -- Enable LSP for Python and other languages
 require('lsp')
 vim.lsp.enable('pyright')
+vim.lsp.enable('clangd')
 
 -- Toggle LSP diagnostic messages
 vim.diagnostic.enable(false)
