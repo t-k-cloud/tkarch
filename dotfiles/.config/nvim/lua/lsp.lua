@@ -20,7 +20,7 @@ vim.lsp.config('pyright', {
 })
 
 vim.lsp.config('clangd', {
-	cmd = {'clangd', '--background-index', '--clang-tidy', '--log=verbose'},
+	cmd = {'clangd', '--background-index=false', '--clang-tidy', '--log=verbose', '-j=2'},
 	filetypes = { 'c', 'cpp', 'cuda' },
 	capabilities = capabilities
 })
