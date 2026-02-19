@@ -1,3 +1,6 @@
+#export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
+#export DOCKER_HOST=unix:///var/run/docker.sock
+
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
@@ -262,7 +265,6 @@ if ! pgrep -u "$USER" ssh-agent > /dev/null; then
     ssh-agent > "$XDG_RUNTIME_DIR/ssh-agent.env"
 fi
 source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
-export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
 
 # common credentials
 if [ -f $HOME/.env ]; then

@@ -3,3 +3,4 @@ dotfiles/.config/*
 dotfiles/.config/nvim/plugin/
 !dotfiles/.config/nvim/
 dotfiles/.env
+!dotfiles/.config/opencode/opencode.json
