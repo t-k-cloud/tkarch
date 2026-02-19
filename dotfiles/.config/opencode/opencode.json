@@ -6,7 +6,10 @@
     "input_submit": "alt+return",
     "input_newline": "enter,ctrl+j",
     "messages_half_page_up": "ctrl+u",
-    "messages_half_page_down": "ctrl+d"
+    "messages_half_page_down": "ctrl+d",
+    "messages_line_up": "ctrl+y",
+    "messages_line_down": "ctrl+e",
+    "terminal_suspend": "none"
   },
   "provider": {
     "google": {
