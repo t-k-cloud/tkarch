@@ -11,6 +11,17 @@
     "messages_line_down": "ctrl+e",
     "terminal_suspend": "none"
   },
+  "mcp": {
+    "chrome-devtools": {
+      "type": "local",
+      "command": [
+        "npx", "-y",
+        "chrome-devtools-mcp@latest",
+        "--autoConnect",
+        "--browser-url=http://127.0.0.1:9222"
+      ]
+    }
+  },
   "provider": {
     "google": {
       "models": {
