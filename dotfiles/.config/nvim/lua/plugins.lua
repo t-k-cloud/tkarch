@@ -133,38 +133,39 @@ return require('packer').startup(function(use)
 		"olimorris/codecompanion.nvim",
 		config = function()
 			require("codecompanion").setup({
-				strategies = {
-					chat = {
-						adapter = "gemini",
-						keymaps = {
-							send = {
-								modes = { n = "<C-s>", i = "<C-s>" },
-							},
-						}
-					},
-					inline = {
-						adapter = "gemini",
-						keymaps = {
-							accept_change = {
-								modes = { n = "ga" },
-								description = "Accept the suggested change",
-							},
-							reject_change = {
-								modes = { n = "gr" },
-								description = "Reject the suggested change",
-							},
-						},
+				adapters = {
+					http = {
+						["mylocal"] = function()
+							return require("codecompanion.adapters").extend("openai_compatible", {
+								env = {
+									url = "http://yetiarch:30000",
+									api_key = "ANY",
+									chat_url = "/v1/chat/completions",
+								},
+								handlers = {
+									parse_message_meta = function(self, data)
+										local extra = data.extra
+										if extra and extra.reasoning_content then
+											data.output.reasoning = { content = extra.reasoning_content }
+											if data.output.content == "" then
+												data.output.content = nil
+											end
+										end
+										return data
+									end,
+								},
+							})
+						end,
 					},
 				},
-				gemini = function()
-					return require("codecompanion.adapters").extend("gemini", {
-						schema = {
-							model = {
-								default = "gemini-2.5-flash-preview-05-20"
-							},
-						}
-					})
-				end,
+				interactions = {
+					chat = {
+						adapter = "mylocal",
+					},
+					inline = {
+						adapter = "mylocal",
+					},
+				},
 			})
 		end,
 		requires = {
