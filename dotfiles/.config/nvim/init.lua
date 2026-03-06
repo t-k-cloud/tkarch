@@ -96,9 +96,6 @@ require('hardline').setup {
 	},
 }
 
--- file explorer
-require("oil").setup()
-
 -- LazyGit configs
 vim.keymap.set("n", "<leader>gt", ':LazyGit<CR>')
 

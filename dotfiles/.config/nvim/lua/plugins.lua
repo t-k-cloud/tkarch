@@ -57,14 +57,34 @@ return require('packer').startup(function(use)
 	}
 
 	-- tab and status bars --
-	use {'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons'}
+	use {
+		'akinsho/bufferline.nvim',
+		tag = "*",
+		requires = 'nvim-tree/nvim-web-devicons',
+		config = function()
+			require('bufferline').setup({
+				options = {
+					name_formatter = function(buf)
+						-- Check if the buffer path starts with oil://
+						if buf.path:match('^oil://') then
+							return "OilBuffer"
+						end
+					end,
+				}
+			})
+		end
+	}
 	use {'ojroques/nvim-hardline'}
 
 	-- file explorer --
-	use({
+	use {
 		"stevearc/oil.nvim",
 		config = function()
 			require("oil").setup({
+				cleanup_delay_ms = false,
+				buf_options = {
+					buflisted = true
+				},
 				use_default_keymaps = false,
 				keymaps = {
 					["g?"] = { "actions.show_help", mode = "n" },
@@ -74,7 +94,7 @@ return require('packer').startup(function(use)
 				}
 			})
 		end,
-	})
+	}
 
 	-- git explorer --
 	use({
