@@ -30,8 +30,12 @@
         "baseURL": "http://yetiarch:30000/v1"
       },
       "models": {
-        "Qwen/Qwen3.5-35B-A3B-FP8": {
+        "Qwen3.5-35B-A3B-FP8": {
           "name": "Qwen3.5-35B-A3B-FP8 (SGLang v0.5.9)",
+	  "limit": {
+            "context": 128000,
+            "output": 64000
+          },
           "modalities": {
             "input": [ "text", "image" ],
             "output": [ "text" ]
