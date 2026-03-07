@@ -34,7 +34,11 @@ bufferline.setup {
 vim.keymap.set('n', '<Leader>l', ':BufferLineCycleNext<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<Leader>h', ':BufferLineCyclePrev<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<Leader><Leader>', ':e #<CR>', { noremap = true, silent = true }) -- toggle
-vim.keymap.set('n', '<Leader>x', ':bp <BAR> bd #<CR>', { noremap = true, silent = true }) -- close
+vim.keymap.set('n', '<Leader>x', function()
+	local bd_buf = vim.api.nvim_get_current_buf()
+	vim.cmd('bp')
+	vim.cmd('bd ' .. bd_buf)
+end, { noremap = true, silent = true, desc = "close current buffer" })
 local function insert_current_buffer_at(target)
 	local command = require("bufferline.commands")
 	local state = require("bufferline.state")
