@@ -4,7 +4,7 @@
     "auto": true,
     "prune": true
   },
-  "plugin": ["opencode-gemini-auth@latest", "opencode-antigravity-auth@latest", "opencode-scheduler@latest"],
+  "plugin": ["opencode-scheduler@latest"],
   "keybinds": {
     "app_exit": "ctrl+d",
     "input_submit": "alt+return",
@@ -27,18 +27,18 @@
     }
   },
   "provider": {
-    "MeAsProvider": {
+    "LocalSGLangProvider": {
       "npm": "@ai-sdk/openai-compatible",
-      "name": "MyLocalModels",
+      "name": "SGLang",
       "options": {
         "baseURL": "http://yetiarch:30000/v1"
       },
       "models": {
-        "Qwen3.5-35B-A3B-FP8": {
-          "name": "Qwen3.5-35B-A3B-FP8 (SGLang v0.5.9)",
+        "Qwen3.5-FP8": {
+          "name": "Qwen3.5-FP8 (sglang:nightly-dev-cu13-20260309)",
 	  "limit": {
-            "context": 41000,
-            "output": 6000
+            "context": 64000,
+            "output": 8000
           },
           "modalities": {
             "input": [ "text", "image" ],
