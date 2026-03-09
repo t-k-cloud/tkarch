@@ -29,7 +29,7 @@
   "provider": {
     "LocalSGLangProvider": {
       "npm": "@ai-sdk/openai-compatible",
-      "name": "SGLang",
+      "name": "Local",
       "options": {
         "baseURL": "http://yetiarch:30000/v1"
       },
