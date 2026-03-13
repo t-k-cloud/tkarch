@@ -62,16 +62,7 @@ return require('packer').startup(function(use)
 		tag = "*",
 		requires = 'nvim-tree/nvim-web-devicons',
 		config = function()
-			require('bufferline').setup({
-				options = {
-					name_formatter = function(buf)
-						-- Check if the buffer path starts with oil://
-						if buf.path:match('^oil://') then
-							return "OilBuffer"
-						end
-					end,
-				}
-			})
+			require('bufferline').setup({})
 		end
 	}
 	use {'ojroques/nvim-hardline'}
