@@ -1,4 +1,4 @@
-MODEL=LocalSGLangProvider/Qwen3.5-FP8
+MODEL=${1-LocalSGLangProvider/Qwen3.5-FP8}
 
 mkdir -p youtube
 while true; do
