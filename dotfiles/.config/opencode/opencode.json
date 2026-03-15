@@ -26,7 +26,10 @@
         "npx", "-y",
         "chrome-devtools-mcp@latest",
         "--autoConnect",
-        "--browser-url=http://127.0.0.1:9222"
+        "--no-performance-crux",
+        "--no-usage-statistics",
+        "--browser-url=http://localhost:9222",
+        "--experimental-page-id-routing"
       ]
     }
   },
@@ -40,7 +43,7 @@
       "models": {
         "Qwen3.5-FP8": {
           "name": "Qwen3.5-FP8 (sglang:nightly-dev-cu13-20260309)",
-	  "limit": {
+          "limit": {
             "context": 64000,
             "output": 8000
           },
