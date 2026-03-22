@@ -273,3 +273,6 @@ fi
 
 # pixi
 export PATH="$HOME/.pixi/bin:$PATH"
+
+# opencode
+export PATH=/home/tk/.opencode/bin:$PATH

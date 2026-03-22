@@ -41,7 +41,7 @@
         "Qwen3.5-FP8": {
           "name": "Qwen3.5-FP8 (sglang:nightly-dev-cu13-20260309)",
 	  "limit": {
-            "context": 64000,
+            "context": 128000,
             "output": 8000
           },
           "modalities": {
