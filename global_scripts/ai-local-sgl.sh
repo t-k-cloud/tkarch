@@ -6,4 +6,4 @@ SCRIPT_NAME=$(basename "$SCRIPT_PATH")
 
 YML_FILE="${SCRIPT_NAME%.sh}.yml"
 set -x
-docker compose -f "${SCRIPT_DIR}/${YML_FILE}" up
+docker compose -f "${SCRIPT_DIR}/${YML_FILE}" ${1:-up}
