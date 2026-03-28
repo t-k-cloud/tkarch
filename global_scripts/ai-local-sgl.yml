@@ -1,6 +1,6 @@
 services:
   sglang-server:
-    image: lmsysorg/sglang:nightly-dev-cu13-20260309-3f3eb206
+    image: lmsysorg/sglang:v0.5.10rc0-cu130
     restart: always
     ipc: host
     tty: true
