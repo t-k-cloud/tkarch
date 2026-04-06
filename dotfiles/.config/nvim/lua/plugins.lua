@@ -237,7 +237,11 @@ return require('packer').startup(function(use)
 					"bash",
 					"rust",
 					"markdown",
-					"markdown_inline"
+					"markdown_inline",
+					"vue",
+					"html",
+					"css",
+					"typescript"
 				},
 				highlight = {
 					enable = true,
