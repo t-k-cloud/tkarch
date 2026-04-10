@@ -9,6 +9,9 @@ git checkout .
 nvim # will bootstrap for the first time...
 ```
 
+## Key Reminder
+`gq`: format selected text with textwidth.
+
 ## Key Bindings
 
 | Command | Mode | Source File | Description |
