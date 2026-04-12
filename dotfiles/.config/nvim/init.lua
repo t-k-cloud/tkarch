@@ -37,7 +37,11 @@ vim.keymap.set('n', '<Leader><Leader>', ':e #<CR>', { noremap = true, silent = t
 vim.keymap.set('n', '<Leader>x', function()
 	local bd_buf = vim.api.nvim_get_current_buf()
 	vim.cmd('bp')
-	vim.cmd('bd ' .. bd_buf)
+	if vim.bo[bd_buf].buftype == 'terminal' then
+		vim.cmd('bd! ' .. bd_buf)
+	else
+		vim.cmd('bd ' .. bd_buf)
+	end
 end, { noremap = true, silent = true, desc = "close current buffer" })
 local function insert_current_buffer_at(target)
 	local command = require("bufferline.commands")
