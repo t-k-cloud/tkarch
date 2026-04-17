@@ -117,7 +117,7 @@ get_gitstatus() {
 				echo "${red_ink}●"
 			elif ! git diff --cached --quiet; then
 				echo "${green_ink}●"
-			elif [ "$(git log --branches --not --remotes)" != "" ]; then
+			elif git rev-parse --verify HEAD &>/dev/null && { ! git rev-parse --verify @{u} &>/dev/null || [ -n "$(git rev-list @{u}..HEAD 2>/dev/null)" ]; }; then
 				echo "${cyan_ink}↑"
 			fi
 		fi
@@ -276,3 +276,11 @@ export PATH="$HOME/.pixi/bin:$PATH"
 
 # opencode
 export PATH=/home/tk/.opencode/bin:$PATH
+
+# pnpm
+export PNPM_HOME="/home/tk/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
