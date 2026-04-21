@@ -3,6 +3,7 @@
 # https://wiki.archlinux.org/title/Language_Server_Protocol
 sudo npm install -g pyright
 sudo pacman -S clang # for clangd
+sudo pacman -S tree-sitter-cli # for nvim-treesitter parser compilation
 
 find ~ -name 'nvim' -type d | xargs rm -rf
 git checkout .

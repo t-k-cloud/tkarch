@@ -221,7 +221,13 @@ return require('packer').startup(function(use)
 		'nvim-treesitter/nvim-treesitter',
 		run = function()
 			-- wait for background install (optional, but good for run step)
-			pcall(function() require('nvim-treesitter').install({ "c", "cpp", "python", "lua", "javascript", "bash", "rust", "markdown", "markdown_inline", "vue", "html", "css", "typescript" }):wait() end)
+			pcall(function()
+				require('nvim-treesitter').install({
+					"c", "cpp", "python", "lua", "javascript",
+					"bash", "rust", "markdown", "markdown_inline",
+					"vue", "html", "css", "typescript"
+				}):wait()
+			end)
 		end,
 		config = function()
 			-- Neovim 0.12+ (main branch of nvim-treesitter)
