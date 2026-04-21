@@ -98,41 +98,41 @@ return require('packer').startup(function(use)
 
 	-- AI completion --
 
-	-- Run `:Copilot auth` to sign in.
-	-- Run `:Copilot! attach` to forcefully attach to current filetype.
-	use {
-		"zbirenbaum/copilot.lua",
-		--cmd = "Copilot",
-		--event = "InsertEnter",
-		opt = false,
-		config = function()
-			require("copilot").setup({
-				panel = {
-					enabled = false,
-				},
-				suggestion = {
-					enabled = true,
-					auto_trigger = false,
-					hide_during_completion = true,
-					debounce = 75,
-					trigger_on_accept = true,
-					keymap = {
-						accept_word = "<M-\\>",
-						accept_line = false,
-						next = "<M-]>",
-						prev = "<M-[>",
-						accept = "<C-\\>",
-					},
-				},
-				filetypes = {
-					["*"] = true
-				},
-				should_attach = function(_, bufname)
-					return true
-				end
-			})
-		end,
-	}
+	-- -- Run `:Copilot auth` to sign in.
+	-- -- Run `:Copilot! attach` to forcefully attach to current filetype.
+	-- use {
+	-- 	"zbirenbaum/copilot.lua",
+	-- 	--cmd = "Copilot",
+	-- 	--event = "InsertEnter",
+	-- 	opt = false,
+	-- 	config = function()
+	-- 		require("copilot").setup({
+	-- 			panel = {
+	-- 				enabled = false,
+	-- 			},
+	-- 			suggestion = {
+	-- 				enabled = true,
+	-- 				auto_trigger = false,
+	-- 				hide_during_completion = true,
+	-- 				debounce = 75,
+	-- 				trigger_on_accept = true,
+	-- 				keymap = {
+	-- 					accept_word = "<M-\\>",
+	-- 					accept_line = false,
+	-- 					next = "<M-]>",
+	-- 					prev = "<M-[>",
+	-- 					accept = "<C-\\>",
+	-- 				},
+	-- 			},
+	-- 			filetypes = {
+	-- 				["*"] = true
+	-- 			},
+	-- 			should_attach = function(_, bufname)
+	-- 				return true
+	-- 			end
+	-- 		})
+	-- 	end,
+	-- }
 
 	-- AI agent --
 
@@ -188,7 +188,6 @@ return require('packer').startup(function(use)
 	-- Markdown rendering --
 	use({
 		'MeanderingProgrammer/render-markdown.nvim',
-		tag = 'v8.6.0',
 		after = { 'nvim-treesitter' },
 		requires = { 'echasnovski/mini.nvim', opt = true },
 		config = function()
@@ -220,37 +219,29 @@ return require('packer').startup(function(use)
 
 	use {
 		'nvim-treesitter/nvim-treesitter',
-		branch = "master", -- avoid rewrite breaking changes
 		run = function()
-			local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
-			ts_update()
+			-- wait for background install (optional, but good for run step)
+			pcall(function() require('nvim-treesitter').install({ "c", "cpp", "python", "lua", "javascript", "bash", "rust", "markdown", "markdown_inline", "vue", "html", "css", "typescript" }):wait() end)
 		end,
 		config = function()
-			-- Newer main branch: require('nvim-treesitter.config').setup {
-			require('nvim-treesitter.configs').setup {
-				ensure_installed = {
-					"c",
-					"cpp",
-					"python",
-					"lua",
-					"javascript",
-					"bash",
-					"rust",
-					"markdown",
-					"markdown_inline",
-					"vue",
-					"html",
-					"css",
-					"typescript"
-				},
-				highlight = {
-					enable = true,
-					additional_vim_regex_highlighting = false,
-				},
-				indent = {
-					enable = true,
-				},
-			}
+			-- Neovim 0.12+ (main branch of nvim-treesitter)
+			require('nvim-treesitter').setup {}
+
+			-- Enable Treesitter Highlighting natively for all filetypes
+			vim.api.nvim_create_autocmd('FileType', {
+				pattern = '*',
+				callback = function()
+					pcall(vim.treesitter.start)
+				end,
+			})
+
+			-- Optional: Enable Treesitter Indent
+			vim.api.nvim_create_autocmd('FileType', {
+				pattern = '*',
+				callback = function()
+					vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+				end,
+			})
 		end
 	}
 
