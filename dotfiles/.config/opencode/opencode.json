@@ -19,20 +19,6 @@
     "messages_line_down": "ctrl+e",
     "terminal_suspend": "none"
   },
-  "mcp": {
-    "chrome-devtools": {
-      "type": "local",
-      "command": [
-        "npx", "-y",
-        "chrome-devtools-mcp@latest",
-        "--autoConnect",
-        "--no-performance-crux",
-        "--no-usage-statistics",
-        "--browser-url=http://localhost:9222",
-        "--experimental-page-id-routing"
-      ]
-    }
-  },
   "provider": {
     "LocalSGLangProvider": {
       "npm": "@ai-sdk/openai-compatible",
@@ -41,12 +27,35 @@
         "baseURL": "http://yetiarch:30000/v1"
       },
       "models": {
-        "Qwen3.5-FP8": {
-          "name": "Qwen3.5-FP8 (sglang:nightly-dev-cu13-20260309)",
+        "Qwen3.6-FP8": {
+          "name": "Qwen3.6-FP8 (sglang:v0.5.10.post1-cu130)",
 	  "limit": {
-            "context": 128000,
-            "output": 8000
+            "context": 256000,
+            "output": 64000
           },
+          "modalities": {
+            "input": [ "text", "image" ],
+            "output": [ "text" ]
+          }
+        }
+      }
+    },
+    "MiMoProvider": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Mimo Token Plan",
+      "options": {
+        "baseURL": "https://token-plan-sgp.xiaomimimo.com/v1"
+      },
+      "models": {
+        "mimo-v2.5": {
+          "name": "mimo-v2.5 (token plan)",
+          "modalities": {
+            "input": [ "text", "image" ],
+            "output": [ "text" ]
+          }
+        },
+        "mimo-v2.5-pro": {
+          "name": "mimo-v2.5-pro (token plan)",
           "modalities": {
             "input": [ "text", "image" ],
             "output": [ "text" ]
