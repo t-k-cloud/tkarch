@@ -219,6 +219,7 @@ return require('packer').startup(function(use)
 
 	use {
 		'nvim-treesitter/nvim-treesitter',
+		branch = 'main',
 		run = function()
 			-- wait for background install (optional, but good for run step)
 			pcall(function()
