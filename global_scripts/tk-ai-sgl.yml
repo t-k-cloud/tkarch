@@ -23,7 +23,7 @@ services:
         --cuda-graph-max-bs 4
         --prefill-max-requests 4
         --chunked-prefill-size 2048
-        --model-path Qwen/Qwen3.5-27B-FP8
+        --model-path Qwen/Qwen3.6-27B-FP8
         --reasoning-parser qwen3
         --tool-call-parser qwen3_coder
         --quantization fp8
