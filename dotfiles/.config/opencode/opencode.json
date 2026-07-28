@@ -1,9 +1,6 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "permission": {
-    "question": "deny",
-    "task": "deny"
-  },
+  "permission": "allow",
   "compaction": {
     "auto": true,
     "prune": true
