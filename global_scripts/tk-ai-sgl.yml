@@ -1,6 +1,6 @@
 services:
   sglang-server:
-    image: lmsysorg/sglang:v0.5.10rc0-cu130
+    image: lmsysorg/sglang:v0.5.16-cu130-runtime
     restart: always
     ipc: host
     tty: true
@@ -21,15 +21,15 @@ services:
         --host 0.0.0.0 --port 30000
         --tp 4 --mem-fraction-static 0.85
         --cuda-graph-max-bs 4
+        --max-running-requests 4
         --prefill-max-requests 4
         --chunked-prefill-size 2048
         --model-path Qwen/Qwen3.6-27B-FP8
         --reasoning-parser qwen3
         --tool-call-parser qwen3_coder
         --quantization fp8
-        --kv-cache-dtype fp8_e4m3
         --context-length 128000
         --allow-auto-truncate
         --disable-fast-image-processor
-        --mm-max-concurrent-calls 1
+        --limit-mm-data-per-request '{"image":1}'
         --mm-process-config '{"image":{"max_pixels":40000}}'

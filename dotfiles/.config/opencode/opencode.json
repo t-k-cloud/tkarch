@@ -28,9 +28,9 @@
       },
       "models": {
         "Qwen3.6-FP8": {
-          "name": "Qwen3.6-FP8 (sglang:v0.5.10.post1-cu130)",
+          "name": "Qwen3.6-FP8 (sglang:v0.5.16 latest-cu130-runtime)",
 	  "limit": {
-            "context": 256000,
+            "context": 128000,
             "output": 64000
           },
           "modalities": {
