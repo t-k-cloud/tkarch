@@ -27,7 +27,7 @@
         "Qwen3.6-FP8": {
           "name": "Qwen3.6-FP8 (sglang:v0.5.16 latest-cu130-runtime)",
 	  "limit": {
-            "context": 128000,
+            "context": 262144,
             "output": 64000
           },
           "modalities": {

@@ -28,7 +28,7 @@ services:
         --reasoning-parser qwen3
         --tool-call-parser qwen3_coder
         --quantization fp8
-        --context-length 128000
+        --context-length 262144
         --allow-auto-truncate
         --disable-fast-image-processor
         --limit-mm-data-per-request '{"image":1}'
