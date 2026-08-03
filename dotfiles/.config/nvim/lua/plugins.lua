@@ -220,20 +220,8 @@ return require('packer').startup(function(use)
 	use {
 		'nvim-treesitter/nvim-treesitter',
 		branch = 'main',
-		run = function()
-			-- wait for background install (optional, but good for run step)
-			pcall(function()
-				require('nvim-treesitter').install({
-					"c", "cpp", "python", "lua", "javascript",
-					"bash", "rust", "markdown", "markdown_inline",
-					"vue", "html", "css", "typescript"
-				}):wait()
-			end)
-		end,
+		run = ':TSUpdate',
 		config = function()
-			-- Neovim 0.12+ (main branch of nvim-treesitter)
-			require('nvim-treesitter').setup {}
-
 			-- Enable Treesitter Highlighting natively for all filetypes
 			vim.api.nvim_create_autocmd('FileType', {
 				pattern = '*',
