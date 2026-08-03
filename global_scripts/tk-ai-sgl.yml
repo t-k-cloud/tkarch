@@ -1,7 +1,7 @@
 services:
   sglang-server:
     image: lmsysorg/sglang:v0.5.16-cu130-runtime
-    restart: always
+    restart: "no"
     ipc: host
     tty: true
     ports:
