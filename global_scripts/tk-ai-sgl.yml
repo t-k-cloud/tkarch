@@ -15,7 +15,7 @@ services:
         reservations:
           devices:
             - driver: nvidia
-              count: all      # 这里改成了 all，自动映射宿主机的所有 GPU
+              count: all
               capabilities: [gpu]
     command: >
       python3 -m sglang.launch_server
