@@ -33,7 +33,6 @@ services:
         --quantization fp8
         --context-length 262144
         --max-mamba-cache-size 20
-        --mamba-full-memory-ratio 2.29
         --speculative-algo NEXTN
         --speculative-num-steps 3
         --speculative-eagle-topk 1
