@@ -17,6 +17,9 @@ services:
             - driver: nvidia
               count: all
               capabilities: [gpu]
+    # this model supports --context-length 262144
+    # but our 4 cards does not support the full length
+    # we can extend to 6 cards if we really need that long
     command: >
       python3 -m sglang.launch_server
         --host 0.0.0.0 --port 30000
@@ -31,7 +34,7 @@ services:
         --reasoning-parser qwen3
         --tool-call-parser qwen3_coder
         --quantization fp8
-        --context-length 262144
+        --context-length 194000
         --max-mamba-cache-size 20
         --speculative-algo NEXTN
         --speculative-num-steps 3
