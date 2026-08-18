@@ -285,6 +285,8 @@ case ":$PATH:" in
 esac
 # pnpm end
 
+# node link
+command -v node >/dev/null && export PATH="$(dirname "$(command -v node)"):$PATH"
 
-# Added by Antigravity CLI installer
+# local bin
 export PATH="/home/tk/.local/bin:$PATH"
