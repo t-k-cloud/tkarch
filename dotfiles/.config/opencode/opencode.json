@@ -28,7 +28,7 @@
           "name": "Qwen3.8-FP8",
 	  "limit": {
             "context": 262144,
-            "output": 64000
+            "output": 16384
           },
           "modalities": {
             "input": [ "text", "image" ],
