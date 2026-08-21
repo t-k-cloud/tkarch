@@ -64,8 +64,7 @@
       "npm": "@ai-sdk/openai-compatible",
       "name": "CPA pool",
       "options": {
-        "baseURL": "http://yetiarch:8317/v1",
-        "apiKey": "cea4cd55eec8bbd722a204b08846071b"
+        "baseURL": "https://model-pool.highclaws.com/v1"
       },
       "models": {
         "claude-opus-4-6-thinking": {
