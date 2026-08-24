@@ -286,7 +286,15 @@ esac
 # pnpm end
 
 # node link
-command -v node >/dev/null && export PATH="$(dirname "$(command -v node)"):$PATH"
+node_path=$(command -v node 2>/dev/null)
+if [ -n "$node_path" ] && [ "$node_path" != "/usr/bin/node" ]; then
+    export PATH="$(dirname "$node_path"):$PATH"
+fi
 
 # local bin
 export PATH="/home/tk/.local/bin:$PATH"
+
+# Keep the active Conda environment ahead of system executables.
+if [ -n "${CONDA_PREFIX:-}" ]; then
+    export PATH="$CONDA_PREFIX/bin:$PATH"
+fi
