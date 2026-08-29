@@ -5,6 +5,8 @@ services:
     restart: "no"
     ipc: host
     tty: true
+    environment:
+      API_TOKEN: ${API_TOKEN:-}
     ports:
       - "127.0.0.1:30000:30000"
     volumes:
@@ -20,7 +22,10 @@ services:
     entrypoint: ["/bin/sh", "-lc"]
     command:
       - |
-        TOKEN=$$(python3 -c 'import secrets; print(secrets.token_urlsafe(32))')
+        TOKEN="$${API_TOKEN:-}"
+        if [ -z "$$TOKEN" ]; then
+          TOKEN=$$(python3 -c 'import secrets; print(secrets.token_urlsafe(32))')
+        fi
         echo "API token: $$TOKEN"
         exec python3 -m sglang.launch_server \
           --host 0.0.0.0 --port 30000 \
