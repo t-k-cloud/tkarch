@@ -24,7 +24,7 @@
         "baseURL": "http://yetiarch:30000/v1"
       },
       "models": {
-        "Qwen3.6-FP8": {
+        "LocalQwen": {
           "name": "Qwen3.8-FP8",
 	  "limit": {
             "context": 262144,
@@ -81,7 +81,11 @@
           "modalities": { "input": ["text", "image"], "output": ["text"] }
         },
         "glm-5.3-flash": {
-          "name": "GLM 5.3 (CPA)",
+          "name": "GLM 5.3 Flash (CPA)",
+          "modalities": { "input": ["text", "image"], "output": ["text"] }
+        },
+        "qwen3.8-flash": {
+          "name": "Qwen 3.8 Flash (CPA)",
           "modalities": { "input": ["text", "image"], "output": ["text"] }
         },
         "gpt-5.6-sol": {

@@ -8,7 +8,7 @@ services:
     environment:
       API_TOKEN: ${API_TOKEN:-}
     ports:
-      - "127.0.0.1:30000:30000"
+      - "30000:30000"
     volumes:
       - /mnt/hg_cache/huggingface:/root/.cache/huggingface
       - /mnt/asus_card:/mnt/asus_card
