@@ -72,8 +72,8 @@
           "limit": { "context": 200000, "output": 64000 },
           "modalities": { "input": ["text", "image"], "output": ["text"] }
         },
-        "gemini-3.6-flash-high": {
-          "name": "Gemini 3.6 Flash High (CPA)",
+        "gemini-3.8-flash-high": {
+          "name": "Gemini 3.8 Flash High (CPA)",
           "modalities": { "input": ["text", "image"], "output": ["text"] }
         },
         "gemini-pro-agent": {
