@@ -88,6 +88,10 @@
           "name": "Qwen 3.8 Flash (CPA)",
           "modalities": { "input": ["text", "image"], "output": ["text"] }
         },
+        "qwen3.8-max": {
+          "name": "Qwen 3.8 Max (CPA)",
+          "modalities": { "input": ["text", "image"], "output": ["text"] }
+        },
         "gpt-5.6-sol": {
           "name": "GPT-5.6 Sol (CPA)",
           "modalities": { "input": ["text", "image"], "output": ["text"] }
