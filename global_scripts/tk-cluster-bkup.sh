@@ -12,3 +12,6 @@ set -x
 rsync --progress -zauv --delete --exclude='.git/' rsync://truenas:30026/rsync_root/master-tree/proj/tkblog ~/master-tree/proj/
 rsync --progress -zauv --delete --exclude='.git/' rsync://truenas:30026/rsync_root/master-tree/proj/hippo ~/master-tree/proj/
 set +x
+
+echo "To do cold backup:"
+echo "rsync --progress -zauv --delete --exclude=.git/ rsync://truenas:30026/rsync_root/ /run/media/$HOME/xxx-xxx-xxx/"
