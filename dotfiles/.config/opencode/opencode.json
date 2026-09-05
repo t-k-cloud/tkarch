@@ -26,7 +26,7 @@
       "models": {
         "LocalQwen": {
           "name": "Qwen3.8-FP8",
-	  "limit": {
+          "limit": {
             "context": 262144,
             "output": 16384
           },
@@ -90,6 +90,10 @@
         },
         "qwen3.8-max": {
           "name": "Qwen 3.8 Max (CPA)",
+          "modalities": { "input": ["text", "image"], "output": ["text"] }
+        },
+        "gpt-6-astra": {
+          "name": "GPT-6 Astra (CPA)",
           "modalities": { "input": ["text", "image"], "output": ["text"] }
         },
         "gpt-5.6-sol": {
