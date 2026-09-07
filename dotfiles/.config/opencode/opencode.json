@@ -82,14 +82,17 @@
         },
         "glm-5.3-flash": {
           "name": "GLM 5.3 Flash (CPA)",
+          "headers": { "x-opencode-session": "tk-local" },
           "modalities": { "input": ["text", "image"], "output": ["text"] }
         },
         "qwen3.8-flash": {
           "name": "Qwen 3.8 Flash (CPA)",
+          "headers": { "x-opencode-session": "tk-local" },
           "modalities": { "input": ["text", "image"], "output": ["text"] }
         },
         "qwen3.8-max": {
           "name": "Qwen 3.8 Max (CPA)",
+          "headers": { "x-opencode-session": "tk-local" },
           "modalities": { "input": ["text", "image"], "output": ["text"] }
         },
         "gpt-6-astra": {
