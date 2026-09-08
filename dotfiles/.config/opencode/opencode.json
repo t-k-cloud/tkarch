@@ -95,6 +95,11 @@
           "headers": { "x-opencode-session": "tk-local" },
           "modalities": { "input": ["text", "image"], "output": ["text"] }
         },
+        "ling-3.0-flash-fin-free": {
+          "name": "Ling 3 Flash free (CPA)",
+          "headers": { "x-opencode-session": "tk-local" },
+          "modalities": { "input": ["text", "image"], "output": ["text"] }
+        },
         "gpt-6-astra": {
           "name": "GPT-6 Astra (CPA)",
           "modalities": { "input": ["text", "image"], "output": ["text"] }
