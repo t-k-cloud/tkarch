@@ -72,16 +72,17 @@
           "limit": { "context": 200000, "output": 64000 },
           "modalities": { "input": ["text", "image"], "output": ["text"] }
         },
-        "deepseek-flash": {
-          "name": "Deepseek Flash (CPA)",
-          "modalities": { "input": ["text", "image"], "output": ["text"] }
-        },
         "gemini-3.8-flash-high": {
           "name": "Gemini 3.8 Flash High (CPA)",
           "modalities": { "input": ["text", "image"], "output": ["text"] }
         },
         "gemini-pro-agent": {
           "name": "Gemini Pro Agent (CPA)",
+          "modalities": { "input": ["text", "image"], "output": ["text"] }
+        },
+        "deepseek-flash": {
+          "name": "Deepseek Flash (CPA)",
+          "headers": { "x-opencode-session": "tk-local" },
           "modalities": { "input": ["text", "image"], "output": ["text"] }
         },
         "glm-5.3-flash": {
