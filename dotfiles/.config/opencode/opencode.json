@@ -72,6 +72,10 @@
           "limit": { "context": 200000, "output": 64000 },
           "modalities": { "input": ["text", "image"], "output": ["text"] }
         },
+        "deepseek-flash": {
+          "name": "Deepseek Flash (CPA)",
+          "modalities": { "input": ["text", "image"], "output": ["text"] }
+        },
         "gemini-3.8-flash-high": {
           "name": "Gemini 3.8 Flash High (CPA)",
           "modalities": { "input": ["text", "image"], "output": ["text"] }
@@ -82,21 +86,6 @@
         },
         "glm-5.3-flash": {
           "name": "GLM 5.3 Flash (CPA)",
-          "headers": { "x-opencode-session": "tk-local" },
-          "modalities": { "input": ["text", "image"], "output": ["text"] }
-        },
-        "qwen3.8-flash": {
-          "name": "Qwen 3.8 Flash (CPA)",
-          "headers": { "x-opencode-session": "tk-local" },
-          "modalities": { "input": ["text", "image"], "output": ["text"] }
-        },
-        "qwen3.8-max": {
-          "name": "Qwen 3.8 Max (CPA)",
-          "headers": { "x-opencode-session": "tk-local" },
-          "modalities": { "input": ["text", "image"], "output": ["text"] }
-        },
-        "ling-3.0-flash-fin-free": {
-          "name": "Ling 3 Flash free (CPA)",
           "headers": { "x-opencode-session": "tk-local" },
           "modalities": { "input": ["text", "image"], "output": ["text"] }
         },
