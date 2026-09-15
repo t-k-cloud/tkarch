@@ -158,7 +158,7 @@ __prompt_command() {
 	PS1="╭─ ${bold}${show_wdir}${normal} ${show_pyenv}${show_gitstatus}${show_gitbrance}${normal} ${bold}${magenta_fg}${show_user}@${show_host}${normal} ${underline}${show_date} ${show_time}${normal}${show_newline}${normal}╰─ ${show_prompt_head}${normal} "
 }
 
-PROMPT_COMMAND=__prompt_command
+PROMPT_COMMAND=(__prompt_command)
 
 alias gg='xdg-open &> /dev/null'
 alias tt='stat -c "%y"'
