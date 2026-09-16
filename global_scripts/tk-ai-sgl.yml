@@ -7,6 +7,7 @@ services:
     tty: true
     environment:
       API_TOKEN: ${API_TOKEN}
+      MAX_BATCH_SIZE: ${MAX_BATCH_SIZE:-4}
     ports:
       - "30000:30000"
     volumes:
@@ -31,10 +32,10 @@ services:
           --api-key "$$API_TOKEN" \
           --tp 4 --mem-fraction-static 0.95 \
           --attention-backend flashinfer \
-          --cuda-graph-max-bs-decode 2 \
-          --max-running-requests 2 \
+          --cuda-graph-max-bs-decode "$$MAX_BATCH_SIZE" \
+          --max-running-requests "$$MAX_BATCH_SIZE" \
           --max-total-tokens 262144 \
-          --prefill-max-requests 2 \
+          --prefill-max-requests "$$MAX_BATCH_SIZE" \
           --chunked-prefill-size 2048 \
           --model-path Qwen/Qwen3.8-27B-FP8 \
           --reasoning-parser qwen3 \
