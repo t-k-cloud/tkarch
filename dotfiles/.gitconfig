@@ -26,6 +26,7 @@
 	subco = submodule foreach 'git checkout $(git config --file ../.gitmodules --get submodule.$name.branch)'
 [core]
 	editor = vi
+	quotepath = false
 [pager]
 	branch = less 
 [https]
