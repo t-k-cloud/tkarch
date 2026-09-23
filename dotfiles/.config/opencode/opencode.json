@@ -80,6 +80,10 @@
           "name": "Gemini Pro Agent (CPA)",
           "modalities": { "input": ["text", "image"], "output": ["text"] }
         },
+        "kimi-k3": {
+          "name": "Kimi K3 (CPA)",
+          "modalities": { "input": ["text", "image"], "output": ["text"] }
+        },
         "deepseek-flash": {
           "name": "Deepseek Flash (CPA)",
           "headers": { "x-opencode-session": "tk-local" },
