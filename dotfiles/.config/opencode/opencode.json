@@ -69,7 +69,12 @@
       "models": {
         "claude-opus-4-6-thinking": {
           "name": "Claude Opus 4.6 Thinking (CPA)",
-          "limit": { "context": 200000, "output": 64000 },
+          "limit": { "context": 1000000, "output": 128000 },
+          "modalities": { "input": ["text", "image"], "output": ["text"] }
+        },
+        "claude-opus-5-5": {
+          "name": "Claude Opus 5.5 (CPA)",
+          "limit": { "context": 1000000, "output": 128000 },
           "modalities": { "input": ["text", "image"], "output": ["text"] }
         },
         "gemini-3.8-flash-high": {
