@@ -67,6 +67,14 @@
         "baseURL": "https://model-pool.highclaws.com/v1"
       },
       "models": {
+        "highclaws-flash": {
+          "name": "HighClaws Flash (CPA)",
+          "modalities": { "input": ["text", "image"], "output": ["text"] }
+        },
+        "highclaws-pro": {
+          "name": "HighClaws Pro (CPA)",
+          "modalities": { "input": ["text", "image"], "output": ["text"] }
+        },
         "claude-opus-4-6-thinking": {
           "name": "Claude Opus 4.6 Thinking (CPA)",
           "limit": { "context": 1000000, "output": 128000 },
