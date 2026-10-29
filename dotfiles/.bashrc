@@ -160,6 +160,7 @@ __prompt_command() {
 
 PROMPT_COMMAND=(__prompt_command)
 
+export DISPLAY=${DISPLAY:-:0}
 alias gg='xdg-open &> /dev/null'
 alias tt='stat -c "%y"'
 alias rl='readlink -f'
