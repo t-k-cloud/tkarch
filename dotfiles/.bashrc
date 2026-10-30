@@ -160,7 +160,9 @@ __prompt_command() {
 
 PROMPT_COMMAND=(__prompt_command)
 
-export DISPLAY=${DISPLAY:-:0}
+export DISPLAY=${DISPLAY:-:0} # set the default display
+xset r on # enable long pressing -> repeating key enter
+
 alias gg='xdg-open &> /dev/null'
 alias tt='stat -c "%y"'
 alias rl='readlink -f'
