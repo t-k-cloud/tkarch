@@ -64,7 +64,8 @@
       "npm": "@ai-sdk/openai-compatible",
       "name": "CPA pool",
       "options": {
-        "baseURL": "https://model-pool.highclaws.com/v1"
+        "baseURL": "https://model-pool.highclaws.com/v1",
+        "headers": { "x-opencode-session": "tk-local" }
       },
       "models": {
         "highclaws-flash": {
@@ -99,12 +100,10 @@
         },
         "deepseek-flash": {
           "name": "Deepseek Flash (CPA)",
-          "headers": { "x-opencode-session": "tk-local" },
           "modalities": { "input": ["text", "image"], "output": ["text"] }
         },
         "glm-5.3-flash": {
           "name": "GLM 5.3 Flash (CPA)",
-          "headers": { "x-opencode-session": "tk-local" },
           "modalities": { "input": ["text", "image"], "output": ["text"] }
         },
         "gpt-6-astra": {
