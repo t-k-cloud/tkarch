@@ -160,6 +160,9 @@ __prompt_command() {
 
 PROMPT_COMMAND=(__prompt_command)
 
+[[ -z $XDG_VTNR ]] && export DISPLAY=${DISPLAY:-:0} # default display for ssh sessions (skip on VT so startx still runs)
+xset r on # enable long pressing -> repeating key enter
+
 alias gg='xdg-open &> /dev/null'
 alias tt='stat -c "%y"'
 alias rl='readlink -f'
