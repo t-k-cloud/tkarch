@@ -8,6 +8,9 @@ services:
     environment:
       API_TOKEN: ${API_TOKEN}
       MAX_BATCH_SIZE: ${MAX_BATCH_SIZE:-4}
+      # Never contact the Hub: weights are pinned to the local copy below.
+      HF_HUB_OFFLINE: "1"
+      TRANSFORMERS_OFFLINE: "1"
     ports:
       - "30000:30000"
     volumes:
@@ -37,7 +40,8 @@ services:
           --max-total-tokens 262144 \
           --prefill-max-requests "$$MAX_BATCH_SIZE" \
           --chunked-prefill-size 2048 \
-          --model-path Qwen/Qwen3.8-27B-FP8 \
+          --model-path /mnt/asus_card/hfdownloader/Models/Qwen/Qwen3.8-27B-FP8/Qwen/Qwen3.8-27B-FP8 \
+          --served-model-name ${MODEL_ID:?} \
           --reasoning-parser qwen3 \
           --tool-call-parser qwen3_coder \
           --quantization fp8 \
