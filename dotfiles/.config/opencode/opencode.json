@@ -163,17 +163,29 @@
             ]
           }
         },
-        "gemini-4-argon": {
+        "gemini-4-argon-high": {
+          "name": "gemini-4-argon-high (CPA)",
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          },
           "cost": {
             "input": 2,
             "output": 10,
             "cache_read": 0.1
           },
-          "name": "gemini-4-argon (CPA)",
           "limit": {
             "context": 1048576,
             "output": 32768
-          },
+          }
+        },
+        "gemini-4-hydrogen-xhigh": {
+          "name": "gemini-4-hydrogen-xhigh (CPA)",
           "modalities": {
             "input": [
               "text",
@@ -182,19 +194,19 @@
             "output": [
               "text"
             ]
-          }
-        },
-        "gemini-4-hydrogen": {
+          },
           "cost": {
             "input": 1.5,
             "output": 7.5,
             "cache_read": 0.075
           },
-          "name": "gemini-4-hydrogen (CPA)",
           "limit": {
             "context": 1048576,
             "output": 32768
-          },
+          }
+        },
+        "gemini-4-neon-xhigh": {
+          "name": "gemini-4-neon-xhigh (CPA)",
           "modalities": {
             "input": [
               "text",
@@ -203,27 +215,15 @@
             "output": [
               "text"
             ]
-          }
-        },
-        "gemini-4-neon": {
+          },
           "cost": {
             "input": 3,
             "output": 15,
             "cache_read": 0.15
           },
-          "name": "gemini-4-neon (CPA)",
           "limit": {
             "context": 1048576,
             "output": 32768
-          },
-          "modalities": {
-            "input": [
-              "text",
-              "image"
-            ],
-            "output": [
-              "text"
-            ]
           }
         },
         "glm-5.3-flash": {
