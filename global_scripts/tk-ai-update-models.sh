@@ -20,6 +20,7 @@ jq --slurpfile catalog "$models/highclaws.json" \
         reduce ($catalog[0] | keys[]) as $id ({};
             .[$id] = ($previous[$id]
                 | .name = "\($id) (CPA)"
+                | .reasoning = true
                 | .modalities = {input: ["text", "image"], output: ["text"]}
                 | .cost = model_cost($id)
                 | .limit = {
