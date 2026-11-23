@@ -74,7 +74,8 @@
             "output": [
               "text"
             ]
-          }
+          },
+          "reasoning": true
         },
         "claude-sonnet-5-5-high": {
           "cost": {
@@ -96,7 +97,8 @@
             "output": [
               "text"
             ]
-          }
+          },
+          "reasoning": true
         },
         "deepseek-flash": {
           "name": "deepseek-flash (CPA)",
@@ -117,7 +119,8 @@
             "output": [
               "text"
             ]
-          }
+          },
+          "reasoning": true
         },
         "fzwz-fable-5-2": {
           "name": "fzwz-fable-5-2 (CPA)",
@@ -139,7 +142,8 @@
             "output": [
               "text"
             ]
-          }
+          },
+          "reasoning": true
         },
         "fzwz-opus-5-5": {
           "name": "fzwz-opus-5-5 (CPA)",
@@ -161,7 +165,8 @@
             "output": [
               "text"
             ]
-          }
+          },
+          "reasoning": true
         },
         "gemini-4-argon-high": {
           "name": "gemini-4-argon-high (CPA)",
@@ -182,7 +187,8 @@
           "limit": {
             "context": 1048576,
             "output": 32768
-          }
+          },
+          "reasoning": true
         },
         "gemini-4-hydrogen-xhigh": {
           "name": "gemini-4-hydrogen-xhigh (CPA)",
@@ -203,7 +209,8 @@
           "limit": {
             "context": 1048576,
             "output": 32768
-          }
+          },
+          "reasoning": true
         },
         "gemini-4-neon-xhigh": {
           "name": "gemini-4-neon-xhigh (CPA)",
@@ -224,29 +231,8 @@
           "limit": {
             "context": 1048576,
             "output": 32768
-          }
-        },
-        "glm-5.3-flash": {
-          "name": "glm-5.3-flash (CPA)",
-          "cost": {
-            "input": 0.15,
-            "output": 0.5,
-            "cache_read": 0.03,
-            "cache_write": 0
           },
-          "limit": {
-            "context": 1000000,
-            "output": 32768
-          },
-          "modalities": {
-            "input": [
-              "text",
-              "image"
-            ],
-            "output": [
-              "text"
-            ]
-          }
+          "reasoning": true
         },
         "gpt-6.2-astra": {
           "name": "gpt-6.2-astra (CPA)",
@@ -268,7 +254,8 @@
             "output": [
               "text"
             ]
-          }
+          },
+          "reasoning": true
         },
         "gpt-6.2-sol": {
           "cost": {
@@ -290,7 +277,8 @@
             "output": [
               "text"
             ]
-          }
+          },
+          "reasoning": true
         },
         "highclaws-flash": {
           "name": "highclaws-flash (CPA)",
@@ -311,7 +299,8 @@
             "output": [
               "text"
             ]
-          }
+          },
+          "reasoning": true
         },
         "highclaws-pro": {
           "name": "highclaws-pro (CPA)",
@@ -333,7 +322,8 @@
           "limit": {
             "context": 1050000,
             "output": 32768
-          }
+          },
+          "reasoning": true
         }
       }
     }
